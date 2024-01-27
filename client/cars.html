@@ -1,0 +1,534 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>DUBAI Автосалон</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+
+</head>
+
+<body>
+    <!-- preloader Start -->
+    <div class="preloader">
+        <div id="loader-wrapper">
+            <div class="loader">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="loader-circle-1">
+                    <div class="loader-circle-2"></div>
+                </div>
+                <div class="needle"></div>
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader End -->
+    <!-- Header Start -->
+    <header class="main-header">
+        <div id="sticky-header" class="header-upper ">
+            <div class="container ">
+                <div class="row logo-md flex items-center">
+                    <div class="col-md-4 pull-left logo-box">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="images/logo.png" alt="" title="" style="width: 120px; ">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 nav-outer clearfix">
+
+                        <!--Mobile Navigation Toggler For Mobile-->
+                        <div class="mobile-nav-toggler ">
+                            <span style="font-size: 40px; margin-top: 10px;" class="fa fa-bars "></span>
+                        </div>
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md">
+                            <div class="navbar-header">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse scroll-nav clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li class="">
+                                        <a href="index.html">Главная страница</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="aboutus.html">О Нас</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="team.html">Наша Команда</a>
+                                    </li>
+                                    <li class="dropdown current">
+                                        <a href="cars.html">Машины</a>
+                                    </li>
+
+
+                                    <li><a href="gallery.html">Галлерея</a></li>
+                                    <li><a href="contactus.html">Связаться</a></li>
+
+                                </ul>
+                            </div>
+
+                        </nav>
+                        <!-- Main Menu End-->
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <!--End Header Upper-->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="fa fa-times-circle-o"></span></div>
+
+            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div>
+
+                <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
+            </nav>
+        </div><!-- End Mobile Menu -->
+    </header>
+    <!-- Header End -->
+    <div class="car-banner">
+    </div>
+    <div class="" style="padding: 30px;">
+        <div class="container">
+
+
+
+            <div class="">
+                <div class="car-menu">
+                    <div style="display: flex; width: 250px; justify-content: space-between;">
+                        <a id="stockFilter"
+                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center; cursor: pointer; border-bottom: 2px solid black; align-items: center; color: black; ">В
+                            наличии</a>
+                        <a id="orderFilter"
+                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center;  cursor: pointer; align-items: center; color: black; ">Под
+                            заказ</a>
+                    </div>
+                    <div>
+
+                        <input
+                            style="outline: none;   height: 40px; padding-left: 10px; padding-right: 35px; border: none; border-bottom: 1px solid #000; width: 300px; "
+                            type="search" placeholder="поиск" onkeyup="searchCars(event)">
+                        <i class="fa-solid fa-magnifying-glass" style="font-size: 20px; margin-left: -30px;"></i>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="car-list">
+        <div class="container" id="carContainer" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <!-- Cars will be dynamically added here -->
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Footer here -->
+
+    <footer class="footersection">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-3">
+                    <div class="footer2">
+                        <h4>Наша Команда</h4>
+                        <ul>
+                            <li><a href="team.html">Raxbariyat</a></li>
+                            <li><a href="teacher.html">Mahalliy o'qituvchilar</a></li>
+                            <li><a href="exteacher.html">Xorijlik o'qituvchilar</a></li>
+                            <li><a href="subteacher.html">Tarbiyachi va o'quv yordamchilari</a></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer2">
+                        <h4>Машины</h4>
+                        <ul>
+                            <li><a href="aboutus.html">Машины tartibi</a></li>
+                            <li><a href="documents.html">Kerakli xujjatlar</a></li>
+                            <li><a href="requests.html">Onlayn ariza yuborish</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="footer2">
+                        <h4>О нас</h4>
+                        <ul>
+                            <li><a href="aboutus.html">Maktab haqida</a></li>
+                            <li><a href="order.html">Tadbirlar va yangiliklar</a></li>
+                            <li><a href="news.html">Foto lavhalar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="footer2">
+                        <div class="footerpart">
+                            <h4>Связаться</h4>
+                            <ul>
+                                <li>
+                                    <img src="images/map.png" alt=""> <br>
+                                    <span>Navoiy shahar, I. Karimov, 91</span>
+                                </li>
+                                <li><img src="images/call.png" alt=""><span>+998792220102</span></li>
+                                <li><img src="images/mail.png" alt=""><span> prmnvd@piima.uz</span></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="copy">
+                    <ul>
+                        <li><a href="#" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="#" class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#" class="pinterest-change-co"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#" class="linkedin-change-co"><i class="fa fa-telegram"></i></a></li>
+
+                    </ul>
+
+
+                    <div class="copy_text">
+                        <span>
+                            © Copyright
+                            <script>var year = new Date(); document.write(year.getFullYear());</script> by
+                            Alo24automatization MCHJ
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- JS here -->
+
+
+    <script>
+        // Fetch data from the API
+        fetch('http://localhost:4100/product')
+            .then(response => response.json())
+            .then(data => {
+                const carContainer = document.getElementById('carContainer');
+
+                // Loop through the data and dynamically generate HTML
+                data.forEach(car => {
+                    const listItem = document.createElement('li');
+                    listItem.style.width = '340px';
+                    listItem.style.backgroundColor = '#f2f5f8';
+                    listItem.style.cursor = 'pointer';
+                    listItem.style.padding = '10px';
+                    listItem.style.borderRadius = '10px';
+                    listItem.style.listStyle = 'none';
+                    listItem.style.margin = '15px';
+
+                    const image = document.createElement('img');
+                    image.src = `http://localhost:4100/uploads/${car.img}`;
+                    image.alt = car.title;
+                    image.style.height = '250px';
+                    image.style.width = '100%';
+
+                    const title = document.createElement('h2');
+                    title.innerText = car.title;
+                    title.style.height = '66px';
+
+                    const year = document.createElement('p');
+                    year.innerText = car.year;
+
+                    const type1 = document.createElement('h6');
+                    type1.innerHTML = `<i class="fa-brands fa-think-peaks"></i> ${car.type1}`;
+
+                    const type2 = document.createElement('h6');
+                    type2.innerHTML = `<i class="fa-solid fa-gas-pump"></i> ${car.type2}`;
+
+                    const type3 = document.createElement('h6');
+                    type3.innerHTML = `<i class="fa-solid fa-car"></i> ${car.type3}`;
+
+                    const price = document.createElement('h3');
+                    price.innerText = `${car.price}$`;
+
+                    // Append elements to the list item
+                    listItem.appendChild(image);
+                    listItem.appendChild(title);
+                    listItem.appendChild(year);
+                    listItem.appendChild(type1);
+                    listItem.appendChild(type2);
+                    listItem.appendChild(type3);
+                    listItem.appendChild(price);
+
+                    // Append the list item to the container
+                    carContainer.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        async function fetchCars() {
+            try {
+                const response = await fetch('http://localhost:4100/product');
+                return response.json();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        async function renderCars() {
+            const data = await fetchCars();
+            const carContainer = document.getElementById('carContainer');
+            carContainer.innerHTML = ''; // Clear previous content
+
+            // Loop through the data and dynamically generate HTML
+            data.forEach(car => {
+                const listItem = document.createElement('li');
+                listItem.style.width = '340px';
+                listItem.style.backgroundColor = '#f2f5f8';
+                listItem.style.cursor = 'pointer';
+                listItem.style.padding = '10px';
+                listItem.style.borderRadius = '10px';
+                listItem.style.listStyle = 'none';
+                listItem.style.margin = '15px';
+
+                const image = document.createElement('img');
+                image.src = `http://localhost:4100/uploads/${car.img}`;
+                image.alt = car.title;
+                image.style.height = '250px';
+                image.style.width = '100%';
+
+                const title = document.createElement('h2');
+                title.innerText = car.title;
+                title.style.height = '66px';
+
+                const year = document.createElement('p');
+                year.innerText = car.year;
+
+                const type1 = document.createElement('h6');
+                type1.innerHTML = `<i class="fa-brands fa-think-peaks"></i> ${car.type1}`;
+
+                const type2 = document.createElement('h6');
+                type2.innerHTML = `<i class="fa-solid fa-gas-pump"></i> ${car.type2}`;
+
+                const type3 = document.createElement('h6');
+                type3.innerHTML = `<i class="fa-solid fa-car"></i> ${car.type3}`;
+
+                const price = document.createElement('h3');
+                price.innerText = `${car.price}$`; // Display the price
+
+                // Append elements to the list item
+                listItem.appendChild(image);
+                listItem.appendChild(title);
+                listItem.appendChild(year);
+                listItem.appendChild(type1);
+                listItem.appendChild(type2);
+                listItem.appendChild(type3);
+                listItem.appendChild(price); // Append the price
+
+                // Append the list item to the container
+                carContainer.appendChild(listItem);
+            });
+        }
+
+        function searchCars(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            const carTitles = document.querySelectorAll('#carContainer h2');
+
+            carTitles.forEach(titleElement => {
+                const carTitle = titleElement.innerText.toLowerCase();
+                const listItem = titleElement.closest('li');
+
+                if (carTitle.includes(searchTerm)) {
+                    listItem.style.display = 'block';
+                } else {
+                    listItem.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial render
+        renderCars();
+        async function fetchCars(category) {
+            try {
+                // Use the category parameter in the URL
+                const response = await fetch(`http://localhost:4100/product?category=${category}`);
+                return response.json();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        async function filterCars(category = 'stock') {
+            const data = await fetchFilteredCars(category);
+
+            renderCars(data);
+            // Highlight the active filter link based on the selected category
+
+        }
+
+        // ...
+
+
+
+        // ...
+
+        // Function to dynamically create a card element
+        function createCarCard(car) {
+            const listItem = document.createElement('li');
+            listItem.style.width = '340px';
+            listItem.style.backgroundColor = '#f2f5f8';
+            listItem.style.cursor = 'pointer';
+            listItem.style.padding = '10px';
+            listItem.style.borderRadius = '10px';
+            listItem.style.listStyle = 'none';
+            listItem.style.margin = '15px';
+
+            const image = document.createElement('img');
+            image.src = `http://localhost:4100/uploads/${car.img}`;
+            image.alt = car.title;
+            image.style.height = '250px';
+            image.style.width = '100%';
+
+            const title = document.createElement('h2');
+            title.innerText = car.title;
+            title.style.height = '66px';
+
+            const year = document.createElement('p');
+            year.innerText = car.year;
+
+            const type1 = document.createElement('h6');
+            type1.innerHTML = `<i class="fa-brands fa-think-peaks"></i> ${car.type1}`;
+
+            const type2 = document.createElement('h6');
+            type2.innerHTML = `<i class="fa-solid fa-gas-pump"></i> ${car.type2}`;
+
+            const type3 = document.createElement('h6');
+            type3.innerHTML = `<i class="fa-solid fa-car"></i> ${car.type3}`;
+
+            const price = document.createElement('h3');
+            price.innerText = `${car.price}$`;
+
+            // Append elements to the list item
+            listItem.appendChild(image);
+            listItem.appendChild(title);
+            listItem.appendChild(year);
+            listItem.appendChild(type1);
+            listItem.appendChild(type2);
+            listItem.appendChild(type3);
+            listItem.appendChild(price);
+            listItem.addEventListener('click', () => {
+                // Redirect to cardetail.html with query parameter (car ID or any identifier)
+                window.location.href = `cardetail.html?id=${car._id}`;
+            });
+            return listItem;
+        }
+
+        // Function to render cars based on category
+        async function renderCarsByCategory(category) {
+            const carContainer = document.getElementById('carContainer');
+            carContainer.innerHTML = ''; // Clear previous content
+
+            // Fetch data based on the category
+            const data = await fetchCars(category);
+
+            // Loop through the data and create cards
+            data.forEach(car => {
+                const card = createCarCard(car);
+                carContainer.appendChild(card);
+            });
+        }
+
+        // Initial render (you can choose a default category)
+        renderCarsByCategory('stock');
+
+        const stockFilter = document.getElementById('stockFilter');
+        const orderFilter = document.getElementById('orderFilter');
+
+        // Event listeners for filter links
+        stockFilter.addEventListener('click', () => {
+            renderCarsByCategory('stock')
+            stockFilter.style.borderBottom = '2px solid black'
+            orderFilter.style.borderBottom = '0px solid black'
+        });
+        orderFilter.addEventListener('click', () => {
+            renderCarsByCategory('order')
+            stockFilter.style.borderBottom = '0px solid black'
+            orderFilter.style.borderBottom = '2px solid black'
+        });
+
+    </script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
