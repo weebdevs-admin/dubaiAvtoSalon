@@ -17,7 +17,7 @@ function Abaut() {
     iframe: '...'
   });
   useEffect(() => {
-    axios.get('http://localhost:4100/abaut')
+    axios.get('http://172.20.10.2:4100/abaut')
       .then((response) => {
         if (response.data.length > 0) {
           const initialData = response.data[0]; // Avvalgi ma'lumotlardan birini tanlab olish
@@ -39,7 +39,7 @@ function Abaut() {
     if ( formData.title !== '...' || formData.desc !== '...') {
       try {
         const response = await axios.put(
-          'http://localhost:4100/abaut/update/65b47f08e6aaffe3ad728c7c',
+          'http://172.20.10.2:4100/abaut/update/65b47f08e6aaffe3ad728c7c',
           formData
         );
 
@@ -80,7 +80,7 @@ function Abaut() {
       formData.append('file', selectedFile);
 
       // Make a POST request to upload the image
-      await axios.post('http://localhost:4100/upload', formData, {
+      await axios.post('http://172.20.10.2:4100/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

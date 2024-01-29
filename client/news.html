@@ -52,14 +52,16 @@
     </div>
     <!-- preloader End -->
     <!-- Header Start -->
+    
+    <!-- Header Start -->
     <header class="main-header">
         <div id="sticky-header" class="header-upper ">
-            <div class="container ">
+            <div class="" style="padding-left: 20px; padding-right: 30px;">
                 <div class="row logo-md flex items-center">
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="images/logo.png" alt="" title="" style="width: 120px; ">
+                                <img src="images/logo.png" alt="" title="" style="width: 120px;  ">
                             </a>
                         </div>
                     </div>
@@ -67,7 +69,7 @@
 
                         <!--Mobile Navigation Toggler For Mobile-->
                         <div class="mobile-nav-toggler ">
-                            <span style="font-size: 40px; margin-top: 10px;" class="fa fa-bars "></span>
+                            <span style="font-size: 40px; margin-top: 10px; color: black;" class="fa fa-bars "></span>
                         </div>
 
                         <!-- Main Menu -->
@@ -86,18 +88,21 @@
                                     <li class="">
                                         <a href="index.html">Главная страница</a>
                                     </li>
-                                    <li class="current"><a href="aboutus.html">О Нас</a>
+                                    <li class="">
+                                        <a href="cars.html">Автомобили в наличии </a>
                                     </li>
                                     <li class="">
-                                        <a href="team.html">Наша Команда</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="cars.html">Машины</a>
-
+                                        <a href="order.html">Автомобили под заказ</a>
                                     </li>
 
+                                    <li class="">
+                                        <a href="aboutus.html">О нас</a>
+                                    </li>
+                                    <li class="current">
+                                        <a href="news.html">Новости</a>
+                                    </li>
 
-                                    <li><a href="gallery.html">Галлерея</a></li>
+
                                     <li><a href="contactus.html">Связаться</a></li>
 
                                 </ul>
@@ -128,29 +133,6 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- Header End -->
-    <div class="filter" style="padding: 30px;">
-        <div class="container">
-            
-
-                
-                <div class="">
-                    <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap; gap: 10px;">
-                        <a href="aboutus.html" style="font-size: 17px; width: 250px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px; color: black; background-color: #fff;" >О Нас
-                        </a>
-                        <a class="active-filter" href="news.html" style="font-size: 17px; width: 250px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px; color: black; background-color: #fff;">Новости</a>
-                        
-                       
-                    </div>
-                </div>
-               
-                               
-
-
-
-
-         
-        </div>
-    </div>
     
     
     
@@ -292,46 +274,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""></a>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-
-                </div>
-                <div class="modal-body">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="index.html">Главная страница</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="aboutus.html"><span>About Us</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="team.html">Наша Команда</a>
-                        </li>
-                        <li class="nav-item">
-                            <li class="">
-                                        <a href="aboutus.html">О Нас</a>
-                                    </li>
-                        </li>
-                        <li class="nav-item">
-                            <a href="aboutus.html">Galareya</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contactus.html">Связаться</a>
-                        </li>
-                    </ul>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-
+    
 
     <!-- JS here -->
 
@@ -339,7 +282,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Fetch data from the API
-            fetch('http://localhost:4100/news')
+            fetch('http://172.20.10.2:4100/news')
                 .then(response => response.json())
                 .then(data => {
                     const newsContainer = document.getElementById('blog-art');
@@ -356,13 +299,13 @@
     
                         // Check if the item has an image or iframe
                         const mediaElement = item.img
-                            ? `<img src="http://localhost:4100/uploads/${item.img}" alt="">`
+                            ? `<img src="http://172.20.10.2:4100/uploads/${item.img}" alt="">`
                             : `<iframe src="${item.iframe}" width="100%" height="200px" frameborder="0" allowfullscreen></iframe>`;
     
                         listItem.innerHTML = `
                             <div onclick="updateBigCard('${item.title}', '${item.desc}', '${item.img}', '${item.iframe}')">
                                 <div class="blog-img" >
-                                    <a href="#" class="small-card" data-src="http://localhost:4100/uploads/${item.img}">
+                                    <a href="#" class="small-card" data-src="http://172.20.10.2:4100/uploads/${item.img}">
                                         ${mediaElement}
                                     </a>
                                 </div>
@@ -377,7 +320,8 @@
                     });
     
                     // Set default information on page load
-                    updateBigCard('Navoiyda Prezident maktabi oʼz faoliyatini boshladi.', 'Oʼzbekiston 16:33 / 02.11.2021 2696 Navoiy shahrida Prezident maktabining tantanali ochilish marosimi boʼlib oʼtdi...', '/2.jpg', '');
+                    updateBigCard('У нас новые партнёры из ОАЭ!.', 
+                    'В этом году мы начали сотрудничать с поставщиками из ОАЭ. Больше новостей вы можете увидеть на сайте и социальных сетях нашей компании.', '/2.jpg', '');
                 })
                 .catch(error => console.error('API bilan xatolik:', error));
     
@@ -385,7 +329,7 @@
             window.updateBigCard = function (title, desc, img, iframe) {
                 const bigCardContainer = document.getElementById('bigCard');
                 const mediaElement = img
-                    ? `<img src="http://localhost:4100/uploads/${img}" alt="">`
+                    ? `<img src="http://172.20.10.2:4100/uploads/${img}" alt="">`
                     : `<iframe src="${iframe}" width="100%" height="400px" frameborder="0" allowfullscreen></iframe>`;
     
                 bigCardContainer.innerHTML = `

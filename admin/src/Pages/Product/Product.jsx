@@ -34,7 +34,7 @@ function Product() {
 
     const fetchImages = async () => {
         try {
-            const response = await axios.get('http://localhost:4100/product');
+            const response = await axios.get('http://172.20.10.2:4100/product');
             setImages(response.data);
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -43,7 +43,7 @@ function Product() {
 
     const handleDelete = async (newsItem) => {
         try {
-            await axios.delete(`http://localhost:4100/product/delete/${newsItem._id}`);
+            await axios.delete(`http://172.20.10.2:4100/product/delete/${newsItem._id}`);
             toast.success('deleted successfully');
             fetchImages();
         } catch (error) {
@@ -114,7 +114,7 @@ function Product() {
         try {
             const formData = new FormData();
             formData.append('file', selectedFile);
-            await axios.post('http://localhost:4100/upload', formData, {
+            await axios.post('http://172.20.10.2:4100/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -132,11 +132,11 @@ function Product() {
             try {
                 if (editingItemId) {
                     // If editingItemId exists, update the existing item
-                    await axios.put(`http://localhost:4100/product/update/${editingItemId}`, formData);
+                    await axios.put(`http://172.20.10.2:4100/product/update/${editingItemId}`, formData);
                     toast.success('Information updated successfully');
                 } else {
                     // If editingItemId doesn't exist, create a new item
-                    await axios.post('http://localhost:4100/product/create', formData);
+                    await axios.post('http://172.20.10.2:4100/product/create', formData);
                     toast.success('Ma\'lumot qo\'shildi');
                 }
 
@@ -267,7 +267,7 @@ function Product() {
                     {images &&
                         images.map((newsItem) => (
                             <div key={newsItem._id} className="news-card">
-                                {newsItem.img && <img src={`http://localhost:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
+                                {newsItem.img && <img src={`http://172.20.10.2:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
                                 {newsItem.iframe && <iframe width="100%" height="auto" src={newsItem.iframe} title={newsItem.title}></iframe>}
                                 <div className="news-content">
                                     <h3>{newsItem.title}</h3>

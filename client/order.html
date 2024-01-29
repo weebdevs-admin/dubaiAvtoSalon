@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -88,10 +88,10 @@
                                     <li class="">
                                         <a href="index.html">Главная страница</a>
                                     </li>
-                                    <li class="current">
+                                    <li class="">
                                         <a href="cars.html">Автомобили в наличии </a>
                                     </li>
-                                    <li class="">
+                                    <li class="current">
                                         <a href="order.html">Автомобили под заказ</a>
                                     </li>
 
@@ -143,10 +143,10 @@
             <div class="">
                 <div class="car-menu">
                     <div style="display: flex; width: 250px; justify-content: space-between;">
-                        <a id="stockFilter"
-                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center; cursor: pointer; border-bottom: 2px solid black; align-items: center; color: black; ">В
-                            наличии</a>
                         
+                        <a id="orderFilter"
+                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center; border-bottom: 2px solid black;  cursor: pointer; align-items: center; color: black; ">Под
+                            заказ</a>
                     </div>
                     <div>
 
@@ -409,7 +409,7 @@
                 console.error('Error fetching data:', error);
             }
         }
-        async function filterCars(category = 'stock') {
+        async function filterCars(category = 'order') {
             const data = await fetchFilteredCars(category);
 
             renderCars(data);
@@ -479,22 +479,9 @@
         }
 
         // Initial render (you can choose a default category)
-        renderCarsByCategory('stock');
+        renderCarsByCategory('order');
 
-        const stockFilter = document.getElementById('stockFilter');
-        const orderFilter = document.getElementById('orderFilter');
-
-        // Event listeners for filter links
-        stockFilter.addEventListener('click', () => {
-            renderCarsByCategory('stock')
-            stockFilter.style.borderBottom = '2px solid black'
-            orderFilter.style.borderBottom = '0px solid black'
-        });
-        orderFilter.addEventListener('click', () => {
-            renderCarsByCategory('order')
-            stockFilter.style.borderBottom = '0px solid black'
-            orderFilter.style.borderBottom = '2px solid black'
-        });
+       
 
     </script>
     <script src="js/jquery-3.6.0.min.js"></script>

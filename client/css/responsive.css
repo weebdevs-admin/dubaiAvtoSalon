@@ -10,10 +10,25 @@
     .container-xl {}
 }
 
+@media only screen and (min-width: 767px) and (max-width: 1200px) {
+    
+    .main-menu {
+        display: none; /* Hide the main menu by default on screens <= 1200px */
+    }
+    
+    .main-header .nav-outer .mobile-nav-toggler {
+        display: block;
+        top: -1.3em;
+        
+    }
+}
+
 /* Extra large devices (large desktops, 1800px and up) */
 @media (max-width: 1440px) {}
 
-@media (max-width: 1024px) {}
+@media (max-width: 1024px) {
+   
+}
 
 @media (max-width: 992px) {
     .lg-gallery {
@@ -23,7 +38,7 @@
     .md-gallery {
         display: block;
     }
-
+    
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

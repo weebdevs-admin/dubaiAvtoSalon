@@ -19,15 +19,20 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <title>Car Details</title>
+    <title>DUBAI Автосалон</title>
     <style>
         .detail_banner {
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            align-items: center;
             margin: 30px;
+
+        }
+
+        ::-webkit-scrollbar {
+            width: 1px;
+            background: #383838;
 
         }
 
@@ -35,34 +40,80 @@
 
         .image-container {
             flex-wrap: wrap;
-            width: 600px;
-            height: 400px;
+            width: 700px;
+            height: auto;
+            background-color: #F2F5F8;
             margin-left: -50px;
         }
 
         .image-container img {
-            width: 600px;
+            width: 700px;
             height: 400px;
-            border-radius: 10px;
+            border-radius: 5px;
+            object-fit: cover;
         }
 
         .details-container {
             padding: 20px;
-            width: 450px;
+            width: 100%;
 
         }
 
+        .recomended-cars {
+            width: 350px;
+            height: 500px;
+            overflow: auto;
+        }
+        @media only screen and (min-width: 767px) and (max-width: 1200px) {
+    
+            .image-container {
+            flex-wrap: wrap;
+            width: 550px;
+            height: auto;
+            background-color: #F2F5F8;
+            margin-left: -50px;
+        }
+
+        .image-container img {
+            width: 550px;
+            height: 350px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    }
+
         @media (max-width:767px) {
             .details-container {
-                padding: 20px;
-                width: 90%;
+                padding: 10px;
+                width: 100%;
                 text-align: center;
 
             }
 
             .image-container {
+                flex-wrap: wrap;
+                width: 700px;
+                height: auto;
+                background-color: #F2F5F8;
+                margin-left: -50px;
+            }
+
+            .image-container img {
                 width: 100%;
-                height: 400px;
+                height: 200px;
+                border-radius: 5px;
+                object-fit: cover;
+            }
+
+            .recomended-cars {
+                width: 100vw;
+                height: 500px;
+                overflow: auto;
+            }
+
+            .image-container {
+                width: 100%;
+                height: auto;
                 margin-left: 0px;
             }
 
@@ -71,8 +122,7 @@
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                align-items: center;
-                margin: 30px;
+                margin: 10px;
 
             }
         }
@@ -88,15 +138,37 @@
 </head>
 
 <body>
+    <div class="preloader">
+        <div id="loader-wrapper">
+            <div class="loader">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="subline"></div>
+                <div class="loader-circle-1">
+                    <div class="loader-circle-2"></div>
+                </div>
+                <div class="needle"></div>
+                <div class="loading">Loading</div>
+            </div>
+        </div>
+    </div>
     <!-- Header Start -->
     <header class="main-header">
         <div id="sticky-header" class="header-upper ">
-            <div class="container ">
+            <div class="" style="padding-left: 20px; padding-right: 30px;">
                 <div class="row logo-md flex items-center">
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="images/logo.png" alt="" title="" style="width: 120px; ">
+                                <img src="images/logo.png" alt="" title="" style="width: 120px;  ">
                             </a>
                         </div>
                     </div>
@@ -104,7 +176,7 @@
 
                         <!--Mobile Navigation Toggler For Mobile-->
                         <div class="mobile-nav-toggler ">
-                            <span style="font-size: 40px; margin-top: 10px;" class="fa fa-bars "></span>
+                            <span style="font-size: 40px; margin-top: 10px; color: black;" class="fa fa-bars "></span>
                         </div>
 
                         <!-- Main Menu -->
@@ -124,17 +196,20 @@
                                         <a href="index.html">Главная страница</a>
                                     </li>
                                     <li class="">
-                                        <a href="aboutus.html">О Нас</a>
+                                        <a href="cars.html">Автомобили в наличии </a>
                                     </li>
                                     <li class="">
-                                        <a href="team.html">Наша Команда</a>
+                                        <a href="order.html">Автомобили под заказ</a>
                                     </li>
-                                    <li class="dropdown current">
-                                        <a href="cars.html">Машины</a>
+
+                                    <li class="">
+                                        <a href="aboutus.html">О нас</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="news.html">Новости</a>
                                     </li>
 
 
-                                    <li><a href="gallery.html">Галлерея</a></li>
                                     <li><a href="contactus.html">Связаться</a></li>
 
                                 </ul>
@@ -164,24 +239,50 @@
             </nav>
         </div><!-- End Mobile Menu -->
     </header>
-    <div class="">
-        <div class="container ">
+
+    <!-- Header End -->
+    <div class="container">
+        <div class=" ">
             <div class="detail_banner">
                 <div class="image-container">
                     <img id="carImage" src="" alt="Car Image">
+                    <div class="details-container">
+                        <div style=" display: flex; justify-content: space-between; flex-wrap: wrap;">
+                            <h1 id="carTitle"></h1>
+                            <h2 id="carPrice"></h2>
+                        </div>
+                        <div style=" display: flex; justify-content: space-between; align-items: center;">
+                            <h4 id="carYear"></h4>
+                            <button
+                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; height: 40px; border-radius: 5px;"
+                                class="order-btn"></button>
+                        </div>
+
+
+                        <p style="margin-top: 15px;" id="desc"></p>
+                        <div style="font-size: 25px; ">
+                            <a style="color: #383838;" href="#"><i class="fa-solid fa-phone"></i></a>
+                            <a style="color: #383838;" href="@"><i class="fa-solid fa-envelope"></i></a>
+                            <a style="color: #383838;" href="@"><i class="fa-brands fa-telegram"></i></a>
+                            <a style="color: #383838;" href="@"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+
+
+                        </div>
+                    </div>
                 </div>
-                <div class="details-container">
-                    <h1 id="carTitle"></h1>
-                    <p id="carYear"></p>
-                    <p id="carType1"><i class="fa-brands fa-think-peaks"></i> </p>
-                    <p id="carType2"></p>
-                    <p id="carType3"></p>
-                    <p id="desc"></p>
-                    <h2 id="carPrice"></h2>
+                <div class="recomended-cars car-list">
+                    <div class="container" id="carContainer"
+                        style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                        <!-- Cars will be dynamically added here -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <footer class="footersection">
         <div class="container">
             <div class="row">
@@ -269,21 +370,82 @@
         const urlParams = new URLSearchParams(window.location.search);
         const carId = urlParams.get('id');
 
-        fetch(`http://localhost:4100/product/${carId}`)
+        fetch(`http://172.20.10.2:4100/product/${carId}`)
             .then(response => response.json())
             .then(car => {
                 // Update elements with car details
-                document.getElementById('carImage').src = `http://localhost:4100/uploads/${car.img}`;
+                document.getElementById('carImage').src = `http://172.20.10.2:4100/uploads/${car.img}`;
                 document.getElementById('carTitle').innerText = car.title;
-                document.getElementById('carYear').innerText = `Year: ${car.year}`;
-                document.getElementById('carType1').innerText = ` ${car.type1}`;
-                document.getElementById('carType2').innerText = ` ${car.type2}`;
-                document.getElementById('carType3').innerText = ` ${car.type3}`;
+                document.getElementById('carYear').innerText = `год: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
                 document.getElementById('carPrice').innerText = `${car.price}$`;
+                if (car.category === 'stock') {
+                    document.querySelector('.order-btn').innerText = 'Заказат';
+                } else {
+                    document.querySelector('.order-btn').innerText = 'Контакты';
+
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        fetch('http://172.20.10.2:4100/product')
+            .then(response => response.json())
+            .then(data => {
+                const carContainer = document.getElementById('carContainer');
+                // Loop through the data and dynamically generate HTML
+                data.forEach(car => {
+                    const listItem = document.createElement('li');
+                    listItem.style.width = '100%';
+                    listItem.style.backgroundColor = '#f2f5f8';
+                    listItem.style.cursor = 'pointer';
+                    listItem.style.padding = '10px';
+                    listItem.style.borderRadius = '5px';
+                    listItem.style.listStyle = 'none';
+                    listItem.style.marginTop = '15px';
+                    listItem.addEventListener('click', () => {
+                        // Redirect to cardetail.html with query parameter (car ID or any identifier)
+                        window.location.href = `cardetail.html?id=${car._id}`;
+                    });
+                    const image = document.createElement('img');
+                    image.src = `http://172.20.10.2:4100/uploads/${car.img}`;
+                    image.alt = car.title;
+                    image.style.height = '200px';
+                    image.style.width = '100%';
+
+                    const title = document.createElement('h3');
+                    title.innerText = car.title;
+                    title.style.height = '50px';
+
+                    const year = document.createElement('p');
+                    year.innerText = car.year;
+
+
+
+                    const price = document.createElement('h3');
+                    price.innerText = `${car.price}$`;
+
+                    // Append elements to the list item
+                    listItem.appendChild(image);
+                    listItem.appendChild(title);
+                    listItem.appendChild(year);
+
+                    listItem.appendChild(price);
+
+                    // Append the list item to the container
+                    carContainer.appendChild(listItem);
+                });
             })
             .catch(error => console.error('Error fetching data:', error));
     </script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>

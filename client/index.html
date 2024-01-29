@@ -53,11 +53,12 @@
             </div>
         </div>
     </div>
+
     <!-- preloader End -->
     <!-- Header Start -->
     <header class="main-header">
         <div id="sticky-header" class="header-upper ">
-            <div class="container ">
+            <div class="" style="padding-left: 20px; padding-right: 30px;">
                 <div class="row logo-md flex items-center">
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
@@ -90,15 +91,20 @@
                                         <a href="index.html">Главная страница</a>
                                     </li>
                                     <li class="">
-                                        <a href="aboutus.html">О Нас</a>
+                                        <a href="cars.html">Автомобили в наличии </a>
                                     </li>
                                     <li class="">
-                                        <a href="team.html">Наша Команда</a>
+                                        <a href="order.html">Автомобили под заказ</a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="cars.html">Машины</a>
+
+                                    <li class="">
+                                        <a href="aboutus.html">О нас</a>
                                     </li>
-                                    <li><a href="gallery.html">Галлерея</a></li>
+                                    <li class="">
+                                        <a href="news.html">Новости</a>
+                                    </li>
+
+
                                     <li><a href="contactus.html">Связаться</a></li>
 
                                 </ul>
@@ -219,7 +225,7 @@
                 <div class="col-sm-5">
 
                     <div class="onlinelearning">
-                        <h2 style="color: #797979; margin-bottom: 20px;">О Нас</h2>
+                        <h2 style="color: #797979; margin-bottom: 20px;">О нас</h2>
                         <span>Автосалон «Dubai» в Ташкенте — это выгодные цены на новые и подержанные авто! Благодаря
                             нашему сервису любой клиент всегда сможет подобрать именно тот автомобиль, который
                             соответствует всем его требованиям, начиная от комплектации и заканчивая ценой. Наши
@@ -561,7 +567,7 @@
         let currentNumber = 0;
 
         // Fetch so'rovi bajarilishi
-        fetch('http://localhost:4100/statist')
+        fetch('http://172.20.10.2:4100/statist')
             .then(res => res.json())
             .then(base => {
                 function updateOdometer() {
@@ -597,7 +603,7 @@
             const partnersContainer = document.getElementById('partners-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/partners')
+            fetch('http://172.20.10.2:4100/partners')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -605,7 +611,7 @@
             <img
               key="${partner._id}"
               style="border-radius: 10px;"
-              src="http://localhost:4100/uploads/${partner.img}"
+              src="http://172.20.10.2:4100/uploads/${partner.img}"
               width="300px"
               height="130px"
               alt="Logo ${partner._id}"
@@ -622,7 +628,7 @@
             const iframeContainer = document.getElementById('iframe-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/iframes')
+            fetch('http://172.20.10.2:4100/iframes')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -650,20 +656,20 @@
             const iframeContainer = document.getElementById('lg-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/gallery')
+            fetch('http://172.20.10.2:4100/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 500px; ">
-                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;
@@ -678,20 +684,20 @@
             const iframeContainer = document.getElementById('md-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/gallery')
+            fetch('http://172.20.10.2:4100/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="http://172.20.10.2:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;

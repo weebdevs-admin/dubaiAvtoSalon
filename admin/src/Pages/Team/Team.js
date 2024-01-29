@@ -24,7 +24,7 @@ function Team() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://localhost:4100/team');
+      const response = await axios.get('http://172.20.10.2:4100/team');
       setImages(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -33,7 +33,7 @@ function Team() {
 
   const handleDelete = async (teamItem) => {
     try {
-      await axios.delete(`http://localhost:4100/team/delete/${teamItem._id}`);
+      await axios.delete(`http://172.20.10.2:4100/team/delete/${teamItem._id}`);
       toast.success('deleted successfully');
       fetchImages();
     } catch (error) {
@@ -75,7 +75,7 @@ function Team() {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      await axios.post('http://localhost:4100/upload', formData, {
+      await axios.post('http://172.20.10.2:4100/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -92,10 +92,10 @@ function Team() {
     if (formData.type.trim() !== '' && selectedFile) {
       try {
         if (editingItemId) {
-          await axios.put(`http://localhost:4100/team/update/${editingItemId}`, formData);
+          await axios.put(`http://172.20.10.2:4100/team/update/${editingItemId}`, formData);
           toast.success('Information updated successfully');
         } else {
-          await axios.post('http://localhost:4100/team/create', formData);
+          await axios.post('http://172.20.10.2:4100/team/create', formData);
           toast.success('Information added successfully');
         }
 
@@ -144,7 +144,7 @@ function Team() {
           {images &&
             images.map((teamItem) => (
               <div key={teamItem._id} className="team-card">
-                <img src={`http://localhost:4100/uploads/${teamItem.img}`} alt={teamItem.type} />
+                <img src={`http://172.20.10.2:4100/uploads/${teamItem.img}`} alt={teamItem.type} />
                 <div className="team-content">
                   <h3>{teamItem.type}</h3>
                 </div>
