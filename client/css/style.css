@@ -2545,7 +2545,7 @@ input[type="submit"]:hover {
 .count {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     color: white;
     list-style-type: none;
     padding: 0;
