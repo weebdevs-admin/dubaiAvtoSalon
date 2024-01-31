@@ -189,33 +189,11 @@
     </div>
 
     <!-- <h2  style="margin: 30px; color: #797979;">В наличии</h2> -->
-    <div class="container">
-        <ul class="main-product-ul">
+    <div class="container product-review">
 
-            <li>
-                <div class="image-container">
-                    <img class="main-product-img" src="./images/2.jpg" alt="">
-                    <div class="image-info" style="display: flex ; justify-content: space-around;">
-                        <span>
-                            <h4>BYD Song 2</h4>
-                            <h4>45000$</h4>
-                        </span>
-                        <a href="#" style="margin-top: 35px; font-size: 20px;">Koproq</a>
-                    </div>
-                </div>
-            <li>
-                <div class="image-container">
-                    <img class="main-product-img" src="./images/2.jpg" alt="">
-                    <div class="image-info" style="display: flex ; justify-content: space-around;">
-                        <span>
-                            <h4>BYD Song 2</h4>
-                            <h4>45000$</h4>
-                        </span>
-                        <a href="#" style="margin-top: 35px; font-size: 20px; color: white;">Koproq</a>
-                    </div>
-                </div>
+    </div>
+    <div class="container product-review-order">
 
-        </ul>
     </div>
 
     <div class="section3">
@@ -332,12 +310,12 @@
             <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
                     <div class="card swiper-slide" style="height: 300px; margin: 0; padding: 0;">
-                        <div class="image-box" >
+                        <div class="image-box">
                             <img src="images/2.jpg" alt="" />
                         </div>
                         <div class="profile-details">
-                            
-    
+
+
                             <div class="name-job">
                                 <h3 class="name">David Cardlos</h3>
                                 <h4 class="job">Full Stack Developer</h4>
@@ -345,12 +323,12 @@
                         </div>
                     </div>
                     <div class="card swiper-slide" style="height: 300px; margin: 0; padding: 0;">
-                        <div class="image-box" >
+                        <div class="image-box">
                             <img src="images/2.jpg" alt="" />
                         </div>
                         <div class="profile-details">
-                            
-    
+
+
                             <div class="name-job">
                                 <h3 class="name">David Cardlos</h3>
                                 <h4 class="job">Full Stack Developer</h4>
@@ -358,12 +336,12 @@
                         </div>
                     </div>
                     <div class="card swiper-slide" style="height: 300px; margin: 0; padding: 0;">
-                        <div class="image-box" >
+                        <div class="image-box">
                             <img src="images/2.jpg" alt="" />
                         </div>
                         <div class="profile-details">
-                            
-    
+
+
                             <div class="name-job">
                                 <h3 class="name">David Cardlos</h3>
                                 <h4 class="job">Full Stack Developer</h4>
@@ -371,12 +349,12 @@
                         </div>
                     </div>
                     <div class="card swiper-slide" style="height: 300px; margin: 0; padding: 0;">
-                        <div class="image-box" >
+                        <div class="image-box">
                             <img src="images/2.jpg" alt="" />
                         </div>
                         <div class="profile-details">
-                            
-    
+
+
                             <div class="name-job">
                                 <h3 class="name">David Cardlos</h3>
                                 <h4 class="job">Full Stack Developer</h4>
@@ -384,12 +362,12 @@
                         </div>
                     </div>
                     <div class="card swiper-slide" style="height: 300px; margin: 0; padding: 0;">
-                        <div class="image-box" >
+                        <div class="image-box">
                             <img src="images/2.jpg" alt="" />
                         </div>
                         <div class="profile-details">
-                            
-    
+
+
                             <div class="name-job">
                                 <h3 class="name">David Cardlos</h3>
                                 <h4 class="job">Full Stack Developer</h4>
@@ -707,6 +685,144 @@
 
 
         });
+
+
+
+
+        // Fetch data from the API
+        fetch('http://localhost:4100/product')
+            .then(response => response.json())
+            .then(data => {
+                // Filter products with category "stock"
+                const stockProducts = data.filter(product => product.category === 'stock');
+
+                // Display stock products
+                displayProducts(stockProducts);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        // Function to display products
+        function displayProducts(products) {
+            const container = document.querySelector('.product-review');
+
+            // Loop through the first 4 products and dynamically generate HTML
+            for (let i = 0; i < Math.min(products.length, 4); i++) {
+                const product = products[i];
+                const ul = document.createElement('ul');
+                ul.classList.add('main-product-ul');
+
+                const li = document.createElement('li');
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+
+                const img = document.createElement('img');
+                img.classList.add('main-product-img');
+                img.src = `./images/${product.img}`;
+                img.alt = product.title;
+
+                const imageInfo = document.createElement('div');
+                imageInfo.classList.add('image-info');
+                imageInfo.style.display = 'flex';
+                imageInfo.style.justifyContent = 'space-around';
+
+                const span = document.createElement('span');
+                const h4Title = document.createElement('h4');
+                h4Title.innerText = product.title;
+                const h4Price = document.createElement('h4');
+                h4Price.innerText = `${product.price}$`;
+
+                const anchor = document.createElement('a');
+                anchor.href = `http://localhost:4100/cardetail.html?id=${product._id}`;
+                anchor.style.marginTop = '35px';
+                anchor.style.fontSize = '20px';
+                anchor.innerText = 'Koproq';
+
+                // Append elements to the container
+                span.appendChild(h4Title);
+                span.appendChild(h4Price);
+
+                imageInfo.appendChild(span);
+                imageInfo.appendChild(anchor);
+
+                imageContainer.appendChild(img);
+                imageContainer.appendChild(imageInfo);
+
+                li.appendChild(imageContainer);
+                ul.appendChild(li);
+
+                container.appendChild(ul);
+            }
+        }
+
+
+        //order function
+
+
+        // Fetch data from the API
+        fetch('http://localhost:4100/product')
+            .then(response => response.json())
+            .then(data => {
+                // Filter products with category "stock"
+                const stockProducts = data.filter(product => product.category === 'order');
+
+                // Display stock products
+                displayProducts(stockProducts);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+        // Function to display products
+        function displayProducts(products) {
+            const container = document.querySelector('.product-review-order');
+
+            // Loop through the first 4 products and dynamically generate HTML
+            for (let i = 0; i < Math.min(products.length, 4); i++) {
+                const product = products[i];
+                const ul = document.createElement('ul');
+                ul.classList.add('main-product-ul');
+
+                const li = document.createElement('li');
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+
+                const img = document.createElement('img');
+                img.classList.add('main-product-img');
+                img.src = `./images/${product.img}`;
+                img.alt = product.title;
+
+                const imageInfo = document.createElement('div');
+                imageInfo.classList.add('image-info');
+                imageInfo.style.display = 'flex';
+                imageInfo.style.justifyContent = 'space-around';
+
+                const span = document.createElement('span');
+                const h4Title = document.createElement('h4');
+                h4Title.innerText = product.title;
+                const h4Price = document.createElement('h4');
+                h4Price.innerText = `${product.price}$`;
+
+                const anchor = document.createElement('a');
+                anchor.href = `http://localhost:4100/cardetail.html?id=${product._id}`;
+                anchor.style.marginTop = '35px';
+                anchor.style.fontSize = '20px';
+                anchor.innerText = 'Koproq';
+
+                // Append elements to the container
+                span.appendChild(h4Title);
+                span.appendChild(h4Price);
+
+                imageInfo.appendChild(span);
+                imageInfo.appendChild(anchor);
+
+                imageContainer.appendChild(img);
+                imageContainer.appendChild(imageInfo);
+
+                li.appendChild(imageContainer);
+                ul.appendChild(li);
+
+                container.appendChild(ul);
+            }
+        }
+
     </script>
 
 </body>

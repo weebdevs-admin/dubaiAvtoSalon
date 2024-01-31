@@ -1253,7 +1253,7 @@ li.movingimg1 {
         width: 96% !important;
         height: 300px;
         overflow: hidden;
-        border-radius: 8px;
+        border-radius: 2px;
     }
 
     .card-team-div {
@@ -2594,7 +2594,7 @@ input[type="submit"]:hover {
     width: 500px;
     height: 300px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 2px;
 }
 
 .main-product-img {
@@ -2733,4 +2733,10 @@ input[type="submit"]:hover {
     filter: brightness(50%);
     background-position: top left;
 
+}
+
+.product-review, .product-review-order{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
