@@ -16,7 +16,7 @@ function Iframe() {
 
   // API-dan ma'lumotlarni olish uchun useEffect qo'shing
   useEffect(() => {
-    axios.get('http://172.20.10.2:4100/iframes')
+    axios.get('http://localhost:4100/iframes')
       .then((response) => {
         if (response.data.length > 0) {
           const initialData = response.data[0]; // Avvalgi ma'lumotlardan birini tanlab olish
@@ -36,7 +36,7 @@ function Iframe() {
     if (formData.src !== '...') {
       try {
         const response = await axios.put(
-          'http://172.20.10.2:4100/iframes/update/65b47a48e6aaffe3ad728b04',
+          'http://localhost:4100/iframes/update/65b47a48e6aaffe3ad728b04',
           formData
         );
 

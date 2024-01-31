@@ -567,7 +567,7 @@
         let currentNumber = 0;
 
         // Fetch so'rovi bajarilishi
-        fetch('http://172.20.10.2:4100/statist')
+        fetch('http://localhost:4100/statist')
             .then(res => res.json())
             .then(base => {
                 function updateOdometer() {
@@ -603,7 +603,7 @@
             const partnersContainer = document.getElementById('partners-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://172.20.10.2:4100/partners')
+            fetch('http://localhost:4100/partners')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -611,7 +611,7 @@
             <img
               key="${partner._id}"
               style="border-radius: 10px;"
-              src="http://172.20.10.2:4100/uploads/${partner.img}"
+              src="http://localhost:4100/uploads/${partner.img}"
               width="300px"
               height="130px"
               alt="Logo ${partner._id}"
@@ -628,7 +628,7 @@
             const iframeContainer = document.getElementById('iframe-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://172.20.10.2:4100/iframes')
+            fetch('http://localhost:4100/iframes')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -656,20 +656,20 @@
             const iframeContainer = document.getElementById('lg-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://172.20.10.2:4100/gallery')
+            fetch('http://localhost:4100/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://172.20.10.2:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 500px; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://172.20.10.2:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;
@@ -684,20 +684,20 @@
             const iframeContainer = document.getElementById('md-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://172.20.10.2:4100/gallery')
+            fetch('http://localhost:4100/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://172.20.10.2:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://172.20.10.2:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://172.20.10.2:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;

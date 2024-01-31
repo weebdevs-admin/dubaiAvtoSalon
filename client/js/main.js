@@ -351,14 +351,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-fetch('http://172.20.10.2:4100/team')
+fetch('http://localhost:4100/team')
     .then(response => response.json())
     .then(data => {
         const teamContainer = document.querySelector('.team-teacher');
 
         // API-dan olingan ma'lumotlarni ishlab chiqamiz
         data.forEach(teamItem => {
-            if (teamItem.type === 'mahalliy') {
+            if (teamItem.type) {
                 const cardTeamDiv = document.createElement('div');
                 cardTeamDiv.classList.add('card-team-div');
                 cardTeamDiv.style.margin = '10px';
@@ -371,103 +371,29 @@ fetch('http://172.20.10.2:4100/team')
 
                 const teamImage = document.createElement('img');
                 teamImage.classList.add('card-team');
-                teamImage.src = `http://172.20.10.2:4100/uploads/${teamItem.img}`;
+                teamImage.style.height = '250px'
+                teamImage.style.objectFit = 'cover'
+                teamImage.src = `http://localhost:4100/uploads/${teamItem.img}`;
                 teamImage.alt = '';
 
-                webDesignDiv.appendChild(teamImage);
-                cardTeamDiv.appendChild(webDesignDiv);
-                teamContainer.appendChild(cardTeamDiv);
-            }
-        });
-    })
-    .catch(error => console.error('API bilan xatolik:', error));
-
-fetch('http://172.20.10.2:4100/team')
-    .then(response => response.json())
-    .then(data => {
-        const teamContainer = document.querySelector('.team-div');
-
-        // API-dan olingan ma'lumotlarni ishlab chiqamiz
-        data.forEach(teamItem => {
-            if (teamItem.type === 'raxbariyat') {
-                const cardTeamDiv = document.createElement('div');
-                cardTeamDiv.classList.add('card-team-div');
-                cardTeamDiv.style.margin = '10px';
-
-                const webDesignDiv = document.createElement('div');
-                webDesignDiv.classList.add('webdesign');
-                webDesignDiv.style.boxShadow = '0 0 5px black';
-                webDesignDiv.style.padding = '10px';
-                webDesignDiv.style.borderRadius = '5px';
-
-                const teamImage = document.createElement('img');
-                teamImage.classList.add('card-team');
-                teamImage.src = `http://172.20.10.2:4100/uploads/${teamItem.img}`;
-                teamImage.alt = '';
+                const teamTitle = document.createElement('h4');
+                const teamType = document.createElement('h6');
+                teamType.style.textAlign = 'center'
+                teamType.style.padding = '5px'
+                teamType.style.borderBottom = '1px solid #797979'
+                teamTitle.style.height = '50px'
+                if(teamItem.type === 'manager'){
+                    teamType.style.color = '#797979'
+                }else{
+                    teamType.style.color = '#797979'
+                }
+                teamTitle.style.textAlign = 'center'
+                teamType.textContent = teamItem.type;
+                teamTitle.textContent = teamItem.firstname;
 
                 webDesignDiv.appendChild(teamImage);
-                cardTeamDiv.appendChild(webDesignDiv);
-                teamContainer.appendChild(cardTeamDiv);
-            }
-        });
-    })
-    .catch(error => console.error('API bilan xatolik:', error));
-
-fetch('http://172.20.10.2:4100/team')
-    .then(response => response.json())
-    .then(data => {
-        const teamContainer = document.querySelector('.team-exteacher');
-
-        // API-dan olingan ma'lumotlarni ishlab chiqamiz
-        data.forEach(teamItem => {
-            if (teamItem.type === 'xorijlik') {
-                const cardTeamDiv = document.createElement('div');
-                cardTeamDiv.classList.add('card-team-div');
-                cardTeamDiv.style.margin = '10px';
-
-                const webDesignDiv = document.createElement('div');
-                webDesignDiv.classList.add('webdesign');
-                webDesignDiv.style.boxShadow = '0 0 5px black';
-                webDesignDiv.style.padding = '10px';
-                webDesignDiv.style.borderRadius = '5px';
-
-                const teamImage = document.createElement('img');
-                teamImage.classList.add('card-team');
-                teamImage.src = `http://172.20.10.2:4100/uploads/${teamItem.img}`;
-                teamImage.alt = '';
-
-                webDesignDiv.appendChild(teamImage);
-                cardTeamDiv.appendChild(webDesignDiv);
-                teamContainer.appendChild(cardTeamDiv);
-            }
-        });
-    })
-    .catch(error => console.error('API bilan xatolik:', error));
-
-fetch('http://172.20.10.2:4100/team')
-    .then(response => response.json())
-    .then(data => {
-        const teamContainer = document.querySelector('.team-sub');
-
-        // API-dan olingan ma'lumotlarni ishlab chiqamiz
-        data.forEach(teamItem => {
-            if (teamItem.type === 'tarbiyachi') {
-                const cardTeamDiv = document.createElement('div');
-                cardTeamDiv.classList.add('card-team-div');
-                cardTeamDiv.style.margin = '10px';
-
-                const webDesignDiv = document.createElement('div');
-                webDesignDiv.classList.add('webdesign');
-                webDesignDiv.style.boxShadow = '0 0 5px black';
-                webDesignDiv.style.padding = '10px';
-                webDesignDiv.style.borderRadius = '5px';
-
-                const teamImage = document.createElement('img');
-                teamImage.classList.add('card-team');
-                teamImage.src = `http://172.20.10.2:4100/uploads/${teamItem.img}`;
-                teamImage.alt = '';
-
-                webDesignDiv.appendChild(teamImage);
+                webDesignDiv.appendChild(teamType);
+                webDesignDiv.appendChild(teamTitle);
                 cardTeamDiv.appendChild(webDesignDiv);
                 teamContainer.appendChild(cardTeamDiv);
             }
@@ -476,7 +402,10 @@ fetch('http://172.20.10.2:4100/team')
     .catch(error => console.error('API bilan xatolik:', error));
 
 
-    fetch('http://172.20.10.2:4100/abaut')
+
+
+
+    fetch('http://localhost:4100/abaut')
     .then(response => response.json())
     .then(data => {
         const abautDataContainer = document.getElementById('abaut-data');
@@ -491,7 +420,7 @@ fetch('http://172.20.10.2:4100/team')
 
             const mainImage = document.createElement('img');
             mainImage.classList.add('abaut-main-img');
-            mainImage.src = `http://172.20.10.2:4100/uploads/${abautItem.img}`;
+            mainImage.src = `http://localhost:4100/uploads/${abautItem.img}`;
             mainImage.alt = '';
 
             imageDiv.appendChild(mainImage);
@@ -531,7 +460,7 @@ fetch('http://172.20.10.2:4100/team')
     .catch(error => console.error('API bilan xatolik:', error));
 
 
-fetch('http://172.20.10.2:4100/slider')
+fetch('http://localhost:4100/slider')
     .then(response => response.json())
     .then(data => {
         const swiperContainer = document.querySelector('#swipper');
@@ -540,7 +469,7 @@ fetch('http://172.20.10.2:4100/slider')
         data.forEach(sliderItem => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide', 'cover-background');
-            swiperSlide.style.backgroundImage = `url(http://172.20.10.2:4100/uploads/${sliderItem.img})`;
+            swiperSlide.style.backgroundImage = `url(http://localhost:4100/uploads/${sliderItem.img})`;
 
             swiperContainer.appendChild(swiperSlide);
         });
@@ -558,7 +487,7 @@ fetch('http://172.20.10.2:4100/slider')
     .catch(error => console.error('API bilan xatolik:', error));
 
 
-fetch('http://172.20.10.2:4100/gallery')
+fetch('http://localhost:4100/gallery')
     .then(response => response.json())
     .then(data => {
         const photosContainer = document.getElementById('photos');
@@ -569,7 +498,7 @@ fetch('http://172.20.10.2:4100/gallery')
             listItem.classList.add('foto-main');
 
             const image = document.createElement('img');
-            image.src = `http://172.20.10.2:4100/uploads/${photoItem.img}`;
+            image.src = `http://localhost:4100/uploads/${photoItem.img}`;
             image.alt = '';
 
             listItem.appendChild(image);
@@ -590,7 +519,7 @@ fetch('http://172.20.10.2:4100/gallery')
         });
     
         // API dan malumotlarni olish
-        fetch('http://172.20.10.2:4100/contact/create', {
+        fetch('http://localhost:4100/contact/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -619,7 +548,7 @@ fetch('http://172.20.10.2:4100/gallery')
 
 
 
-fetch('http://172.20.10.2:4100/news')
+fetch('http://localhost:4100/news')
     .then(response => response.json())
     .then(data => {
         const newsContainer = document.getElementById('blog-art');
@@ -635,7 +564,7 @@ fetch('http://172.20.10.2:4100/news')
 
             listItem.innerHTML = `
                 <div class="blog-img">
-                    <a href="#" class="small-card" data-src="http://172.20.10.2:4100/uploads/${item.img}"><img src="http://172.20.10.2:4100/uploads/${item.img}" alt=""></a>
+                    <a href="#" class="small-card" data-src="http://localhost:4100/uploads/${item.img}"><img src="http://localhost:4100/uploads/${item.img}" alt=""></a>
                 </div>
                 <div class="blog-text">
                     <h6><b><a href="#">${item.title}</a></b></h6>

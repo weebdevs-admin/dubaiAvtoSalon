@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('Connected!'))
 
 app.listen(port, () => {
-  console.log(`Server is running on http://172.20.10.2:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
 
@@ -128,6 +128,7 @@ const LoginRoute = require('./Routes/Login.route');
 const PartnersRoute = require('./Routes/Partners.route');
 const IframesRoute = require('./Routes/Iframes.route');
 const ProductRoute = require('./Routes/Product.route');
+const PaymentRoute = require('./Routes/Payment.route');
 
 app.use('/statist', StatistRoute)
 app.use('/team', TeamRoute)
@@ -140,6 +141,7 @@ app.use('/login', LoginRoute)
 app.use('/partners', PartnersRoute)
 app.use('/iframes', IframesRoute)
 app.use('/product', ProductRoute)
+app.use('/payment', PaymentRoute)
 
 
 

@@ -24,14 +24,14 @@ function LoginEdit() {
     }
 
     axios
-      .get('http://172.20.10.2:4100/login')
+      .get('http://localhost:4100/login')
       .then((response) => {
         if (response.status === 200) {
           const apiPassword = response.data[0].Password;
           if (currentPassword === apiPassword) {
             // Joriy parol API-dagi parol bilan to'g'ri keladi
             axios
-              .put('http://172.20.10.2:4100/login/update/658ad8c565e4331de7f6a815', {
+              .put('http://localhost:4100/login/update/658ad8c565e4331de7f6a815', {
                 Password: newPassword,
               })
               .then((response) => {

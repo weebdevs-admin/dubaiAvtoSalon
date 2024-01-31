@@ -319,7 +319,7 @@
         var x = document.getElementById("result");
         var currentLocation = window.location;
 
-        //var url_string = "http://172.20.10.2/baby/newform.html?seccess=1"; //window.location.href
+        //var url_string = "http://localhost/baby/newform.html?seccess=1"; //window.location.href
         var url = new URL(currentLocation);
         var seccess = url.searchParams.get("seccess");
         var error = url.searchParams.get("fail");

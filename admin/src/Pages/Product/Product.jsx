@@ -11,6 +11,10 @@ import axios from 'axios';
 function Product() {
     const { navbar, setNavbar } = useContext(Context);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedFile2, setSelectedFile2] = useState(null);
+    const [selectedFile3, setSelectedFile3] = useState(null);
+    const [selectedFile4, setSelectedFile4] = useState(null);
+    const [selectedFile5, setSelectedFile5] = useState(null);
     const [images, setImages] = useState(null);
     const [formData, setFormData] = useState({
         option: 'rasm',
@@ -34,7 +38,7 @@ function Product() {
 
     const fetchImages = async () => {
         try {
-            const response = await axios.get('http://172.20.10.2:4100/product');
+            const response = await axios.get('http://localhost:4100/product');
             setImages(response.data);
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -43,7 +47,7 @@ function Product() {
 
     const handleDelete = async (newsItem) => {
         try {
-            await axios.delete(`http://172.20.10.2:4100/product/delete/${newsItem._id}`);
+            await axios.delete(`http://localhost:4100/product/delete/${newsItem._id}`);
             toast.success('deleted successfully');
             fetchImages();
         } catch (error) {
@@ -57,13 +61,13 @@ function Product() {
         setFormData({
             option: 'rasm', // Sizning option turingizga qarab, agar tanlangan option 'rasm' bo'lsa, sizga rasmni tanlash uchun input chiqadi; aks holda, 'video' bo'lsa, video linkni kiritish uchun text input.
             img: newsItem.img,
+            img2: newsItem.img,
+            img3: newsItem.img,
+            img4: newsItem.img,
+            img5: newsItem.img,
             title: newsItem.title,
             desc: newsItem.desc,
             year: newsItem.year,
-            type1: newsItem.type1,
-            type2: newsItem.type2,
-            type3: newsItem.type3,
-            type4: newsItem.type4,
             price: newsItem.price,
             category: newsItem.category
         });
@@ -105,6 +109,34 @@ function Product() {
             img: event.target.files[0] ? event.target.files[0].name : '...',
         });
     };
+    const handleFileChange2 = (event) => {
+        setSelectedFile2(event.target.files[0]);
+        setFormData({
+            ...formData,
+            img2: event.target.files[0] ? event.target.files[0].name : '...',
+        });
+    };
+    const handleFileChange3 = (event) => {
+        setSelectedFile3(event.target.files[0]);
+        setFormData({
+            ...formData,
+            img3: event.target.files[0] ? event.target.files[0].name : '...',
+        });
+    };
+    const handleFileChange4 = (event) => {
+        setSelectedFile4(event.target.files[0]);
+        setFormData({
+            ...formData,
+            img4: event.target.files[0] ? event.target.files[0].name : '...',
+        });
+    };
+    const handleFileChange5 = (event) => {
+        setSelectedFile5(event.target.files[0]);
+        setFormData({
+            ...formData,
+            img5: event.target.files[0] ? event.target.files[0].name : '...',
+        });
+    };
 
     const handleUpload = async () => {
         if (!selectedFile) {
@@ -113,8 +145,36 @@ function Product() {
 
         try {
             const formData = new FormData();
+            const formData2 = new FormData();
+            const formData3 = new FormData();
+            const formData4 = new FormData();
+            const formData5 = new FormData();
             formData.append('file', selectedFile);
-            await axios.post('http://172.20.10.2:4100/upload', formData, {
+            formData2.append('file', selectedFile2);
+            formData3.append('file', selectedFile3);
+            formData4.append('file', selectedFile4);
+            formData5.append('file', selectedFile5);
+            await axios.post('http://localhost:4100/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            await axios.post('http://localhost:4100/upload', formData2, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            await axios.post('http://localhost:4100/upload', formData3, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            await axios.post('http://localhost:4100/upload', formData4, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            await axios.post('http://localhost:4100/upload', formData5, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -132,11 +192,11 @@ function Product() {
             try {
                 if (editingItemId) {
                     // If editingItemId exists, update the existing item
-                    await axios.put(`http://172.20.10.2:4100/product/update/${editingItemId}`, formData);
+                    await axios.put(`http://localhost:4100/product/update/${editingItemId}`, formData);
                     toast.success('Information updated successfully');
                 } else {
                     // If editingItemId doesn't exist, create a new item
-                    await axios.post('http://172.20.10.2:4100/product/create', formData);
+                    await axios.post('http://localhost:4100/product/create', formData);
                     toast.success('Ma\'lumot qo\'shildi');
                 }
 
@@ -144,13 +204,13 @@ function Product() {
                 setFormData({
                     option: 'rasm',
                     img: '',
+                    img2:'',
+                    img3:'',
+                    img4:'',
+                    img5:'',
                     title: '',
                     desc: '',
                     year: '',
-                    type1: '',
-                    type2: '',
-                    type3: '',
-                    type4: '',
                     price: '',
                     category: ''
                 });
@@ -176,8 +236,19 @@ function Product() {
 
 
 
-                    <label>
+                    <div className='image-form'>
                         <input type="file" onChange={handleFileChange} />
+                        <input type="file" onChange={handleFileChange2} />
+                        <input type="file" onChange={handleFileChange3} />
+                        <input type="file" onChange={handleFileChange4} />
+                        <input type="file" onChange={handleFileChange5} />
+                    </div>
+                    <label>
+                        <select name="category" onChange={handleInputChange} value={formData.category || ''}>
+                            <option >Choose</option>
+                            <option value="stock">В наличии</option>
+                            <option value="order">Под заказ</option>
+                        </select>
                     </label>
                     <label>
                         <input
@@ -197,49 +268,7 @@ function Product() {
                             placeholder="Yili"
                         />
                     </label>
-                    <label>
-                        <select name="category" onChange={handleInputChange} value={formData.category || ''}>
-                            <option >Choose</option>
-                            <option value="stock">В наличии</option>
-                            <option value="order">Под заказ</option>
-                        </select>
-                    </label>
-                    <label>
-                        <input
-                            type='text'
-                            name="type1"
-                            value={formData.type1}
-                            onChange={handleInputChange}
-                            placeholder="Type 1"
-                        />
-                    </label>
-                    <label>
-                        <input
-                            type='text'
-                            name="type2"
-                            value={formData.type2}
-                            onChange={handleInputChange}
-                            placeholder="Type 2"
-                        />
-                    </label>
-                    <label>
-                        <input
-                            type='text'
-                            name="type3"
-                            value={formData.type3}
-                            onChange={handleInputChange}
-                            placeholder="Type 3"
-                        />
-                    </label>
-                    <label>
-                        <input
-                            type='text'
-                            name="type4"
-                            value={formData.type4}
-                            onChange={handleInputChange}
-                            placeholder="Type 4"
-                        />
-                    </label>
+                    
                     <label>
                         <input
                             type='number'
@@ -267,7 +296,7 @@ function Product() {
                     {images &&
                         images.map((newsItem) => (
                             <div key={newsItem._id} className="news-card">
-                                {newsItem.img && <img src={`http://172.20.10.2:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
+                                {newsItem.img && <img src={`http://localhost:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
                                 {newsItem.iframe && <iframe width="100%" height="auto" src={newsItem.iframe} title={newsItem.title}></iframe>}
                                 <div className="news-content">
                                     <h3>{newsItem.title}</h3>

@@ -7,7 +7,11 @@ let Team = new Schema({
   },
   type: {
     type: String,
+  },
+  firstname: {
+    type: String,
   }
+
 
 });
 

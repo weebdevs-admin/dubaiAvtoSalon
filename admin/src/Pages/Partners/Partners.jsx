@@ -26,12 +26,12 @@ function Partners() {
       formData.append('file', selectedFile);
 
       // Make a POST request to upload the image
-      await axios.post('http://172.20.10.2:4100/upload', formData, {
+      await axios.post('http://localhost:4100/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      const response = await axios.post('http://172.20.10.2:4100/partners/create', { img: selectedFile.name }, {
+      const response = await axios.post('http://localhost:4100/partners/create', { img: selectedFile.name }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -57,7 +57,7 @@ function Partners() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://172.20.10.2:4100/partners');
+      const response = await axios.get('http://localhost:4100/partners');
       setImages(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -67,7 +67,7 @@ function Partners() {
   const handleDelete = async (image) => {
     try {
       // Make a DELETE request to delete the image from the server
-      await axios.delete(`http://172.20.10.2:4100/partners/delete/${image._id}`);
+      await axios.delete(`http://localhost:4100/partners/delete/${image._id}`);
 
 
 
@@ -98,7 +98,7 @@ function Partners() {
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
-              <img src={`http://172.20.10.2:4100/uploads/${e.img}`} alt={e} />
+              <img src={`http://localhost:4100/uploads/${e.img}`} alt={e} />
               <button className='del-btn' onClick={() => handleDelete(e)}>O'chirish</button>
             </div>
           ))}

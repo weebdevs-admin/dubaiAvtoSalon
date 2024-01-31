@@ -48,9 +48,11 @@
 
         .image-container img {
             width: 700px;
-            height: 400px;
+            height: 700px;
             border-radius: 5px;
             object-fit: cover;
+            margin-top: -150px;
+            margin-bottom: -120px;
         }
 
         .details-container {
@@ -64,23 +66,23 @@
             height: 500px;
             overflow: auto;
         }
-        @media only screen and (min-width: 767px) and (max-width: 1200px) {
-    
-            .image-container {
-            flex-wrap: wrap;
-            width: 550px;
-            height: auto;
-            background-color: #F2F5F8;
-            margin-left: -50px;
-        }
 
-        .image-container img {
-            width: 550px;
-            height: 350px;
-            border-radius: 5px;
-            object-fit: cover;
+        @media only screen and (min-width: 767px) and (max-width: 1200px) {
+
+            .image-container {
+                flex-wrap: wrap;
+                width: 550px;
+                height: auto;
+                background-color: #F2F5F8;
+                margin-left: -50px;
+            }
+
+            .image-container img {
+                width: 550px;
+                border-radius: 5px;
+                object-fit: cover;
+            }
         }
-    }
 
         @media (max-width:767px) {
             .details-container {
@@ -100,7 +102,7 @@
 
             .image-container img {
                 width: 100%;
-                height: 200px;
+                height: 550px;
                 border-radius: 5px;
                 object-fit: cover;
             }
@@ -127,12 +129,55 @@
             }
         }
 
+
         h1 {
             margin-bottom: 10px;
         }
 
         p {
             margin-bottom: 10px;
+        }
+
+        /* CSS for modal */
+       
+
+        .modal-content {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 700px;
+            height: 400px;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        #orderForm{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+        #orderForm input{
+            height: 40px;
+        }
+        #orderForm button{
+            height: 40px;
+            background-color: rgb(21, 122, 21);
+            color: white;
+            outline: none;
+            border: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -160,6 +205,19 @@
             </div>
         </div>
     </div>
+     <!-- Modal content -->
+     <div class="modal-content">
+        <span class="close" onclick="closeModal()" style="font-size: 30px;">&times;</span>
+        <h2>Связаться
+            </h2>
+        <form id="orderForm">
+            <input type="text" id="name" name="name" placeholder="Имя" required>
+
+            <input type="number" id="phone" name="phone" placeholder="Телефон" required>
+
+            <button type="button" onclick="submitOrder()">Отправить заказ</button>
+        </form>
+    </div> 
     <!-- Header Start -->
     <header class="main-header">
         <div id="sticky-header" class="header-upper ">
@@ -245,7 +303,19 @@
         <div class=" ">
             <div class="detail_banner">
                 <div class="image-container">
-                    <img id="carImage" src="" alt="Car Image">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper ">
+                            <!-- Add your img elements here -->
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage2">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage3">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage4">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage5">
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
                     <div class="details-container">
                         <div style=" display: flex; justify-content: space-between; flex-wrap: wrap;">
                             <h1 id="carTitle"></h1>
@@ -254,13 +324,13 @@
                         <div style=" display: flex; justify-content: space-between; align-items: center;">
                             <h4 id="carYear"></h4>
                             <button
-                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; height: 40px; border-radius: 5px;"
-                                class="order-btn"></button>
+                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3;" onclick="openModal()"
+                                class="order-btn"  ></button>
                         </div>
 
 
                         <p style="margin-top: 15px;" id="desc"></p>
-                        <div style="font-size: 25px; ">
+                        <div style="font-size: 25px;  margin-bottom: 20px;">
                             <a style="color: #383838;" href="#"><i class="fa-solid fa-phone"></i></a>
                             <a style="color: #383838;" href="@"><i class="fa-solid fa-envelope"></i></a>
                             <a style="color: #383838;" href="@"><i class="fa-brands fa-telegram"></i></a>
@@ -281,6 +351,7 @@
             </div>
         </div>
     </div>
+   
 
 
     <footer class="footersection">
@@ -366,15 +437,28 @@
     </footer>
 
     <script>
+        // JavaScript to open and close modal
+        function openModal() {
+            document.querySelector('.modal-content').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.querySelector('.modal-content').style.display = 'none';
+        }
         // Fetch data from the API
         const urlParams = new URLSearchParams(window.location.search);
         const carId = urlParams.get('id');
 
-        fetch(`http://172.20.10.2:4100/product/${carId}`)
+        fetch(`http://localhost:4100/product/${carId}`)
             .then(response => response.json())
             .then(car => {
                 // Update elements with car details
-                document.getElementById('carImage').src = `http://172.20.10.2:4100/uploads/${car.img}`;
+                document.getElementById('carImage').src = `http://localhost:4100/uploads/${car.img}`;
+                document.getElementById('carImage2').src = `http://localhost:4100/uploads/${car.img2 ? car.img2 : car.img}`;
+                document.getElementById('carImage3').src = `http://localhost:4100/uploads/${car.img3 ? car.img3 : car.img}`;
+                document.getElementById('carImage4').src = `http://localhost:4100/uploads/${car.img4 ? car.img4 : car.img}`;
+                document.getElementById('carImage5').src = `http://localhost:4100/uploads/${car.img5 ? car.img5 : car.img}`;
+
                 document.getElementById('carTitle').innerText = car.title;
                 document.getElementById('carYear').innerText = `год: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
@@ -388,7 +472,7 @@
             })
             .catch(error => console.error('Error fetching data:', error));
 
-        fetch('http://172.20.10.2:4100/product')
+        fetch('http://localhost:4100/product')
             .then(response => response.json())
             .then(data => {
                 const carContainer = document.getElementById('carContainer');
@@ -407,17 +491,19 @@
                         window.location.href = `cardetail.html?id=${car._id}`;
                     });
                     const image = document.createElement('img');
-                    image.src = `http://172.20.10.2:4100/uploads/${car.img}`;
+                    image.src = `http://localhost:4100/uploads/${car.img}`;
                     image.alt = car.title;
-                    image.style.height = '200px';
+                    image.style.height = '220px';
+                    image.style.objectFit = 'cover'
                     image.style.width = '100%';
 
                     const title = document.createElement('h3');
+                    title.classList.add('title-product')
                     title.innerText = car.title;
                     title.style.height = '50px';
 
                     const year = document.createElement('p');
-                    year.innerText = car.year;
+                    year.innerText = `год:${car.year}`;
 
 
 
@@ -436,6 +522,66 @@
                 });
             })
             .catch(error => console.error('Error fetching data:', error));
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        });
+
+
+        
+
+        // Function to submit order
+        function submitOrder() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            // Validate name and phone
+            if (!name || !phone) {
+                alert('Пожалуйста, введите свое имя и номер телефона.');
+                return;
+            }
+
+            // Assuming carId is already defined
+            const title = document.querySelector('.title-product');
+            const carId = title.textContent;
+
+            // Create a data object with the order details
+            const orderData = {
+                product: carId,
+                productLink: window.location.href,
+                firtname: name,
+                phone: phone
+            };
+
+            // Send a POST request to the server
+            fetch('http://localhost:4100/payment/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle success, e.g., show a success message
+                    alert('Заказ успешно отправлен!');
+                    closeModal();
+                })
+                .catch(error => {
+                    // Handle error, e.g., show an error message
+                    console.error('Error submitting order:', error);
+                    alert('Ошибка отправки заказа. Пожалуйста, попробуйте еще раз.');
+                });
+        }
+
+        // Add an event listener to the order button to open the modal
+
     </script>
     <script src="js/jquery-3.6.0.min.js"></script>
 
