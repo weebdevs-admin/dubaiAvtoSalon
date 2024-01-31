@@ -545,7 +545,7 @@
         let currentNumber = 0;
 
         // Fetch so'rovi bajarilishi
-        fetch('http://localhost:4100/statist')
+        fetch('https://dubaiavto.uz/statist')
             .then(res => res.json())
             .then(base => {
                 function updateOdometer() {
@@ -581,7 +581,7 @@
             const partnersContainer = document.getElementById('partners-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/partners')
+            fetch('https://dubaiavto.uz/partners')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -589,7 +589,7 @@
             <img
               key="${partner._id}"
               style="border-radius: 10px;"
-              src="http://localhost:4100/uploads/${partner.img}"
+              src="https://dubaiavto.uz/uploads/${partner.img}"
               width="300px"
               height="130px"
               alt="Logo ${partner._id}"
@@ -606,7 +606,7 @@
             const iframeContainer = document.getElementById('iframe-container');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/iframes')
+            fetch('https://dubaiavto.uz/iframes')
                 .then(response => response.json())
                 .then(data => {
                     // Ma'lumotlarni HTML-ga chiqarish
@@ -634,20 +634,20 @@
             const iframeContainer = document.getElementById('lg-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/gallery')
+            fetch('https://dubaiavto.uz/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 500px; ">
-                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 300px; ">
-                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;
@@ -662,20 +662,20 @@
             const iframeContainer = document.getElementById('md-main-gallery');
 
             // API dan ma'lumotlarni olish
-            fetch('http://localhost:4100/gallery')
+            fetch('https://dubaiavto.uz/gallery')
                 .then(response => response.json())
                 .then(data => {
                     iframeContainer.innerHTML = `
           <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[0].img}" style="width: 100%; margin-bottom: 10px; height: 65%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[1].img}" style="width: 100%; height: 30%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
-                <img src="http://localhost:4100/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[2].img}" style="width: 100%; margin-bottom: 10px; height: 47%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[3].img}" style="width: 100%; height: 48%; object-fit: cover;" alt="">
             </li>
             <li class="gallery-main" style="height: 500px; width: 95%; ">
-                <img src="http://localhost:4100/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
+                <img src="https://dubaiavto.uz/uploads/${data[4].img}" style="width: 100%; margin-bottom: 10px; height: 98%; object-fit: cover;" alt="">
                
             </li>
           `;
@@ -690,7 +690,7 @@
 
 
         // Fetch data from the API
-        fetch('http://localhost:4100/product')
+        fetch('https://dubaiavto.uz/product')
             .then(response => response.json())
             .then(data => {
                 // Filter products with category "stock"
@@ -732,7 +732,7 @@
                 h4Price.innerText = `${product.price}$`;
 
                 const anchor = document.createElement('a');
-                anchor.href = `http://localhost:4100/cardetail.html?id=${product._id}`;
+                anchor.href = `https://dubaiavto.uz/cardetail.html?id=${product._id}`;
                 anchor.style.marginTop = '35px';
                 anchor.style.fontSize = '20px';
                 anchor.innerText = 'Koproq';
@@ -759,7 +759,7 @@
 
 
         // Fetch data from the API
-        fetch('http://localhost:4100/product')
+        fetch('https://dubaiavto.uz/product')
             .then(response => response.json())
             .then(data => {
                 // Filter products with category "stock"
@@ -801,7 +801,7 @@
                 h4Price.innerText = `${product.price}$`;
 
                 const anchor = document.createElement('a');
-                anchor.href = `http://localhost:4100/cardetail.html?id=${product._id}`;
+                anchor.href = `https://dubaiavto.uz/cardetail.html?id=${product._id}`;
                 anchor.style.marginTop = '35px';
                 anchor.style.fontSize = '20px';
                 anchor.innerText = 'Koproq';

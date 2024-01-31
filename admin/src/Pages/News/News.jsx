@@ -28,7 +28,7 @@ function News() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://localhost:4100/news');
+      const response = await axios.get('https://dubaiavto.uz/news');
       setImages(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -37,7 +37,7 @@ function News() {
 
   const handleDelete = async (newsItem) => {
     try {
-      await axios.delete(`http://localhost:4100/news/delete/${newsItem._id}`);
+      await axios.delete(`https://dubaiavto.uz/news/delete/${newsItem._id}`);
       toast.success('deleted successfully');
       fetchImages();
     } catch (error) {
@@ -102,7 +102,7 @@ const handleInputChange = (e) => {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      await axios.post('http://localhost:4100/upload', formData, {
+      await axios.post('https://dubaiavto.uz/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -120,11 +120,11 @@ const handleInputChange = (e) => {
       try {
         if (editingItemId) {
           // If editingItemId exists, update the existing item
-          await axios.put(`http://localhost:4100/news/update/${editingItemId}`, formData);
+          await axios.put(`https://dubaiavto.uz/news/update/${editingItemId}`, formData);
           toast.success('Information updated successfully');
         } else {
           // If editingItemId doesn't exist, create a new item
-          await axios.post('http://localhost:4100/news/create', formData);
+          await axios.post('https://dubaiavto.uz/news/create', formData);
           toast.success('Ma\'lumot qo\'shildi');
         }
 
@@ -201,7 +201,7 @@ const handleInputChange = (e) => {
           {images &&
             images.map((newsItem) => (
               <div key={newsItem._id} className="news-card">
-                {newsItem.img && <img src={`http://localhost:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
+                {newsItem.img && <img src={`https://dubaiavto.uz/uploads/${newsItem.img}`} alt={newsItem.title} />}
                 {newsItem.iframe && <iframe width="100%" height="auto" src={newsItem.iframe} title={newsItem.title}></iframe>}
                 <div className="news-content">
                   <h3>{newsItem.title}</h3>

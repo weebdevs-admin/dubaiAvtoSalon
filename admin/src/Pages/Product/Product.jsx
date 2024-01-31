@@ -38,7 +38,7 @@ function Product() {
 
     const fetchImages = async () => {
         try {
-            const response = await axios.get('http://localhost:4100/product');
+            const response = await axios.get('https://dubaiavto.uz/product');
             setImages(response.data);
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -47,7 +47,7 @@ function Product() {
 
     const handleDelete = async (newsItem) => {
         try {
-            await axios.delete(`http://localhost:4100/product/delete/${newsItem._id}`);
+            await axios.delete(`https://dubaiavto.uz/product/delete/${newsItem._id}`);
             toast.success('deleted successfully');
             fetchImages();
         } catch (error) {
@@ -154,27 +154,27 @@ function Product() {
             formData3.append('file', selectedFile3);
             formData4.append('file', selectedFile4);
             formData5.append('file', selectedFile5);
-            await axios.post('http://localhost:4100/upload', formData, {
+            await axios.post('https://dubaiavto.uz/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            await axios.post('http://localhost:4100/upload', formData2, {
+            await axios.post('https://dubaiavto.uz/upload', formData2, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            await axios.post('http://localhost:4100/upload', formData3, {
+            await axios.post('https://dubaiavto.uz/upload', formData3, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            await axios.post('http://localhost:4100/upload', formData4, {
+            await axios.post('https://dubaiavto.uz/upload', formData4, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            await axios.post('http://localhost:4100/upload', formData5, {
+            await axios.post('https://dubaiavto.uz/upload', formData5, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -192,11 +192,11 @@ function Product() {
             try {
                 if (editingItemId) {
                     // If editingItemId exists, update the existing item
-                    await axios.put(`http://localhost:4100/product/update/${editingItemId}`, formData);
+                    await axios.put(`https://dubaiavto.uz/product/update/${editingItemId}`, formData);
                     toast.success('Information updated successfully');
                 } else {
                     // If editingItemId doesn't exist, create a new item
-                    await axios.post('http://localhost:4100/product/create', formData);
+                    await axios.post('https://dubaiavto.uz/product/create', formData);
                     toast.success('Ma\'lumot qo\'shildi');
                 }
 
@@ -296,7 +296,7 @@ function Product() {
                     {images &&
                         images.map((newsItem) => (
                             <div key={newsItem._id} className="news-card">
-                                {newsItem.img && <img src={`http://localhost:4100/uploads/${newsItem.img}`} alt={newsItem.title} />}
+                                {newsItem.img && <img src={`https://dubaiavto.uz/uploads/${newsItem.img}`} alt={newsItem.title} />}
                                 {newsItem.iframe && <iframe width="100%" height="auto" src={newsItem.iframe} title={newsItem.title}></iframe>}
                                 <div className="news-content">
                                     <h3>{newsItem.title}</h3>

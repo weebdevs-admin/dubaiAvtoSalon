@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-fetch('http://localhost:4100/team')
+fetch('https://dubaiavto.uz/team')
     .then(response => response.json())
     .then(data => {
         const teamContainer = document.querySelector('.team-teacher');
@@ -373,7 +373,7 @@ fetch('http://localhost:4100/team')
                 teamImage.classList.add('card-team');
                 teamImage.style.height = '250px'
                 teamImage.style.objectFit = 'cover'
-                teamImage.src = `http://localhost:4100/uploads/${teamItem.img}`;
+                teamImage.src = `https://dubaiavto.uz/uploads/${teamItem.img}`;
                 teamImage.alt = '';
 
                 const teamTitle = document.createElement('h4');
@@ -405,7 +405,7 @@ fetch('http://localhost:4100/team')
 
 
 
-    fetch('http://localhost:4100/abaut')
+    fetch('https://dubaiavto.uz/abaut')
     .then(response => response.json())
     .then(data => {
         const abautDataContainer = document.getElementById('abaut-data');
@@ -420,7 +420,7 @@ fetch('http://localhost:4100/team')
 
             const mainImage = document.createElement('img');
             mainImage.classList.add('abaut-main-img');
-            mainImage.src = `http://localhost:4100/uploads/${abautItem.img}`;
+            mainImage.src = `https://dubaiavto.uz/uploads/${abautItem.img}`;
             mainImage.alt = '';
 
             imageDiv.appendChild(mainImage);
@@ -460,7 +460,7 @@ fetch('http://localhost:4100/team')
     .catch(error => console.error('API bilan xatolik:', error));
 
 
-fetch('http://localhost:4100/slider')
+fetch('https://dubaiavto.uz/slider')
     .then(response => response.json())
     .then(data => {
         const swiperContainer = document.querySelector('#swipper');
@@ -469,7 +469,7 @@ fetch('http://localhost:4100/slider')
         data.forEach(sliderItem => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide', 'cover-background');
-            swiperSlide.style.backgroundImage = `url(http://localhost:4100/uploads/${sliderItem.img})`;
+            swiperSlide.style.backgroundImage = `url(https://dubaiavto.uz/uploads/${sliderItem.img})`;
 
             swiperContainer.appendChild(swiperSlide);
         });
@@ -487,7 +487,7 @@ fetch('http://localhost:4100/slider')
     .catch(error => console.error('API bilan xatolik:', error));
 
 
-fetch('http://localhost:4100/gallery')
+fetch('https://dubaiavto.uz/gallery')
     .then(response => response.json())
     .then(data => {
         const photosContainer = document.getElementById('photos');
@@ -498,7 +498,7 @@ fetch('http://localhost:4100/gallery')
             listItem.classList.add('foto-main');
 
             const image = document.createElement('img');
-            image.src = `http://localhost:4100/uploads/${photoItem.img}`;
+            image.src = `https://dubaiavto.uz/uploads/${photoItem.img}`;
             image.alt = '';
 
             listItem.appendChild(image);
@@ -519,7 +519,7 @@ fetch('http://localhost:4100/gallery')
         });
     
         // API dan malumotlarni olish
-        fetch('http://localhost:4100/contact/create', {
+        fetch('https://dubaiavto.uz/contact/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -548,7 +548,7 @@ fetch('http://localhost:4100/gallery')
 
 
 
-fetch('http://localhost:4100/news')
+fetch('https://dubaiavto.uz/news')
     .then(response => response.json())
     .then(data => {
         const newsContainer = document.getElementById('blog-art');
@@ -564,7 +564,7 @@ fetch('http://localhost:4100/news')
 
             listItem.innerHTML = `
                 <div class="blog-img">
-                    <a href="#" class="small-card" data-src="http://localhost:4100/uploads/${item.img}"><img src="http://localhost:4100/uploads/${item.img}" alt=""></a>
+                    <a href="#" class="small-card" data-src="https://dubaiavto.uz/uploads/${item.img}"><img src="https://dubaiavto.uz/uploads/${item.img}" alt=""></a>
                 </div>
                 <div class="blog-text">
                     <h6><b><a href="#">${item.title}</a></b></h6>

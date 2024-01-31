@@ -16,7 +16,7 @@ function Iframe() {
 
   // API-dan ma'lumotlarni olish uchun useEffect qo'shing
   useEffect(() => {
-    axios.get('http://localhost:4100/iframes')
+    axios.get('https://dubaiavto.uz/iframes')
       .then((response) => {
         if (response.data.length > 0) {
           const initialData = response.data[0]; // Avvalgi ma'lumotlardan birini tanlab olish
@@ -36,7 +36,7 @@ function Iframe() {
     if (formData.src !== '...') {
       try {
         const response = await axios.put(
-          'http://localhost:4100/iframes/update/65b47a48e6aaffe3ad728b04',
+          'https://dubaiavto.uz/iframes/update/65b47a48e6aaffe3ad728b04',
           formData
         );
 

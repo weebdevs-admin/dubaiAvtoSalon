@@ -27,12 +27,12 @@ function Slider() {
       formData.append('file', selectedFile);
 
       // Make a POST request to upload the image
-      await axios.post('http://localhost:4100/upload', formData, {
+      await axios.post('https://dubaiavto.uz/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      const response = await axios.post('http://localhost:4100/slider/create', { img: selectedFile.name }, {
+      const response = await axios.post('https://dubaiavto.uz/slider/create', { img: selectedFile.name }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -58,7 +58,7 @@ function Slider() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://localhost:4100/slider');
+      const response = await axios.get('https://dubaiavto.uz/slider');
       setImages(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -68,7 +68,7 @@ function Slider() {
   const handleDelete = async (image) => {
     try {
       // Make a DELETE request to delete the image from the server
-      await axios.delete(`http://localhost:4100/slider/delete/${image._id}`);
+      await axios.delete(`https://dubaiavto.uz/slider/delete/${image._id}`);
 
 
 
@@ -99,7 +99,7 @@ function Slider() {
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
-              <img src={`http://localhost:4100/uploads/${e.img}`} alt={e} />
+              <img src={`https://dubaiavto.uz/uploads/${e.img}`} alt={e} />
               <button className='del-btn' onClick={() => handleDelete(e)}>O'chirish</button>
             </div>
           ))}

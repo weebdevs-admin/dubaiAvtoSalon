@@ -282,7 +282,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Fetch data from the API
-            fetch('http://localhost:4100/news')
+            fetch('https://dubaiavto.uz/news')
                 .then(response => response.json())
                 .then(data => {
                     const newsContainer = document.getElementById('blog-art');
@@ -299,13 +299,13 @@
     
                         // Check if the item has an image or iframe
                         const mediaElement = item.img
-                            ? `<img src="http://localhost:4100/uploads/${item.img}" alt="">`
+                            ? `<img src="https://dubaiavto.uz/uploads/${item.img}" alt="">`
                             : `<iframe src="${item.iframe}" width="100%" height="200px" frameborder="0" allowfullscreen></iframe>`;
     
                         listItem.innerHTML = `
                             <div onclick="updateBigCard('${item.title}', '${item.desc}', '${item.img}', '${item.iframe}')">
                                 <div class="blog-img" >
-                                    <a href="#" class="small-card" data-src="http://localhost:4100/uploads/${item.img}">
+                                    <a href="#" class="small-card" data-src="https://dubaiavto.uz/uploads/${item.img}">
                                         ${mediaElement}
                                     </a>
                                 </div>
@@ -329,7 +329,7 @@
             window.updateBigCard = function (title, desc, img, iframe) {
                 const bigCardContainer = document.getElementById('bigCard');
                 const mediaElement = img
-                    ? `<img src="http://localhost:4100/uploads/${img}" alt="">`
+                    ? `<img src="https://dubaiavto.uz/uploads/${img}" alt="">`
                     : `<iframe src="${iframe}" width="100%" height="400px" frameborder="0" allowfullscreen></iframe>`;
     
                 bigCardContainer.innerHTML = `
