@@ -29,16 +29,10 @@ let Product = new Schema({
   year: {
     type: String,
   },
-  type1: {
+  km: {
     type: String,
   },
-  type2: {
-    type: String,
-  },
-  type3: {
-    type: String,
-  },
-  type4: {
+  fuel: {
     type: String,
   },
   price: {

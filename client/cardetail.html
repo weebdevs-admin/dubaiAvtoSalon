@@ -51,7 +51,8 @@
             height: 700px;
             border-radius: 5px;
             object-fit: cover;
-            
+            margin-top: -150px;
+            margin-bottom: -120px;
         }
 
         .details-container {
@@ -102,11 +103,6 @@
             margin-left: 15px;
         }
 
-        .slider-modal-img {
-            height: 120vh !important;
-            object-fit: cover;
-        }
-
         @media (max-width:767px) {
             .details-containe {
                 padding: 10px;
@@ -115,9 +111,10 @@
 
             }
 
-            .slider-modal-img {
-                height: 90vh !important;
-                object-fit: cover;
+            .detail-slider-ul img {
+                width: 50px;
+                height: 50px;
+                background-color: #dddcdc;
             }
 
             .rec-title {
@@ -183,6 +180,7 @@
                 /* width: 95vw; */
 
             }
+
         }
 
 
@@ -239,18 +237,77 @@
             cursor: pointer;
         }
 
-        .slider-modal {
-            position: fixed;
-            backdrop-filter: blur(20px);
-            background-color: rgb(245, 242, 242);
-            width: 100%;
-            height: 100vh;
-            z-index: 999999;
-            inset: 0;
+
+
+        .detail-slider-ul {
             display: flex;
-            flex-direction: column;
+            width: 100%;
+            justify-content: space-around;
+            gap: 2px;
+            height: 100px;
+            margin-top: 140px;
+            margin-bottom: -130px;
+        }
+
+        .detail-slider-ul img {
+            width: 90px;
+            height: 90px;
+            background-color: #dddcdc;
+        }
+
+        
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            top: 18%;
+            width: calc(var(--swiper-navigation-size)/ 44 * 27);
+            height: var(--swiper-navigation-size);
+            margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            display: none;
+            color: #fff;
+        }
+
+        @media (max-width: 767px) {
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                position: absolute;
+                top: 10%;
+                width: calc(var(--swiper-navigation-size)/ 44 * 27);
+                height: var(--swiper-navigation-size);
+                margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
+                z-index: 10;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+            }
+
+            .swipper-btn {
+                margin-top: -200px;
+                margin-top: -200px;
+            }
+
+            .detail-slider-ul {
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                height: 100px;
+                margin-top: 140px;
+                margin-bottom: -130px;
+            }
+
+            .detail-slider-ul img {
+                width: 65px;
+                height: 65px;
+                background-color: #dddcdc;
+            }
         }
     </style>
 </head>
@@ -372,40 +429,46 @@
     </header>
 
     <!-- Header End -->
-    <div class="slider-modal">
-        <div class="swiper-container">
-            <span class="close" onclick="closeslider()" style=" font-size: 40px; margin-right: 20px; cursor: pointer; z-index: 999999;">&times;</span>
-            <div class="swiper-wrapper ">
-                <!-- Add your img elements here -->
-                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image" id="carImage">
-                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
-                    id="carImage2">
-                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
-                    id="carImage3">
-                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
-                    id="carImage4">
-                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
-                    id="carImage5">
-            </div>
-
-            <div class="swiper-pagination"></div>
-            <!-- <div class="swiper-pagination"></div> -->
-            <!-- Add Pagination -->
-        </div>
-    </div>
     <div class="container">
         <div class=" ">
             <div class="detail_banner">
                 <div class="image-container">
-                    
+                    <div class="swiper-container">
+
+                        <div class="swiper-wrapper ">
+                            <!-- Add your img elements here -->
+                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage">
+                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage2">
+                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage3">
+                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage4">
+                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage5">
+                        </div>
+                        <div class=" swiper-button-next"></div>
+                        <div class=" swiper-button-prev"></div>
+                    </div>
+
+
                     <div class="details-container">
-                        <img  class="datail-image" src="" style="width: 100%; height: 100%;" alt="" onclick="sliderModal()">
-                        <div class="title-ul" style="margin-top: 10px;">
-                            <h4 id="carTitle" style="z-index: 9999;"></h4>
-                            <h4 style="color: rgb(5, 158, 5); z-index: 999;" id="carPrice"></h4>
+
+                        <div class="detail-slider-ul">
+                            <img class="detail-images-slider slider1"
+                                src=""
+                                alt="">
+                            <img class="detail-images-slider slider2" src="" alt="">
+                            <img class="detail-images-slider slider3"
+                                src=""
+                                alt="">
+                            <img class="detail-images-slider slider4"
+                                src=""
+                                alt="">
+                            <img class="detail-images-slider slider5" src="" alt="">
+                        </div>
+                        <div class="title-ul">
+                            <h4 id="carTitle" ></h4>
+                            <h4 style="color: rgb(5, 158, 5);" id="carPrice"></h4>
                         </div>
                         <div class="detail-ul">
-                            <h5 id="carYear" style="z-index: 9999;"></h5>
+                            <h5 id="carYear"></h5>
                             <button
                                 style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3; outline: none;"
                                 onclick="openModal()" class="order-btn"></button>
@@ -537,16 +600,8 @@
     </footer>
 
     <script>
-        
         function sliderModal() {
-            document.querySelector('.slider-modal').style.display = 'flex'
             console.log('ok');
-
-        }
-        function closeslider() {
-            document.querySelector('.slider-modal').style.display = 'none'
-            console.log('ok');
-
         }
         // JavaScript to open and close modal
         function openModal() {
@@ -569,29 +624,28 @@
                 document.getElementById('carImage3').src = `https://dubaiavto.uz/uploads/${car.img3 ? car.img3 : car.img}`;
                 document.getElementById('carImage4').src = `https://dubaiavto.uz/uploads/${car.img4 ? car.img4 : car.img}`;
                 document.getElementById('carImage5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
-              
+
+                document.querySelector('.slider1').src = `https://dubaiavto.uz/uploads/${car.img}`;
+                document.querySelector('.slider2').src = `https://dubaiavto.uz/uploads/${car.img2 ? car.img2 : car.img}`;
+                document.querySelector('.slider3').src = `https://dubaiavto.uz/uploads/${car.img3 ? car.img3 : car.img}`;
+                document.querySelector('.slider4').src = `https://dubaiavto.uz/uploads/${car.img4 ? car.img4 : car.img}`;
+                document.querySelector('.slider5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
+
                 document.getElementById('carTitle').innerText = car.title;
                 document.getElementById('carYear').innerText = `год выпуска: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
                 document.getElementById('carPrice').innerText = `Подробнее ${car.price}$`;
-                document.querySelector('.datail-image').src =  `https://dubaiavto.uz/uploads/${car.img}`;
                 if (car.category === 'stock') {
                     document.querySelector('.order-btn').innerText = 'Оставить заявку';
                 } else {
                     document.querySelector('.order-btn').innerText = 'Контакты';
 
                 }
+                initializeSwiper();
+
             })
             .catch(error => console.error('Error fetching data:', error));
-        document.addEventListener('DOMContentLoaded', function () {
-            var mySwiper = new Swiper('.swiper-container', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        });
+
         fetch('https://dubaiavto.uz/product')
             .then(response => response.json())
             .then(data => {
@@ -694,6 +748,21 @@
                     alert('Ошибка отправки заказа. Пожалуйста, попробуйте еще раз.');
                 });
         }
+        function initializeSwiper() {
+            new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+
 
         // Add an event listener to the order button to open the modal
 

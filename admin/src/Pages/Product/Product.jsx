@@ -19,18 +19,20 @@ function Product() {
     const [formData, setFormData] = useState({
         option: 'rasm',
         img: '',
+        img2: '',
+        img3: '',
+        img4: '',
+        img5: '',
         title: '',
         desc: '',
         year: '',
-        type1: '',
-        type2: '',
-        type3: '',
-        type4: '',
+        km: '',
+        fuel: '',
         price: '',
         category: '',
     });
 
-    const [editingItemId, setEditingItemId] = useState(null); // Yangi qo'shilgan qism taxrirlanishi uchun
+    const [editingItemId, setEditingItemId] = useState(null);
 
     useEffect(() => {
         fetchImages();
@@ -59,7 +61,7 @@ function Product() {
     const handleEdit = (newsItem) => {
         setEditingItemId(newsItem._id);
         setFormData({
-            option: 'rasm', // Sizning option turingizga qarab, agar tanlangan option 'rasm' bo'lsa, sizga rasmni tanlash uchun input chiqadi; aks holda, 'video' bo'lsa, video linkni kiritish uchun text input.
+            option: 'rasm',
             img: newsItem.img,
             img2: newsItem.img,
             img3: newsItem.img,
@@ -69,27 +71,26 @@ function Product() {
             desc: newsItem.desc,
             year: newsItem.year,
             price: newsItem.price,
+            km: newsItem.km,
+            fuel: newsItem.fuel,
             category: newsItem.category
         });
     };
 
-    // ... (yukoridagi kodlar)
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        // Agar o'zgaruvchini nomi "option" bo'lsa va qiymati "video" bo'lsa, "img"ni bo'sh qo'yamiz
-        if (name === 'option' && value === 'video') {
+        if ((name === 'option' || name === 'fuel' || name === 'km') && value === 'video') {
             setFormData({
                 ...formData,
                 [name]: value,
-                img: '', // Rasmni bo'sh qilish
+                img: '',
             });
-        } else if (name === 'option' && value === 'rasm') {
+        } else if ((name === 'option' || name === 'fuel' || name === 'km') && value === 'rasm') {
             setFormData({
                 ...formData,
                 [name]: value,
-                iframe: '', // Video linkni bo'sh qilish
+                iframe: '',
             });
         } else {
             setFormData({
@@ -99,9 +100,6 @@ function Product() {
         }
     };
 
-    // ... (qolgan kodlar)
-
-
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
         setFormData({
@@ -109,6 +107,7 @@ function Product() {
             img: event.target.files[0] ? event.target.files[0].name : '...',
         });
     };
+
     const handleFileChange2 = (event) => {
         setSelectedFile2(event.target.files[0]);
         setFormData({
@@ -116,6 +115,7 @@ function Product() {
             img2: event.target.files[0] ? event.target.files[0].name : '...',
         });
     };
+
     const handleFileChange3 = (event) => {
         setSelectedFile3(event.target.files[0]);
         setFormData({
@@ -123,6 +123,7 @@ function Product() {
             img3: event.target.files[0] ? event.target.files[0].name : '...',
         });
     };
+
     const handleFileChange4 = (event) => {
         setSelectedFile4(event.target.files[0]);
         setFormData({
@@ -130,6 +131,7 @@ function Product() {
             img4: event.target.files[0] ? event.target.files[0].name : '...',
         });
     };
+
     const handleFileChange5 = (event) => {
         setSelectedFile5(event.target.files[0]);
         setFormData({
@@ -191,11 +193,9 @@ function Product() {
         if (formData.title !== '...' || formData.desc !== '...') {
             try {
                 if (editingItemId) {
-                    // If editingItemId exists, update the existing item
                     await axios.put(`https://dubaiavto.uz/product/update/${editingItemId}`, formData);
                     toast.success('Information updated successfully');
                 } else {
-                    // If editingItemId doesn't exist, create a new item
                     await axios.post('https://dubaiavto.uz/product/create', formData);
                     toast.success('Ma\'lumot qo\'shildi');
                 }
@@ -204,13 +204,15 @@ function Product() {
                 setFormData({
                     option: 'rasm',
                     img: '',
-                    img2:'',
-                    img3:'',
-                    img4:'',
-                    img5:'',
+                    img2: '',
+                    img3: '',
+                    img4: '',
+                    img5: '',
                     title: '',
                     desc: '',
                     year: '',
+                    km: '',
+                    fuel: '',
                     price: '',
                     category: ''
                 });
@@ -233,9 +235,6 @@ function Product() {
             <div className='main'>
                 <h2>Mashinalar</h2>
                 <form onSubmit={handleSubmit} className='main-form'>
-
-
-
                     <div className='image-form'>
                         <input type="file" onChange={handleFileChange} />
                         <input type="file" onChange={handleFileChange2} />
@@ -245,7 +244,7 @@ function Product() {
                     </div>
                     <label>
                         <select name="category" onChange={handleInputChange} value={formData.category || ''}>
-                            <option >Choose</option>
+                            <option>Choose</option>
                             <option value="stock">В наличии</option>
                             <option value="order">Под заказ</option>
                         </select>
@@ -268,7 +267,24 @@ function Product() {
                             placeholder="Yili"
                         />
                     </label>
-                    
+                    <label>
+                        <input
+                            type='text'
+                            name="fuel"
+                            value={formData.fuel}
+                            onChange={handleInputChange}
+                            placeholder="Yoqilgi"
+                        />
+                    </label>
+                    <label>
+                        <input
+                            type='text'
+                            name="km"
+                            value={formData.km}
+                            onChange={handleInputChange}
+                            placeholder="Km"
+                        />
+                    </label>
                     <label>
                         <input
                             type='number'
@@ -286,8 +302,6 @@ function Product() {
                             placeholder="To'liq ma'lumot"
                         />
                     </label>
-
-
                     <button type="submit" onClick={handleUpload}>
                         Yangilash
                     </button>
