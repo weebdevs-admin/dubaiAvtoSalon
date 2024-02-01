@@ -63,8 +63,22 @@
 
         .recomended-cars {
             width: 350px;
-            height: 500px;
+            height: 1000px;
             overflow: auto;
+        }
+
+        .detail-ul {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+
+        }
+
+        .title-ul {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         @media only screen and (min-width: 767px) and (max-width: 1200px) {
@@ -85,11 +99,28 @@
         }
 
         @media (max-width:767px) {
-            .details-container {
+            .details-containe {
                 padding: 10px;
                 width: 100%;
                 text-align: center;
 
+            }
+
+            .title-ul {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            #carTitle{
+                text-align: center;
+            }
+            .detail-ul {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                flex-wrap: wrap;
             }
 
             .image-container {
@@ -102,13 +133,14 @@
 
             .image-container img {
                 width: 100%;
-                height: 550px;
+                height: 500px;
                 border-radius: 5px;
                 object-fit: cover;
             }
 
             .recomended-cars {
                 width: 100vw;
+                margin: -7px;
                 height: 500px;
                 overflow: auto;
             }
@@ -124,7 +156,9 @@
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                margin: 10px;
+                margin: -5px !important;
+                margin-top: 20px !important;
+                /* width: 95vw; */
 
             }
         }
@@ -139,7 +173,7 @@
         }
 
         /* CSS for modal */
-       
+
 
         .modal-content {
             display: none;
@@ -154,17 +188,20 @@
             background-color: #fff;
             border-radius: 5px;
         }
-        #orderForm{
+
+        #orderForm {
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 20px;
             padding: 30px;
         }
-        #orderForm input{
+
+        #orderForm input {
             height: 40px;
         }
-        #orderForm button{
+
+        #orderForm button {
             height: 40px;
             background-color: rgb(21, 122, 21);
             color: white;
@@ -205,11 +242,11 @@
             </div>
         </div>
     </div>
-     <!-- Modal content -->
-     <div class="modal-content">
+    <!-- Modal content -->
+    <div class="modal-content">
         <span class="close" onclick="closeModal()" style="font-size: 30px;">&times;</span>
-        <h2>Связаться
-            </h2>
+        <h2 style="text-align: center;">Оставить заявку
+        </h2>
         <form id="orderForm">
             <input type="text" id="name" name="name" placeholder="Имя" required>
 
@@ -217,7 +254,7 @@
 
             <button type="button" onclick="submitOrder()">Отправить заказ</button>
         </form>
-    </div> 
+    </div>
     <!-- Header Start -->
     <header class="main-header">
         <div id="sticky-header" class="header-upper ">
@@ -312,20 +349,20 @@
                             <img class="swiper-slide" src="" alt="Car Image" id="carImage4">
                             <img class="swiper-slide" src="" alt="Car Image" id="carImage5">
                         </div>
+                        <!-- <div class="swiper-pagination"></div> -->
                         <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
                     </div>
-                    
+
                     <div class="details-container">
-                        <div style=" display: flex; justify-content: space-between; flex-wrap: wrap;">
-                            <h1 id="carTitle"></h1>
-                            <h3 id="carPrice"></h3>
+                        <div class="title-ul">
+                            <h4 id="carTitle"></h4>
+                            <h4 style="color: rgb(5, 158, 5);" id="carPrice"></h4>
                         </div>
-                        <div style=" display: flex; justify-content: space-between; align-items: center;">
-                            <h4 id="carYear"></h4>
+                        <div class="detail-ul">
+                            <h5 id="carYear"></h5>
                             <button
-                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3;" onclick="openModal()"
-                                class="order-btn"  ></button>
+                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3; outline: none;"
+                                onclick="openModal()" class="order-btn"></button>
                         </div>
 
 
@@ -351,7 +388,7 @@
             </div>
         </div>
     </div>
-   
+
 
 
     <footer class="footersection">
@@ -374,7 +411,7 @@
                         <ul>
                             <li><a href="cars.html">Автомобили в наличии</a></li>
                             <li><a href="order.html">Автомобили под заказ</a></li>
-                            
+
 
 
                         </ul>
@@ -394,13 +431,13 @@
                     <div class="footer2">
                         <h4>Режим работа</h4>
                         <ul>
-                            <li><a style="color: rgb(177, 173, 173);" >ПН: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >ВТ: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >СР: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >ЧТ: 09:00-20:00</a></li>
-                            <li><a style="color:  rgb(177, 173, 173);" >СБ: 09:00-20:00</a></li>
-                            <li><a style="color:  rgb(177, 173, 173);" >ВС: 10:00-19:00</a></li>
-                            
+                            <li><a style="color: rgb(177, 173, 173);">ПН: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">ВТ: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">СР: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">ЧТ: 09:00-20:00</a></li>
+                            <li><a style="color:  rgb(177, 173, 173);">СБ: 09:00-20:00</a></li>
+                            <li><a style="color:  rgb(177, 173, 173);">ВС: 10:00-19:00</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -412,7 +449,7 @@
                             <ul>
                                 <li>
                                     <img src="images/map.png" alt=""> <br>
-                                    <span>город Ташкент улица Гавхар  дом 70
+                                    <span>город Ташкент улица Гавхар дом 70
                                     </span>
                                 </li>
                                 <li><img src="images/call.png" alt=""><span>+998 99 030 03 33</span></li>
@@ -427,9 +464,9 @@
                 <div class="copy">
                     <ul>
 
-                        <li><a href="#" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="pinterest-change-co"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#" class="twitter-change-co"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a></li>
                         <li><a href="#" class="linkedin-change-co"><i class="fa fa-linkedin"></i></a></li>
 
                     </ul>
@@ -473,9 +510,9 @@
                 document.getElementById('carImage5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
 
                 document.getElementById('carTitle').innerText = car.title;
-                document.getElementById('carYear').innerText = `год: ${car.year}`;
+                document.getElementById('carYear').innerText = `год выпуска: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
-                document.getElementById('carPrice').innerText = `${car.price}$`;
+                document.getElementById('carPrice').innerText = `Подробнее ${car.price}$`;
                 if (car.category === 'stock') {
                     document.querySelector('.order-btn').innerText = 'Заказат';
                 } else {
@@ -484,7 +521,7 @@
                 }
             })
             .catch(error => console.error('Error fetching data:', error));
-            document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             var mySwiper = new Swiper('.swiper-container', {
                 loop: true,
                 pagination: {
@@ -518,18 +555,21 @@
                     image.style.objectFit = 'cover'
                     image.style.width = '100%';
 
-                    const title = document.createElement('h3');
+                    const title = document.createElement('h4');
                     title.classList.add('title-product')
                     title.innerText = car.title;
                     title.style.height = '50px';
+                    title.style.marginTop = '10px'
 
                     const year = document.createElement('p');
                     year.innerText = `год:${car.year}`;
+                    year.style.marginTop = '6px'
 
 
 
-                    const price = document.createElement('h3');
+                    const price = document.createElement('h4');
                     price.innerText = `${car.price}$`;
+                    price.style.color = 'green'
 
                     // Append elements to the list item
                     listItem.appendChild(image);
@@ -544,10 +584,10 @@
             })
             .catch(error => console.error('Error fetching data:', error));
 
-        
 
 
-        
+
+
 
         // Function to submit order
         function submitOrder() {

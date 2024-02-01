@@ -144,8 +144,7 @@
                 <div class="car-menu">
                     <div style="display: flex; width: 250px; justify-content: space-between;">
                         <a id="stockFilter"
-                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center; cursor: pointer; border-bottom: 2px solid black; align-items: center; color: black; ">В
-                            наличии</a>
+                            style="font-size: 17px;  height: 40px; display: flex; justify-content: center; cursor: pointer; border-bottom: 2px solid black; align-items: center; color: black; ">Автомобили в наличии</a>
                         
                     </div>
                     <div>
@@ -257,9 +256,9 @@
                 <div class="copy">
                     <ul>
 
-                        <li><a href="#" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="pinterest-change-co"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#" class="twitter-change-co"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a></li>
                         <li><a href="#" class="linkedin-change-co"><i class="fa fa-linkedin"></i></a></li>
 
                     </ul>
@@ -322,6 +321,7 @@
                 const title = document.createElement('h2');
                 title.innerText = car.title;
                 title.style.height = '66px';
+                title.style.fontSize = '10px'
 
                 const year = document.createElement('p');
                 year.innerText = car.year;
@@ -384,6 +384,12 @@
         // Function to dynamically create a card element
         function createCarCard(car) {
             const listItem = document.createElement('li');
+            const listItem2 = document.createElement('li');
+            const listItem3 = document.createElement('li');
+            listItem2.style.display = 'flex'
+            listItem2.style.justifyContent = 'space-between'
+            listItem3.style.display = 'flex'
+            listItem3.style.justifyContent = 'space-between'
             listItem.style.width = '340px';
             listItem.style.backgroundColor = '#f2f5f8';
             listItem.style.cursor = 'pointer';
@@ -392,6 +398,7 @@
             listItem.style.listStyle = 'none';
             listItem.style.margin = '15px';
 
+
             const image = document.createElement('img');
             image.src = `https://dubaiavto.uz/uploads/${car.img}`;
             image.alt = car.title;
@@ -399,21 +406,30 @@
             image.style.width = '100%';
 
             const title = document.createElement('h2');
-            title.innerText = car.title;
+            title.innerText = `${car.title}`
             title.style.height = '66px';
-
+            title.style.fontSize ='25px'
             const year = document.createElement('p');
+            const yearDesc = document.createElement('p');
+
             year.innerText = car.year;
-
-
-            const price = document.createElement('h3');
-            price.innerText = `${car.price}$`;
+            yearDesc.innerText = `год выпуска: `;
+            year.style.color = '#797979'
+            const price = document.createElement('h5');
+            const priceDesc = document.createElement('h5');
+            price.innerText = `${car.price} $`;
+            price.style.color = 'green'
+            priceDesc.innerText = 'Подробнее:'
 
             // Append elements to the list item
             listItem.appendChild(image);
             listItem.appendChild(title);
-            listItem.appendChild(year);
-            listItem.appendChild(price);
+            listItem.appendChild(listItem2);
+            listItem2.appendChild(yearDesc);
+            listItem2.appendChild(year);
+            listItem.appendChild(listItem3);
+            listItem3.appendChild(priceDesc);
+            listItem3.appendChild(price);
             listItem.addEventListener('click', () => {
                 // Redirect to cardetail.html with query parameter (car ID or any identifier)
                 window.location.href = `cardetail.html?id=${car._id}`;
