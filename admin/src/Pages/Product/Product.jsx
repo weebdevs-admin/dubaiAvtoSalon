@@ -144,48 +144,34 @@ function Product() {
         if (!selectedFile) {
             return;
         }
-
+    
         try {
-            const formData = new FormData();
-            const formData2 = new FormData();
-            const formData3 = new FormData();
-            const formData4 = new FormData();
-            const formData5 = new FormData();
-            formData.append('file', selectedFile);
-            formData2.append('file', selectedFile2);
-            formData3.append('file', selectedFile3);
-            formData4.append('file', selectedFile4);
-            formData5.append('file', selectedFile5);
-            await axios.post('https://dubaiavto.uz/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            await axios.post('https://dubaiavto.uz/upload', formData2, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            await axios.post('https://dubaiavto.uz/upload', formData3, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            await axios.post('https://dubaiavto.uz/upload', formData4, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            await axios.post('https://dubaiavto.uz/upload', formData5, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+            const formDataArray = [selectedFile, selectedFile2, selectedFile3, selectedFile4, selectedFile5];
+            
+            // Gzip orqali yuklash uchun headers ni sozlash
+            const headers = {
+                'Content-Encoding': 'gzip',
+                'Content-Type': 'image/jpeg', // Rasmlarning formatiga qarab o'zgartiring
+            };
+    
+            // Har bir form data uchun alohida so'rov jo'natish
+            for (let i = 0; i < formDataArray.length; i++) {
+                const formData = new FormData();
+                formData.append('file', formDataArray[i]);
+    
+                // Gzip orqali so'rovni yuborish
+                await axios.post('https://dubaiavto.uz/upload', formData, {
+                    headers,
+                });
+            }
+    
+            toast.success('Rasmlar mufaqqiyatli yuklandi');
         } catch (error) {
-            console.error('Error uploading image:', error);
-            toast.error('Error uploading image');
+            console.error('Error uploading images:', error);
+            toast.error('Rasmlarni yuklashda xatolik yuz berdi');
         }
     };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();

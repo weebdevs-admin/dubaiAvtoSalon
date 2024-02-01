@@ -12,27 +12,32 @@ function Slider() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [images, setImages] = useState(null);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleUpload = async () => {
-    if (!selectedFile) {
+  const uploadFileWithGzip = async (file) => {
+    if (!file) {
       toast.error('Iltimos rasm tanlang!');
       return;
     }
 
     try {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
+      // Gzip orqali yuborish uchun headers ni sozlash
+      const headers = {
+        'Content-Encoding': 'gzip',
+        'Content-Type': 'image/jpeg', // Fayl formatiga qarab o'zgartiring
+      };
 
-      // Make a POST request to upload the image
+      // Faylni Gzip qilib, serverga yuborish uchun tayyorlash
+      const gzippedFile = await gzipFile(file);
+
+      // Gzipped faylni FormData ga joylashtirish
+      const formData = new FormData();
+      formData.append('file', gzippedFile);
+
+      // Make a POST request to upload the gzipped image
       await axios.post('https://dubaiavto.uz/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+        headers,
       });
-      const response = await axios.post('https://dubaiavto.uz/slider/create', { img: selectedFile.name }, {
+
+      const response = await axios.post('https://dubaiavto.uz/slider/create', { img: file.name }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -44,13 +49,33 @@ function Slider() {
         toast.error('Xatolik yuz berdi!');
       }
 
-
-      // Display success message
     } catch (error) {
-      console.error('Error uploading image:', error);
-      toast.error('Error uploading image');
+      console.error('Error uploading gzipped image:', error);
+      toast.error('Error uploading gzipped image');
     }
   };
+
+  const gzipFile = async (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const arrayBuffer = event.target.result;
+        const blob = new Blob([arrayBuffer], { type: 'image/jpeg' }); // Fayl formatiga qarab o'zgartiring
+        resolve(blob);
+      };
+      reader.onerror = reject;
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    uploadFileWithGzip(selectedFile);
+  };
+
   useEffect(() => {
     // Fetch the list of images when the component mounts
     fetchImages();
@@ -69,8 +94,6 @@ function Slider() {
     try {
       // Make a DELETE request to delete the image from the server
       await axios.delete(`https://dubaiavto.uz/slider/delete/${image._id}`);
-
-
 
       // Display success message
       toast.success(' deleted successfully');
