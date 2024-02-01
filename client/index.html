@@ -162,7 +162,7 @@
 
 
     <div class="section2" style="margin-bottom: 50px;">
-        <div class="container" >
+        <div class="container">
             <ul class="count ">
                 <li>
                     <p>На рынки</p>
@@ -233,8 +233,8 @@
         </div>
     </div>
 
-   
-   
+
+
 
     <div id="iframe-container" style="display: flex; justify-content: center;" class="container">
 
@@ -287,23 +287,23 @@
 
 
     <div style="margin-top: 40px; margin-bottom: 30px;">
-        <div class="container swiper" >
+        <div class="container swiper">
             <h2 style="margin-left: 20px; margin-bottom: 30px;">Новости</h2>
 
-            <div  class="slide-container">
+            <div class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
-                    
+
                 </div>
             </div>
             <div class="swiper-button-next swiper-navBtn"></div>
             <div class="swiper-button-prev swiper-navBtn"></div>
-            <div  class="swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 
 
-   
-    
+
+
 
 
 
@@ -330,7 +330,7 @@
                         <ul>
                             <li><a href="cars.html">Автомобили в наличии</a></li>
                             <li><a href="order.html">Автомобили под заказ</a></li>
-                            
+
 
 
                         </ul>
@@ -350,13 +350,13 @@
                     <div class="footer2">
                         <h4>Режим работа</h4>
                         <ul>
-                            <li><a style="color: rgb(177, 173, 173);" >ПН: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >ВТ: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >СР: 09:00-20:00</a></li>
-                            <li><a style="color: rgb(177, 173, 173);" >ЧТ: 09:00-20:00</a></li>
-                            <li><a style="color:  rgb(177, 173, 173);" >СБ: 09:00-20:00</a></li>
-                            <li><a style="color:  rgb(177, 173, 173);" >ВС: 10:00-19:00</a></li>
-                            
+                            <li><a style="color: rgb(177, 173, 173);">ПН: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">ВТ: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">СР: 09:00-20:00</a></li>
+                            <li><a style="color: rgb(177, 173, 173);">ЧТ: 09:00-20:00</a></li>
+                            <li><a style="color:  rgb(177, 173, 173);">СБ: 09:00-20:00</a></li>
+                            <li><a style="color:  rgb(177, 173, 173);">ВС: 10:00-19:00</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -368,7 +368,7 @@
                             <ul>
                                 <li>
                                     <img src="images/map.png" alt=""> <br>
-                                    <span>город Ташкент улица Гавхар  дом 70
+                                    <span>город Ташкент улица Гавхар дом 70
                                     </span>
                                 </li>
                                 <li><img src="images/call.png" alt=""><span>+998 99 030 03 33</span></li>
@@ -383,9 +383,12 @@
                 <div class="copy">
                     <ul>
 
-                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a></li>
+                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
+                                    class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i
+                                    class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i
+                                    class="fa fa-telegram"></i></a></li>
                         <li><a href="#" class="linkedin-change-co"><i class="fa fa-linkedin"></i></a></li>
 
                     </ul>
@@ -426,88 +429,90 @@
 
     <script>
         // Fetch data from the API
-fetch('https://dubaiavto.uz/news')
-    .then(response => response.json())
-    .then(newsData => {
-        // Call a function to update the slider with the fetched data
-        updateSlider(newsData);
-    })
-    .catch(error => console.error('Error fetching news data:', error));
+        fetch('https://dubaiavto.uz/news')
+            .then(response => response.json())
+            .then(newsData => {
+                // Call a function to update the slider with the fetched data
+                updateSlider(newsData);
+            })
+            .catch(error => console.error('Error fetching news data:', error));
 
-// Function to update the slider with news data
-function updateSlider(newsData) {
-    const cardWrapper = document.querySelector('.card-wrapper');
+        // Function to update the slider with news data
+        function updateSlider(newsData) {
+            const cardWrapper = document.querySelector('.card-wrapper');
 
-    // Loop through the news data and dynamically generate slider cards
-    newsData.forEach(news => {
-        const card = document.createElement('div');
-        card.classList.add('card', 'swiper-slide');
-        card.style.height = '300px';
-        card.style.margin = '0';
-        card.style.padding = '0';
+            // Loop through the news data and dynamically generate slider cards
+            newsData.forEach(news => {
+                const card = document.createElement('a');
+                card.href = 'http://localhost:4100/news.html'
+                card.classList.add('card', 'swiper-slide');
+                card.style.height = '300px';
+                card.style.margin = '0';
+                card.style.padding = '0';
 
-        const imageBox = document.createElement('div');
-        imageBox.classList.add('image-box');
+                const imageBox = document.createElement('div');
+                imageBox.classList.add('image-box');
 
-        if (news.img) {
-            const img = document.createElement('img');
-            img.src = `https://dubaiavto.uz/uploads/${news.img}`;
-            img.alt = 'News Image';
-            imageBox.appendChild(img);
-        } else if (news.iframe) {
-            const iframe = document.createElement('iframe');
-            iframe.src = news.iframe;
-            iframe.width = '100%';
-            iframe.height = '100%';
-            iframe.frameBorder = '0';
-            iframe.allowFullscreen = true;
-            imageBox.appendChild(iframe);
+                if (news.img) {
+                    const img = document.createElement('img');
+                    img.src = `https://dubaiavto.uz/uploads/${news.img}`;
+                    img.alt = 'News Image';
+                    imageBox.appendChild(img);
+                } else if (news.iframe) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = news.iframe;
+                    iframe.width = '100%';
+                    iframe.height = '100%';
+                    iframe.frameBorder = '0';
+                    iframe.allowFullscreen = true;
+                    imageBox.appendChild(iframe);
+                }
+
+                const profileDetails = document.createElement('div');
+                profileDetails.classList.add('profile-details');
+
+                const nameJob = document.createElement('div');
+                nameJob.classList.add('name-job');
+
+                const h3Name = document.createElement('h3');
+                h3Name.classList.add('name');
+                h3Name.innerText = news.title;
+                h3Name.style.color = 'black'
+
+                const h4Job = document.createElement('h4');
+                h4Job.classList.add('job');
+                h4Job.innerText = news.desc;
+
+                nameJob.appendChild(h3Name);
+                nameJob.appendChild(h4Job);
+
+                profileDetails.appendChild(nameJob);
+
+                card.appendChild(imageBox);
+                card.appendChild(profileDetails);
+
+                cardWrapper.appendChild(card);
+            });
+
+            // Initialize or update the swiper slider
+            initializeSwiper();
         }
 
-        const profileDetails = document.createElement('div');
-        profileDetails.classList.add('profile-details');
-
-        const nameJob = document.createElement('div');
-        nameJob.classList.add('name-job');
-
-        const h3Name = document.createElement('h3');
-        h3Name.classList.add('name');
-        h3Name.innerText = news.title;
-
-        const h4Job = document.createElement('h4');
-        h4Job.classList.add('job');
-        h4Job.innerText = news.desc;
-
-        nameJob.appendChild(h3Name);
-        nameJob.appendChild(h4Job);
-
-        profileDetails.appendChild(nameJob);
-
-        card.appendChild(imageBox);
-        card.appendChild(profileDetails);
-
-        cardWrapper.appendChild(card);
-    });
-
-    // Initialize or update the swiper slider
-    initializeSwiper();
-}
-
-// Function to initialize or update the swiper slider
-function initializeSwiper() {
-    new Swiper('.swiper', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-}
+        // Function to initialize or update the swiper slider
+        function initializeSwiper() {
+            new Swiper('.swiper', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
 
         var swiper = new Swiper(".slide-container", {
             slidesPerView: 4,
@@ -817,7 +822,7 @@ function initializeSwiper() {
 
                 imageContainer.appendChild(img);
                 imageContainer.appendChild(imageInfo);
-                
+
                 li.appendChild(imageContainer);
                 ul.appendChild(li);
 

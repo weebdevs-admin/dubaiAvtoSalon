@@ -51,8 +51,7 @@
             height: 700px;
             border-radius: 5px;
             object-fit: cover;
-            margin-top: -150px;
-            margin-bottom: -120px;
+            
         }
 
         .details-container {
@@ -98,6 +97,16 @@
             }
         }
 
+        .rec-title {
+            margin-top: 5px;
+            margin-left: 15px;
+        }
+
+        .slider-modal-img {
+            height: 120vh !important;
+            object-fit: cover;
+        }
+
         @media (max-width:767px) {
             .details-containe {
                 padding: 10px;
@@ -106,15 +115,28 @@
 
             }
 
+            .slider-modal-img {
+                height: 90vh !important;
+                object-fit: cover;
+            }
+
+            .rec-title {
+                margin-top: 20px;
+                margin-left: 0;
+                text-align: center;
+                font-size: 25px;
+            }
+
             .title-ul {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
             }
 
-            #carTitle{
+            #carTitle {
                 text-align: center;
             }
+
             .detail-ul {
                 display: flex;
                 justify-content: center;
@@ -215,6 +237,20 @@
             right: 10px;
             font-size: 20px;
             cursor: pointer;
+        }
+
+        .slider-modal {
+            position: fixed;
+            backdrop-filter: blur(20px);
+            background-color: rgb(245, 242, 242);
+            width: 100%;
+            height: 100vh;
+            z-index: 999999;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            display: none;
         }
     </style>
 </head>
@@ -336,30 +372,40 @@
     </header>
 
     <!-- Header End -->
+    <div class="slider-modal">
+        <div class="swiper-container">
+            <span class="close" onclick="closeslider()" style=" font-size: 40px; margin-right: 20px; cursor: pointer; z-index: 999999;">&times;</span>
+            <div class="swiper-wrapper ">
+                <!-- Add your img elements here -->
+                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image" id="carImage">
+                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
+                    id="carImage2">
+                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
+                    id="carImage3">
+                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
+                    id="carImage4">
+                <img onclick="sliderModal()" class="slider-modal-img swiper-slide" src="" alt="Car Image"
+                    id="carImage5">
+            </div>
+
+            <div class="swiper-pagination"></div>
+            <!-- <div class="swiper-pagination"></div> -->
+            <!-- Add Pagination -->
+        </div>
+    </div>
     <div class="container">
         <div class=" ">
             <div class="detail_banner">
                 <div class="image-container">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper ">
-                            <!-- Add your img elements here -->
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage2">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage3">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage4">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage5">
-                        </div>
-                        <!-- <div class="swiper-pagination"></div> -->
-                        <!-- Add Pagination -->
-                    </div>
-
+                    
                     <div class="details-container">
-                        <div class="title-ul">
-                            <h4 id="carTitle"></h4>
-                            <h4 style="color: rgb(5, 158, 5);" id="carPrice"></h4>
+                        <img  class="datail-image" src="" style="width: 100%; height: 100%;" alt="" onclick="sliderModal()">
+                        <div class="title-ul" style="margin-top: 10px;">
+                            <h4 id="carTitle" style="z-index: 9999;"></h4>
+                            <h4 style="color: rgb(5, 158, 5); z-index: 999;" id="carPrice"></h4>
                         </div>
                         <div class="detail-ul">
-                            <h5 id="carYear"></h5>
+                            <h5 id="carYear" style="z-index: 9999;"></h5>
                             <button
                                 style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3; outline: none;"
                                 onclick="openModal()" class="order-btn"></button>
@@ -380,6 +426,7 @@
                     </div>
                 </div>
                 <div class="recomended-cars car-list">
+                    <h5 class="rec-title">Другие автомобили</h5>
                     <div class="container" id="carContainer"
                         style="display: flex; justify-content: space-around; flex-wrap: wrap;">
                         <!-- Cars will be dynamically added here -->
@@ -464,9 +511,12 @@
                 <div class="copy">
                     <ul>
 
-                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a></li>
+                        <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
+                                    class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co"><i
+                                    class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i
+                                    class="fa fa-telegram"></i></a></li>
                         <li><a href="#" class="linkedin-change-co"><i class="fa fa-linkedin"></i></a></li>
 
                     </ul>
@@ -487,6 +537,17 @@
     </footer>
 
     <script>
+        
+        function sliderModal() {
+            document.querySelector('.slider-modal').style.display = 'flex'
+            console.log('ok');
+
+        }
+        function closeslider() {
+            document.querySelector('.slider-modal').style.display = 'none'
+            console.log('ok');
+
+        }
         // JavaScript to open and close modal
         function openModal() {
             document.querySelector('.modal-content').style.display = 'block';
@@ -508,13 +569,14 @@
                 document.getElementById('carImage3').src = `https://dubaiavto.uz/uploads/${car.img3 ? car.img3 : car.img}`;
                 document.getElementById('carImage4').src = `https://dubaiavto.uz/uploads/${car.img4 ? car.img4 : car.img}`;
                 document.getElementById('carImage5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
-
+              
                 document.getElementById('carTitle').innerText = car.title;
                 document.getElementById('carYear').innerText = `год выпуска: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
                 document.getElementById('carPrice').innerText = `Подробнее ${car.price}$`;
+                document.querySelector('.datail-image').src =  `https://dubaiavto.uz/uploads/${car.img}`;
                 if (car.category === 'stock') {
-                    document.querySelector('.order-btn').innerText = 'Заказат';
+                    document.querySelector('.order-btn').innerText = 'Оставить заявку';
                 } else {
                     document.querySelector('.order-btn').innerText = 'Контакты';
 
