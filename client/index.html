@@ -190,11 +190,11 @@
 
     <!-- <h2  style="margin: 30px; color: #797979;">В наличии</h2> -->
     <div class="container product-review">
-        <h2 class="container" style="margin-left: 0px;  margin-bottom: 30px;">Информация</h2>
+        <h4 class="container" style="margin-left: 0px;  margin-bottom: 30px;">Автомобили в наличии</h4>
 
     </div>
     <div class="container product-review-order">
-
+        <h4 class="container" style="margin-left: 0px;  margin-bottom: 30px;">Автомобили под заказ</h4>
     </div>
 
     <div class="section3">
@@ -233,26 +233,8 @@
         </div>
     </div>
 
-    <div class="lg-gallery">
-        <div class="container">
-            <h2 class="container" style="margin-left: 0px;  margin-bottom: 30px;">Информация</h2>
-        </div>
-        <ul id="lg-main-gallery" class="lg-main-gallery"
-            style="display: flex;  justify-content: center; list-style: none; gap: 10px; padding-left: 20px; ">
-
-
-        </ul>
-    </div>
-
-    <div class="md-gallery ">
-        <h2 style="margin-left: 20px;  margin-bottom: 30px;">Информация</h2>
-        <ul id="md-main-gallery"
-            style="display: flex;  flex-direction: column; list-style: none;  padding-left: 20px; ">
-
-
-
-        </ul>
-    </div>
+   
+   
 
     <div id="iframe-container" style="display: flex; justify-content: center;" class="container">
 
@@ -785,12 +767,12 @@ function initializeSwiper() {
                 const stockProducts = data.filter(product => product.category === 'order');
 
                 // Display stock products
-                displayProducts(stockProducts);
+                displayProducts2(stockProducts);
             })
             .catch(error => console.error('Error fetching data:', error));
 
         // Function to display products
-        function displayProducts(products) {
+        function displayProducts2(products) {
             const container = document.querySelector('.product-review-order');
 
             // Loop through the first 4 products and dynamically generate HTML
@@ -802,7 +784,8 @@ function initializeSwiper() {
                 const li = document.createElement('li');
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
-
+                const titles = document.createElement('h2')
+                titles.innerText = 'heuiog'
                 const img = document.createElement('img');
                 img.classList.add('main-product-img');
                 img.src = `https://dubaiavto.uz/uploads/${product.img}`;
@@ -834,7 +817,7 @@ function initializeSwiper() {
 
                 imageContainer.appendChild(img);
                 imageContainer.appendChild(imageInfo);
-
+                
                 li.appendChild(imageContainer);
                 ul.appendChild(li);
 
