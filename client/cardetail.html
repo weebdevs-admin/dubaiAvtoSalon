@@ -315,11 +315,11 @@
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
-
+                    
                     <div class="details-container">
                         <div style=" display: flex; justify-content: space-between; flex-wrap: wrap;">
                             <h1 id="carTitle"></h1>
-                            <h2 id="carPrice"></h2>
+                            <h3 id="carPrice"></h3>
                         </div>
                         <div style=" display: flex; justify-content: space-between; align-items: center;">
                             <h4 id="carYear"></h4>
@@ -484,7 +484,15 @@
                 }
             })
             .catch(error => console.error('Error fetching data:', error));
-
+            document.addEventListener('DOMContentLoaded', function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        });
         fetch('https://dubaiavto.uz/product')
             .then(response => response.json())
             .then(data => {
@@ -536,15 +544,7 @@
             })
             .catch(error => console.error('Error fetching data:', error));
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var mySwiper = new Swiper('.swiper-container', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        });
+        
 
 
         

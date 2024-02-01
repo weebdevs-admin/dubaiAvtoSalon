@@ -691,10 +691,47 @@
     }
 
 }
+.count {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: white;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
 
+.count li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+
+}
 /* Small devices (landscape phones, 576px and up) */
 @media only screen and (min-width: 375px) and (max-width: 767px) {
-
+    .count {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column !important;
+        justify-content: center;
+        color: white;
+        list-style-type: none;
+        padding: 20px;
+    }
+    
+    .count li {
+        display: flex;
+        flex-direction:row;
+        align-items: center ;
+        justify-content: space-between !important;
+        margin: 30px;
+    
+    }
+    .main-slide{
+        height: 250px !important;
+    }
+    
     .navbar-brand img {
         width: 76%;
         position: relative;
@@ -1290,6 +1327,7 @@
 
 
 }
+
 
 @media only screen and (min-width: 320px) and (max-width: 374px) {
 

@@ -141,7 +141,7 @@
 
     <Section class="minsection">
         <div class="swiper mySwiper">
-            <div id="swipper" class="swiper-wrapper">
+            <div id="swipper" class="swiper-wrapper main-slide">
 
             </div>
 
@@ -162,7 +162,7 @@
 
 
     <div class="section2" style="margin-bottom: 50px;">
-        <div class="container" style="padding-left: 0px;">
+        <div class="container" >
             <ul class="count ">
                 <li>
                     <p>На рынки</p>
@@ -190,6 +190,7 @@
 
     <!-- <h2  style="margin: 30px; color: #797979;">В наличии</h2> -->
     <div class="container product-review">
+        <h2 class="container" style="margin-left: 0px;  margin-bottom: 30px;">Информация</h2>
 
     </div>
     <div class="container product-review-order">
@@ -303,18 +304,18 @@
     </div>
 
 
-    <div style="margin-top: 40px;">
-        <div class="container swiper">
-            <h2 style="margin-left: 20px;  margin-bottom: 30px;">Новости</h2>
+    <div style="margin-top: 40px; margin-bottom: 30px;">
+        <div class="container swiper" >
+            <h2 style="margin-left: 20px; margin-bottom: 30px;">Новости</h2>
 
-            <div class="slide-container">
+            <div  class="slide-container">
                 <div class="card-wrapper swiper-wrapper">
                     
                 </div>
             </div>
             <div class="swiper-button-next swiper-navBtn"></div>
             <div class="swiper-button-prev swiper-navBtn"></div>
-            <div class="swiper-pagination"></div>
+            <div  class="swiper-pagination"></div>
         </div>
     </div>
 
@@ -735,7 +736,7 @@ function initializeSwiper() {
 
                 const img = document.createElement('img');
                 img.classList.add('main-product-img');
-                img.src = `./images/${product.img}`;
+                img.src = `https://dubaiavto.uz/uploads/${product.img}`;
                 img.alt = product.title;
 
                 const imageInfo = document.createElement('div');
@@ -744,16 +745,16 @@ function initializeSwiper() {
                 imageInfo.style.justifyContent = 'space-around';
 
                 const span = document.createElement('span');
-                const h4Title = document.createElement('h4');
+                const h4Title = document.createElement('h5');
                 h4Title.innerText = product.title;
-                const h4Price = document.createElement('h4');
+                const h4Price = document.createElement('h5');
                 h4Price.innerText = `${product.price}$`;
 
                 const anchor = document.createElement('a');
                 anchor.href = `https://dubaiavto.uz/cardetail.html?id=${product._id}`;
                 anchor.style.marginTop = '35px';
                 anchor.style.fontSize = '20px';
-                anchor.innerText = 'Koproq';
+                anchor.innerText = 'Подробнее';
 
                 // Append elements to the container
                 span.appendChild(h4Title);
@@ -804,7 +805,7 @@ function initializeSwiper() {
 
                 const img = document.createElement('img');
                 img.classList.add('main-product-img');
-                img.src = `./images/${product.img}`;
+                img.src = `https://dubaiavto.uz/uploads/${product.img}`;
                 img.alt = product.title;
 
                 const imageInfo = document.createElement('div');
@@ -813,16 +814,16 @@ function initializeSwiper() {
                 imageInfo.style.justifyContent = 'space-around';
 
                 const span = document.createElement('span');
-                const h4Title = document.createElement('h4');
+                const h4Title = document.createElement('h5');
                 h4Title.innerText = product.title;
-                const h4Price = document.createElement('h4');
+                const h4Price = document.createElement('h5');
                 h4Price.innerText = `${product.price}$`;
 
                 const anchor = document.createElement('a');
                 anchor.href = `https://dubaiavto.uz/cardetail.html?id=${product._id}`;
                 anchor.style.marginTop = '35px';
                 anchor.style.fontSize = '20px';
-                anchor.innerText = 'Koproq';
+                anchor.innerText = 'Подробнее';
 
                 // Append elements to the container
                 span.appendChild(h4Title);
