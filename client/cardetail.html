@@ -255,7 +255,7 @@
             background-color: #dddcdc;
         }
 
-        
+
 
         .swiper-button-next,
         .swiper-button-prev {
@@ -437,11 +437,11 @@
 
                         <div class="swiper-wrapper ">
                             <!-- Add your img elements here -->
-                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage">
-                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage2">
-                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage3">
-                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage4">
-                            <img  class="swiper-slide" src="" alt="Car Image" id="carImage5">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage2">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage3">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage4">
+                            <img class="swiper-slide" src="" alt="Car Image" id="carImage5">
                         </div>
                         <div class=" swiper-button-next"></div>
                         <div class=" swiper-button-prev"></div>
@@ -451,20 +451,14 @@
                     <div class="details-container">
 
                         <div class="detail-slider-ul">
-                            <img class="detail-images-slider slider1"
-                                src=""
-                                alt="">
+                            <img class="detail-images-slider slider1" src="" alt="">
                             <img class="detail-images-slider slider2" src="" alt="">
-                            <img class="detail-images-slider slider3"
-                                src=""
-                                alt="">
-                            <img class="detail-images-slider slider4"
-                                src=""
-                                alt="">
+                            <img class="detail-images-slider slider3" src="" alt="">
+                            <img class="detail-images-slider slider4" src="" alt="">
                             <img class="detail-images-slider slider5" src="" alt="">
                         </div>
                         <div class="title-ul">
-                            <h4 id="carTitle" ></h4>
+                            <h4 id="carTitle"></h4>
                             <h4 style="color: rgb(5, 158, 5);" id="carPrice"></h4>
                         </div>
                         <div class="detail-ul">
@@ -493,6 +487,7 @@
                     <div class="container" id="carContainer"
                         style="display: flex; justify-content: space-around; flex-wrap: wrap;">
                         <!-- Cars will be dynamically added here -->
+
                     </div>
                 </div>
             </div>
@@ -650,58 +645,89 @@
             .then(response => response.json())
             .then(data => {
                 const carContainer = document.getElementById('carContainer');
-                // Loop through the data and dynamically generate HTML
+
                 data.forEach(car => {
                     const listItem = document.createElement('li');
-                    listItem.style.width = '100%';
-                    listItem.style.backgroundColor = '#f2f5f8';
-                    listItem.style.cursor = 'pointer';
-                    listItem.style.padding = '10px';
+                    listItem.style.width = '90%';
+                    listItem.style.backgroundColor = '#F2F5F8';
+                    listItem.style.boxShadow = '0 0 5px #797979';
+                    listItem.style.listStyleType = 'none';
+                    listItem.style.padding = '5px';
                     listItem.style.borderRadius = '5px';
-                    listItem.style.listStyle = 'none';
                     listItem.style.marginTop = '15px';
-                    listItem.addEventListener('click', () => {
-                        // Redirect to cardetail.html with query parameter (car ID or any identifier)
-                        window.location.href = `cardetail.html?id=${car._id}`;
-                    });
+                    listItem.style.cursor = 'pointer';
+
                     const image = document.createElement('img');
                     image.src = `https://dubaiavto.uz/uploads/${car.img}`;
                     image.alt = car.title;
-                    image.style.height = '220px';
-                    image.style.objectFit = 'cover'
+                    image.style.height = '230px';
                     image.style.width = '100%';
 
-                    const title = document.createElement('h4');
-                    title.classList.add('title-product')
+                    const titleContainer = document.createElement('span');
+                    titleContainer.style.display = 'flex';
+                    titleContainer.style.justifyContent = 'space-between';
+                    titleContainer.style.alignItems = 'center';
+                    titleContainer.style.margin = '15px 0px 0 15px';
+
+                    const title = document.createElement('h5');
+                    title.style.color = 'black';
                     title.innerText = car.title;
-                    title.style.height = '50px';
-                    title.style.marginTop = '10px'
+                    title.style.width = '60%'
 
+                    const price = document.createElement('h6');
+                    price.style.backgroundColor = '#797979';
+                    price.style.color = 'white';
+                    price.style.padding = '10px';
+                    price.style.borderTopLeftRadius = '20px';
+                    price.style.borderBottomLeftRadius = '20px';
+                    price.innerText = `$ ${car.price}`;
+
+                    titleContainer.appendChild(title);
+                    titleContainer.appendChild(price);
+
+                    const detailsContainer = document.createElement('span');
+                    detailsContainer.style.display = 'flex';
+                    detailsContainer.style.justifyContent = 'space-between';
+                    detailsContainer.style.alignItems = 'center';
+                    detailsContainer.style.margin = '15px 0px 0 0px';
                     const year = document.createElement('p');
-                    year.innerText = `год:${car.year}`;
-                    year.style.marginTop = '6px'
+                    year.innerHTML = `<i class="fa-regular fa-calendar"></i> ${car.year}`;
+                    year.style.width = '33.3%'
+                    year.style.textAlign = 'center'
+                    year.style.fontSize = '15px'
+                    year.style.padding = '5px'
+                    year.style.boxShadow = '0 0 2px #797979'
+                    const mileage = document.createElement('p');
+                    mileage.innerHTML = `<i class="fa-solid fa-road"></i> ${car.km}`;
+                    mileage.style.width = '33.3%'
+                    mileage.style.textAlign = 'center'
+                    mileage.style.boxShadow = '0 0 2px #797979'
+                    mileage.style.fontSize = '15px'
+                    mileage.style.padding = '5px'
+                    const fuelType = document.createElement('p');
+                    fuelType.innerHTML = `<i class="fa-solid fa-gas-pump"></i> ${car.fuel}`;
+                    fuelType.style.width = '33.3%'
+                    fuelType.style.textAlign = 'center'
+                    fuelType.style.boxShadow = '0 0 2px #797979'
+                    fuelType.style.fontSize = '15px'
+                    fuelType.style.padding = '5px'
+                    detailsContainer.appendChild(year);
+                    detailsContainer.appendChild(mileage);
+                    detailsContainer.appendChild(fuelType);
 
-
-
-                    const price = document.createElement('h4');
-                    price.innerText = `${car.price}$`;
-                    price.style.color = 'green'
-
-                    // Append elements to the list item
                     listItem.appendChild(image);
-                    listItem.appendChild(title);
-                    listItem.appendChild(year);
+                    listItem.appendChild(titleContainer);
+                    listItem.appendChild(detailsContainer);
 
-                    listItem.appendChild(price);
+                    listItem.addEventListener('click', () => {
+                        window.location.href = `cardetail.html?id=${car._id}`;
+                    });
 
-                    // Append the list item to the container
                     carContainer.appendChild(listItem);
                 });
+            
             })
             .catch(error => console.error('Error fetching data:', error));
-
-
-
 
 
 

@@ -617,7 +617,7 @@ input#fname {
 .swiper-slide {
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: 750px;
 }
 
 .platform {
@@ -2272,10 +2272,30 @@ input[type="submit"]:hover {
     letter-spacing: 1px;
     color: rgb(150, 150, 150);
 }
-
+.card-list-add{
+    width: 300px;
+        height: auto;
+        margin: 10px auto;
+}
 @media (max-width: 678px) {
+    .card-list-add{
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+    }
     .review {
         margin-top: 1.5rem;
+    }
+    .main-slide{
+        height: 250px !important;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+    }
+    .main-slide img{
+        height: 250px !important;
     }
 }
 

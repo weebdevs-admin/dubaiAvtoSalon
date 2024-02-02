@@ -17,50 +17,48 @@ function Slider() {
       toast.error('Iltimos rasm tanlang!');
       return;
     }
-
+  
     try {
-      // Gzip orqali yuborish uchun headers ni sozlash
       const headers = {
         'Content-Encoding': 'gzip',
-        'Content-Type': 'image/jpeg', // Fayl formatiga qarab o'zgartiring
+        'Content-Type': file.type,
       };
-
-      // Faylni Gzip qilib, serverga yuborish uchun tayyorlash
+  
       const gzippedFile = await gzipFile(file);
-
-      // Gzipped faylni FormData ga joylashtirish
+  
       const formData = new FormData();
-      formData.append('file', gzippedFile);
-
-      // Make a POST request to upload the gzipped image
+      formData.append('file', gzippedFile, file.name); // Use the original filename
+  
       await axios.post('https://dubaiavto.uz/upload', formData, {
         headers,
       });
-
+  
       const response = await axios.post('https://dubaiavto.uz/slider/create', { img: file.name }, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+  
       if (response.data) {
         toast.success('Slider joylandi');
       } else {
         toast.error('Xatolik yuz berdi!');
       }
-
+  
+      // Fetch the updated list of images
+      fetchImages();
     } catch (error) {
       console.error('Error uploading gzipped image:', error);
       toast.error('Error uploading gzipped image');
     }
   };
-
+  
   const gzipFile = async (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (event) => {
         const arrayBuffer = event.target.result;
-        const blob = new Blob([arrayBuffer], { type: 'image/jpeg' }); // Fayl formatiga qarab o'zgartiring
+        const blob = new Blob([arrayBuffer], { type: file.type }); // Use the file's actual content type
         resolve(blob);
       };
       reader.onerror = reject;
