@@ -15,7 +15,7 @@ function ContactForm() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const paymentResponse = await axios.get('http://localhost:4100/payment');
+        const paymentResponse = await axios.get('https://dubaiavto.uz/payment');
         setPaymentData(paymentResponse.data);
       } catch (error) {
         console.error('Malumotlarni olishda xatolik yuzaga keldi', error);
