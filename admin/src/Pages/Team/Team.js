@@ -35,11 +35,11 @@ function Team() {
   const handleDelete = async (teamItem) => {
     try {
       await axios.delete(`https://dubaiavto.uz/team/delete/${teamItem._id}`);
-      toast.success('deleted successfully');
+      toast.success('успешно удалено');
       fetchImages();
     } catch (error) {
-      console.error('Error deleting image:', error);
-      toast.error('Error deleting image');
+      console.error('Ошибка удаления изображения.:', error);
+      toast.error('Ошибка удаления изображения.');
     }
   };
 
@@ -83,8 +83,8 @@ function Team() {
         },
       });
     } catch (error) {
-      console.error('Error uploading image:', error);
-      toast.error('Error uploading image');
+      console.error('Ошибка при загрузке изображения:', error);
+      toast.error('Ошибка при загрузке изображения');
     }
   };
 
@@ -95,10 +95,10 @@ function Team() {
       try {
         if (editingItemId) {
           await axios.put(`https://dubaiavto.uz/team/update/${editingItemId}`, formData);
-          toast.success('Information updated successfully');
+          toast.success('Информация успешно обновлена');
         } else {
           await axios.post('https://dubaiavto.uz/team/create', formData);
-          toast.success('Information added successfully');
+          toast.success('Информация успешно добавлена');
         }
 
         setEditingItemId(null);
@@ -107,10 +107,10 @@ function Team() {
         fetchImages();
       } catch (error) {
         console.error('Error updating/adding information:', error);
-        toast.error('Error updating/adding information');
+        toast.error('Ошибка обновления/добавления информации.');
       }
     } else {
-      toast.warning('Please fill in the information fields.');
+      toast.warning('Пожалуйста, заполните информационные поля.');
     }
   };
 
@@ -128,13 +128,13 @@ function Team() {
           <label>
             <input name='firstname' type='text' 
             value={formData.firstname}
-            onChange={handleInputChange} placeholder='Ism'/>
+            onChange={handleInputChange} placeholder='Имя'/>
           </label>
           <label>
-            <input name='type' type='text' value={formData.type} onChange={handleInputChange} placeholder='Lavozimi'/>
+            <input name='type' type='text' value={formData.type} onChange={handleInputChange} placeholder='Позиция'/>
           </label>
           <button type="submit" onClick={handleUpload}>
-            Qo'shish
+          Добавлять
           </button>
         </form>
         <div className="team-container">
@@ -147,10 +147,10 @@ function Team() {
                 </div>
                 <div className="team-actions">
                   <button className='edit-btn' onClick={() => handleEdit(teamItem)}>
-                    taxrirlash
+                  редактирование
                   </button>
                   <button className='delete-btn' onClick={() => handleDelete(teamItem)}>
-                    o'chirish
+                    удалить
                   </button>
                 </div>
               </div>

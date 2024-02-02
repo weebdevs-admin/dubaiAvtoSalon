@@ -60,7 +60,7 @@ router.route("/delete/:id").delete(async (req, res, next) => {
     const data = await TeamSchema.findByIdAndDelete(req.params.id);
     if (data) {
       res.status(200).json({
-        msg: "Post deleted successfully",
+        msg: "Post успешно удалено",
       });
     } else {
       res.status(404).json({

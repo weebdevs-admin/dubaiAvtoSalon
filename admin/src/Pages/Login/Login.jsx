@@ -22,17 +22,17 @@ function Login() {
       window.localStorage.setItem('OpenDashboard', login.current.value)
       navigate('/')
     } else {
-      toast.error('Login yoki Parol Xato')
+      toast.error('Ошибка входа или пароля')
     }
   }
   return (
     <>
       <ToastContainer />
       <form className="login-form">
-        <h3 className="title">Kirish</h3>
-        <input ref={login} type="text" placeholder='Login' />
-        <input ref={pasword} type="password" placeholder='Parol' />
-        <button type='button' onClick={handlerBtn}>Kirish</button>
+        <h3 className="title">Входить</h3>
+        <input ref={login} type="text" placeholder='Логин' />
+        <input ref={pasword} type="password" placeholder='Пароль' />
+        <button type='button' onClick={handlerBtn}>Входить</button>
       </form>
     </>
   )

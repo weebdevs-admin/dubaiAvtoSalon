@@ -36,19 +36,19 @@ function Iframe() {
     if (formData.src !== '...') {
       try {
         const response = await axios.put(
-          'https://dubaiavto.uz/iframes/update/65b47a48e6aaffe3ad728b04',
+          'https://dubaiavto.uz/iframes/update/65bd24183eafaa4d8122a390',
           formData
         );
 
         if (response.status === 200) {
-          toast.success('Ma\'lumot muvaffaqiyatli yangilandi')
+          toast.success('Информация успешно обновлена')
         }
       } catch (error) {
         console.error('Ma\'lumotni yangilashda xatolik yuzaga keldi:', error);
         // Xatolikni qayta ishlang
       }
     } else {
-      toast.warning('Ma\'lumotlarda o\'zgartirishsiz holatda saqlanildi.');
+      toast.warning('Данные сохраняются без изменений.');
     }
   };
 
@@ -66,7 +66,7 @@ function Iframe() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className="main">
-        <h2>You Tube Iframe</h2>
+        <h2>YouTube видео</h2>
         <form className="main-form" onSubmit={handleSubmit}>
           <label>
             <input
@@ -78,7 +78,7 @@ function Iframe() {
             />
           </label>
           
-          <button type="submit">Yangilash</button>
+          <button type="submit">Обновлять</button>
         </form>
       </div>
     </>

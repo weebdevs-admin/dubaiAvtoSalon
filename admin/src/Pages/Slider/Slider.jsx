@@ -14,7 +14,7 @@ function Slider() {
 
   const uploadFileWithGzip = async (file) => {
     if (!file) {
-      toast.error('Iltimos rasm tanlang!');
+      toast.error('Пожалуйста, выберите картинку!');
       return;
     }
   
@@ -40,16 +40,16 @@ function Slider() {
       });
   
       if (response.data) {
-        toast.success('Slider joylandi');
+        toast.success('Слайдер установлен.');
       } else {
-        toast.error('Xatolik yuz berdi!');
+        toast.error('Произошла ошибка!');
       }
   
       // Fetch the updated list of images
       fetchImages();
     } catch (error) {
       console.error('Error uploading gzipped image:', error);
-      toast.error('Error uploading gzipped image');
+      toast.error('Ошибка при загрузке изображения в формате gzip.');
     }
   };
   
@@ -94,13 +94,13 @@ function Slider() {
       await axios.delete(`https://dubaiavto.uz/slider/delete/${image._id}`);
 
       // Display success message
-      toast.success(' deleted successfully');
+      toast.success(' успешно удалено');
 
       // Fetch the updated list of images
       fetchImages();
     } catch (error) {
-      console.error('Error deleting image:', error);
-      toast.error('Error deleting image');
+      console.error('Ошибка удаления изображения.:', error);
+      toast.error('Ошибка удаления изображения.');
     }
   };
 
@@ -110,18 +110,18 @@ function Slider() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
-        <h2>Slider O'rnatish</h2>
+        <h2>Настройка слайдера</h2>
         <div className='main-form'>
           <label>
             <input type="file" onChange={handleFileChange} />
           </label>
-          <button onClick={handleUpload}>Qo'shish</button>
+          <button onClick={handleUpload}>Добавлять</button>
         </div>
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
               <img src={`https://dubaiavto.uz/uploads/${e.img}`} alt={e} />
-              <button className='del-btn' onClick={() => handleDelete(e)}>O'chirish</button>
+              <button className='del-btn' onClick={() => handleDelete(e)}>удалить</button>
             </div>
           ))}
         </div>

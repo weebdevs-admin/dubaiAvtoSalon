@@ -39,19 +39,19 @@ function Abaut() {
     if ( formData.title !== '...' || formData.desc !== '...') {
       try {
         const response = await axios.put(
-          'https://dubaiavto.uz/abaut/update/65b47f08e6aaffe3ad728c7c',
+          'https://dubaiavto.uz/abaut/update/65bd25e43eafaa4d8122a3eb',
           formData
         );
 
         if (response.status === 200) {
-          toast.success('Ma\'lumot muvaffaqiyatli yangilandi')
+          toast.success('Информация успешно обновлена')
         }
       } catch (error) {
         console.error('Ma\'lumotni yangilashda xatolik yuzaga keldi:', error);
         // Xatolikni qayta ishlang
       }
     } else {
-      toast.warning('Ma\'lumotlarda o\'zgartirishsiz holatda saqlanildi.');
+      toast.warning('Данные сохраняются без изменений.');
     }
   };
   const handleInputChange = (e) => {
@@ -71,7 +71,7 @@ function Abaut() {
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      toast.error('Iltimos rasm tanlang!');
+      toast.error('Пожалуйста, выберите картинку!');
       return;
     }
 
@@ -89,8 +89,8 @@ function Abaut() {
 
       // Display success message
     } catch (error) {
-      console.error('Error uploading image:', error);
-      toast.error('Error uploading image');
+      console.error('Ошибка при загрузке изображения:', error);
+      toast.error('Ошибка при загрузке изображения');
     }
   };
  
@@ -104,7 +104,7 @@ function Abaut() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
-        <h2>Biz Haqimizda</h2>
+        <h2>О нас</h2>
         <form onSubmit={handleSubmit} className='main-form'>
           <label>
             <input type="file" onChange={handleFileChange} />
@@ -115,7 +115,7 @@ function Abaut() {
               name="iframe"
               value={formData.iframe}
               onChange={handleInputChange}
-              placeholder="Video link"
+              placeholder="Ссылка на видео"
             />
 
           </label>
@@ -125,7 +125,7 @@ function Abaut() {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              placeholder="Sarlavha"
+              placeholder="Заголовок"
             />
           </label>
           <label>
@@ -133,10 +133,10 @@ function Abaut() {
               name="desc"
               value={formData.desc}
               onChange={handleInputChange}
-              placeholder="To'liq ma'lumot"
+              placeholder="Полная информация"
             />
           </label>
-          <button type="submit" onClick={handleUpload}>Yangilash</button>
+          <button type="submit" onClick={handleUpload}>Обновлять</button>
         </form>
         
       </div>

@@ -17,7 +17,7 @@ function Partners() {
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      toast.error('Iltimos rasm tanlang!');
+      toast.error('Пожалуйста, выберите картинку!');
       return;
     }
 
@@ -38,16 +38,16 @@ function Partners() {
       });
 
       if (response.data) {
-        toast.success(' joylandi');
+        toast.success(' размещен');
       } else {
-        toast.error('Xatolik yuz berdi!');
+        toast.error('Произошла ошибка!');
       }
 
 
       // Display success message
     } catch (error) {
-      console.error('Error uploading image:', error);    
-      toast.error('Error uploading image');
+      console.error('Ошибка при загрузке изображения:', error);    
+      toast.error('Ошибка при загрузке изображения');
     }
   };
   useEffect(() => {
@@ -72,13 +72,13 @@ function Partners() {
 
 
       // Display success message
-      toast.success(' deleted successfully');
+      toast.success(' успешно удалено');
 
       // Fetch the updated list of images
       fetchImages();
     } catch (error) {
-      console.error('Error deleting image:', error);
-      toast.error('Error deleting image');
+      console.error('Ошибка удаления изображения.:', error);
+      toast.error('Ошибка удаления изображения.');
     }
   };
 
@@ -88,18 +88,18 @@ function Partners() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
-        <h2>Xamkor Qo'shish</h2>
+        <h2>Добавить партнера</h2>
         <div className='main-form'>
           <label>
             <input type="file" onChange={handleFileChange} />
           </label>
-          <button onClick={handleUpload}>Qo'shish</button>
+          <button onClick={handleUpload}>Добавлять</button>
         </div>
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
               <img src={`https://dubaiavto.uz/uploads/${e.img}`} alt={e} />
-              <button className='del-btn' onClick={() => handleDelete(e)}>O'chirish</button>
+              <button className='del-btn' onClick={() => handleDelete(e)}>удалить</button>
             </div>
           ))}
         </div>

@@ -54,12 +54,12 @@ app.delete('/delete-image/:imageName', (req, res) => {
   const imageName = req.params.imageName;
   const imagePath = `uploads/${imageName}`;
 
-  // Rasm faylini o'chirish
+  // Rasm faylini удалить
   fs.unlink(imagePath, (err) => {
     if (err) {
       console.error(err);
       res.status(500).json({
-        message: 'Rasmni o\'chirishda xatolik yuz berdi'
+        message: 'Rasmni o\'chirishda Произошла ошибка'
       });
     } else {
       res.json({

@@ -46,14 +46,14 @@ function Main() {
         );
 
         if (response.status === 200) {
-          toast.success('Ma\'lumot muvaffaqiyatli yangilandi')
+          toast.success('Информация успешно обновлена')
         }
       } catch (error) {
         console.error('Ma\'lumotni yangilashda xatolik yuzaga keldi:', error);
         // Xatolikni qayta ishlang
       }
     } else {
-      toast.warning('Ma\'lumotlarda o\'zgartirishsiz holatda saqlanildi.');
+      toast.warning('Данные сохраняются без изменений.');
     }
   };
 
@@ -71,7 +71,7 @@ function Main() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className="main">
-        <h2>Bosh Menyu</h2>
+        <h2>Главное меню</h2>
         <form className="main-form" onSubmit={handleSubmit}>
           <label>
             <input
@@ -79,7 +79,7 @@ function Main() {
               name="established"
               value={formData.established}
               onChange={handleInputChange}
-              placeholder="Tashkil etilgan yil"
+              placeholder="Опыт работы"
             />
           </label>
           <label>
@@ -88,7 +88,7 @@ function Main() {
               name="teachers"
               value={formData.teachers}
               onChange={handleInputChange}
-              placeholder="O'qituvchilar"
+              placeholder="Автомобили в наличии"
             />
           </label>
           <label>
@@ -97,7 +97,7 @@ function Main() {
               name="exteacher"
               value={formData.exteacher}
               onChange={handleInputChange}
-              placeholder="Chet ellik o'qituvchilar"
+              placeholder="Автомобили под заказ"
             />
           </label>
           <label>
@@ -106,7 +106,7 @@ function Main() {
               name="students"
               value={formData.students}
               onChange={handleInputChange}
-              placeholder="O'quvchilar"
+              placeholder="Сотрудники"
             />
           </label>
           <label>
@@ -115,10 +115,10 @@ function Main() {
               name="winners"
               value={formData.winners}
               onChange={handleInputChange}
-              placeholder="Olimpiada g'oliblari"
+              placeholder="Проданные автомобили"
             />
           </label>
-          <button type="submit">Yangilash</button>
+          <button type="submit">Обновлять</button>
         </form>
       </div>
     </>

@@ -14,12 +14,12 @@ function LoginEdit() {
 
   const handlePasswordChange = () => {
     if (!currentPassword || !newPassword || !confirmNewPassword) {
-      toast.error('Iltimos, barcha maydonlarni to\'ldiring.');
+      toast.error('Пожалуйста, заполните все поля.');
       return;
     }
 
     if (newPassword !== confirmNewPassword) {
-      toast.error('Yangi parolni tasdiqlash xato.');
+      toast.error(' Ошибка подтверждения нового пароля.');
       return;
     }
 
@@ -31,28 +31,28 @@ function LoginEdit() {
           if (currentPassword === apiPassword) {
             // Joriy parol API-dagi parol bilan to'g'ri keladi
             axios
-              .put('https://dubaiavto.uz/login/update/658ad8c565e4331de7f6a815', {
+              .put('https://dubaiavto.uz/login/update/65ba67861348fc26c28d2a30', {
                 Password: newPassword,
               })
               .then((response) => {
                 if (response.status === 200) {
-                  toast.success('Parol muvaffaqiyatli o\'zgartirildi.');
+                  toast.success('Пароль успешно изменен.');
                   setCurrentPassword('');
                   setNewPassword('');
                   setConfirmNewPassword('');
                 }
               })
               .catch((error) => {
-                toast.error('Parolni o\'zgartirishda xatolik yuzaga keldi.');
+                toast.error('Произошла ошибка при смене пароля.');
                 console.error('Xatolik:', error);
               });
           } else {
-            toast.error('Joriy parol xato.');
+            toast.error('Текущий пароль неверен.');
           }
         }
       })
       .catch((error) => {
-        toast.error('Server bilan ulanishda xatolik yuzaga keldi.');
+        toast.error('Произошла ошибка при подключении к серверу.');
         console.error('Xatolik:', error);
       });
   };
@@ -63,28 +63,28 @@ function LoginEdit() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='Forgot'>
-      <h3 className="title">Parolni o'zgartirish</h3>
+      <h3 className="title">изменить пароль</h3>
       <form className="form">
         <input
           type="password"
-          placeholder="Joriy Parol"
+          placeholder="Текущий пароль"
           value={currentPassword}
           onChange={(e) => setCurrentPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Yangi Parol"
+          placeholder="Новый пароль"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Yangi Parolni Takrorlang"
+          placeholder="Повторите новый пароль"
           value={confirmNewPassword}
           onChange={(e) => setConfirmNewPassword(e.target.value)}
         />
         <button type="button" onClick={handlePasswordChange}>
-          Yangilash
+        Обновлять
         </button>
       </form>
       </div>

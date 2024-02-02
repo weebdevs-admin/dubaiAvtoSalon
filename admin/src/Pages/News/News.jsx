@@ -38,11 +38,11 @@ function News() {
   const handleDelete = async (newsItem) => {
     try {
       await axios.delete(`https://dubaiavto.uz/news/delete/${newsItem._id}`);
-      toast.success('deleted successfully');
+      toast.success('успешно удалено');
       fetchImages();
     } catch (error) {
-      console.error('Error deleting image:', error);
-      toast.error('Error deleting image');
+      console.error('Ошибка удаления изображения.:', error);
+      toast.error('Ошибка удаления изображения.');
     }
   };
 
@@ -108,8 +108,8 @@ const handleInputChange = (e) => {
         },
       });
     } catch (error) {
-      console.error('Error uploading image:', error);
-      toast.error('Error uploading image');
+      console.error('Ошибка при загрузке изображения:', error);
+      toast.error('Ошибка при загрузке изображения');
     }
   };
 
@@ -125,7 +125,7 @@ const handleInputChange = (e) => {
         } else {
           // If editingItemId doesn't exist, create a new item
           await axios.post('https://dubaiavto.uz/news/create', formData);
-          toast.success('Ma\'lumot qo\'shildi');
+          toast.success('Добавлена ​​информация');
         }
 
         setEditingItemId(null);
@@ -147,12 +147,12 @@ const handleInputChange = (e) => {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
-        <h2>Yangiliklar</h2>
+        <h2>Новости</h2>
         <form onSubmit={handleSubmit} className='main-form'>
           <label>
             <select name="option" onChange={handleInputChange} value={formData.option || ''}>
-              <option value="rasm">Rasm</option>
-              <option value="video">Video</option>
+              <option value="rasm">Картина</option>
+              <option value="video">видео</option>
             </select>
           </label>
 
@@ -169,7 +169,7 @@ const handleInputChange = (e) => {
                 name="iframe"
                 value={formData.iframe}
                 onChange={handleInputChange}
-                placeholder="Video havolasi"
+                placeholder="Ссылка на видео"
               />
             </label>
           )}
@@ -180,7 +180,7 @@ const handleInputChange = (e) => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              placeholder="Sarlavha"
+              placeholder="Заголовок"
             />
           </label>
 
@@ -189,12 +189,12 @@ const handleInputChange = (e) => {
               name="desc"
               value={formData.desc}
               onChange={handleInputChange}
-              placeholder="To'liq ma'lumot"
+              placeholder="Полная информация"
             />
           </label>
 
           <button type="submit" onClick={handleUpload}>
-            Yangilash
+          Обновлять
           </button>
         </form>
         <div className="news-container">
@@ -208,10 +208,10 @@ const handleInputChange = (e) => {
                 </div>
                 <div className="news-actions">
                   <button className='edit-btn' onClick={() => handleEdit(newsItem)}>
-                    Taxrirlash
+                  Редактирование
                   </button>
                   <button className='delete-btn' onClick={() => handleDelete(newsItem)}>
-                    O'chirish
+                    удалить
                   </button>
                 </div>
               </div>

@@ -50,11 +50,11 @@ function Product() {
     const handleDelete = async (newsItem) => {
         try {
             await axios.delete(`https://dubaiavto.uz/product/delete/${newsItem._id}`);
-            toast.success('deleted successfully');
+            toast.success('успешно удалено');
             fetchImages();
         } catch (error) {
-            console.error('Error deleting image:', error);
-            toast.error('Error deleting image');
+            console.error('Ошибка удаления изображения.:', error);
+            toast.error('Ошибка удаления изображения.');
         }
     };
 
@@ -165,10 +165,10 @@ function Product() {
                 });
             }
     
-            toast.success('Rasmlar mufaqqiyatli yuklandi');
+            toast.success('Изображения успешно загружены');
         } catch (error) {
-            console.error('Error uploading images:', error);
-            toast.error('Rasmlarni yuklashda xatolik yuz berdi');
+            console.error('Ошибка при загрузке изображенияs:', error);
+            toast.error('Произошла ошибка при загрузке изображений');
         }
     };
     
@@ -180,10 +180,10 @@ function Product() {
             try {
                 if (editingItemId) {
                     await axios.put(`https://dubaiavto.uz/product/update/${editingItemId}`, formData);
-                    toast.success('Information updated successfully');
+                    toast.success('Информация успешно обновлена');
                 } else {
                     await axios.post('https://dubaiavto.uz/product/create', formData);
-                    toast.success('Ma\'lumot qo\'shildi');
+                    toast.success('Добавлена ​​информация');
                 }
 
                 setEditingItemId(null);
@@ -206,10 +206,10 @@ function Product() {
                 fetchImages();
             } catch (error) {
                 console.error('Error updating/adding information:', error);
-                toast.error('Error updating/adding information');
+                toast.error('Ошибка обновления/добавления информации.');
             }
         } else {
-            toast.warning('Information not modified in the fields.');
+            toast.warning('Информация, не измененная в полях.');
         }
     };
 
@@ -219,7 +219,7 @@ function Product() {
             {navbar ? <Sidebar /> : null}
             <Navbar />
             <div className='main'>
-                <h2>Mashinalar</h2>
+                <h2>Добавить автомобиль</h2>
                 <form onSubmit={handleSubmit} className='main-form'>
                     <div className='image-form'>
                         <input type="file" onChange={handleFileChange} />
@@ -230,7 +230,7 @@ function Product() {
                     </div>
                     <label>
                         <select name="category" onChange={handleInputChange} value={formData.category || ''}>
-                            <option>Choose</option>
+                            <option>Выбирать</option>
                             <option value="stock">В наличии</option>
                             <option value="order">Под заказ</option>
                         </select>
@@ -241,7 +241,7 @@ function Product() {
                             name="title"
                             value={formData.title}
                             onChange={handleInputChange}
-                            placeholder="Mashina nomi"
+                            placeholder="Имя машины"
                         />
                     </label>
                     <label>
@@ -250,7 +250,7 @@ function Product() {
                             name="year"
                             value={formData.year}
                             onChange={handleInputChange}
-                            placeholder="Yili"
+                            placeholder="Год автомобиля"
                         />
                     </label>
                     <label>
@@ -259,7 +259,7 @@ function Product() {
                             name="fuel"
                             value={formData.fuel}
                             onChange={handleInputChange}
-                            placeholder="Yoqilgi"
+                            placeholder="Топливо"
                         />
                     </label>
                     <label>
@@ -268,7 +268,7 @@ function Product() {
                             name="km"
                             value={formData.km}
                             onChange={handleInputChange}
-                            placeholder="Km"
+                            placeholder="пробег"
                         />
                     </label>
                     <label>
@@ -277,7 +277,7 @@ function Product() {
                             name="price"
                             value={formData.price}
                             onChange={handleInputChange}
-                            placeholder="Narxi"
+                            placeholder="Цена"
                         />
                     </label>
                     <label>
@@ -285,11 +285,11 @@ function Product() {
                             name="desc"
                             value={formData.desc}
                             onChange={handleInputChange}
-                            placeholder="To'liq ma'lumot"
+                            placeholder="Полная информация"
                         />
                     </label>
                     <button type="submit" onClick={handleUpload}>
-                        Yangilash
+                    Обновлять
                     </button>
                 </form>
                 <div className="news-container">
@@ -303,10 +303,10 @@ function Product() {
                                 </div>
                                 <div className="news-actions">
                                     <button className='edit-btn' onClick={() => handleEdit(newsItem)}>
-                                        Taxrirlash
+                                    Редактирование
                                     </button>
                                     <button className='delete-btn' onClick={() => handleDelete(newsItem)}>
-                                        O'chirish
+                                    удалить
                                     </button>
                                 </div>
                             </div>
