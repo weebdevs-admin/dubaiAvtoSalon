@@ -1178,7 +1178,7 @@ li.movingimg1 {
 
 .abaut-main-img {
     width: 800px;
-    height: 500px;
+    height: auto;
 }
 
 .foto-main {
@@ -1248,6 +1248,15 @@ li.movingimg1 {
 }
 
 @media (max-width:767px) {
+    .foto-main {
+        cursor: pointer;
+        margin: 10px;
+        width: 100%;
+        height: 270px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        transition: transform 0.3s ease-in-out;
+    }
     .image-container {
         position: relative;
         width: 96% !important;
@@ -1266,7 +1275,7 @@ li.movingimg1 {
 
     .abaut-main-img {
         width: 93% !important;
-        height: 320px;
+        height: auto;
         margin-top: 30px;
     }
 
@@ -1293,7 +1302,7 @@ li.movingimg1 {
     }
 
     .joinus-img {
-        width: 400px !important;
+        width: 320px !important;
         height: 360px;
         object-fit: cover;
         border-radius: 10px;
@@ -2279,7 +2288,7 @@ input[type="submit"]:hover {
 }
 @media (max-width: 678px) {
     .card-list-add{
-        width: 80%;
+        width: 100%;
         height: auto;
         margin: 10px auto;
     }
@@ -2591,7 +2600,7 @@ input[type="submit"]:hover {
     flex-wrap: wrap;
     list-style: none;
     gap: 10px;
-    padding-left: 20px;
+    padding-left: 2.5vw;
 }
 
 .image-container {
@@ -2609,6 +2618,32 @@ input[type="submit"]:hover {
     transition: filter 0.5s ease;
     cursor: pointer;
     position: relative;
+}
+#iframe-container{
+    height: 500px !important;
+    margin-bottom: 100px !important;
+}
+
+@media(max-width:767px){
+    #iframe-container{
+        height: 200px !important;
+        margin-bottom: 100px !important;
+    }
+    .main-product-img {
+        width: 95vw !important; 
+        height: 250px !important;
+        object-fit: cover;
+        transition: filter 0.5s ease;
+        cursor: pointer;
+        position: relative;
+    }
+    .image-container {
+        position: relative;
+        width: 95vw;
+        height: 250px !important;
+        overflow: hidden;
+        border-radius: 2px;
+    }
 }
 
 .main-product-img::before {
@@ -2718,8 +2753,23 @@ input[type="submit"]:hover {
     flex-wrap: wrap;
     gap: 10px;
 }
+.car-banner {
+    width: 100%;
+    height: 250px;
+    background-image: url('../images/banner-bg.jpg');
+    filter: brightness(50%);
+    background-size: cover;
 
+}
 @media screen and (max-width: 768px) {
+    .car-banner {
+        width: 100%;
+        height: 100px;
+        background-image: url('../images/banner-bg.jpg');
+        filter: brightness(50%);
+        background-size: cover;
+    
+    }
     .swiper-navBtn {
         display: none;
     }
@@ -2731,14 +2781,7 @@ input[type="submit"]:hover {
     }
 }
 
-.car-banner {
-    width: 100%;
-    height: 250px;
-    background-image: url('../images/banner-bg.jpg');
-    filter: brightness(50%);
-    background-position: top left;
 
-}
 
 .product-review, .product-review-order{
     display: flex;

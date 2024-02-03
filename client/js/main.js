@@ -437,7 +437,7 @@ fetch('https://dubaiavto.uz/team')
             title.textContent = abautItem.title;
 
             const description = document.createElement('p');
-            description.style.textAlign = 'center';
+            description.style.textAlign = 'justify';
             description.textContent = abautItem.desc;
 
             
@@ -449,8 +449,7 @@ fetch('https://dubaiavto.uz/team')
                 const videoIframe = document.createElement('iframe');
                 videoIframe.src = abautItem.iframe;
                 videoIframe.width = '100%';
-                videoIframe.height = '315'; // You can adjust the height as needed
-
+                videoIframe.setAttribute('id', 'iframe-container');
                 textDiv.appendChild(videoIframe);
             }
 
