@@ -50,7 +50,10 @@
         prevButton: '.swiper-button-prev',
         spaceBetween: 0,
         parallax: true,
-        autoplay: 400,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
         speed: 800,
         autoplayDisableOnInteraction: false,
         navigation: {
@@ -58,6 +61,7 @@
             prevEl: ".swiper-button-prev",
         },
     });
+    
     /*=============================================
         =           Data Background             =
     =============================================*/
@@ -438,6 +442,7 @@ fetch('https://dubaiavto.uz/team')
 
             const description = document.createElement('p');
             description.style.textAlign = 'justify';
+            description.classList.add('abaut-desc')
             description.textContent = abautItem.desc;
 
             

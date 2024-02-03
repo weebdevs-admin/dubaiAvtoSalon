@@ -5942,8 +5942,7 @@ a.text-dark:focus, a.text-dark:hover {
     size: a3; }
   body {
     min-width: 992px !important; }
-  .container {
-    min-width: 1300px !important; }
+ 
   .navbar {
     display: none; }
   .badge {
