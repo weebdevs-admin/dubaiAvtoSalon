@@ -77,7 +77,7 @@ function Main() {
         <form className="main-form" onSubmit={handleSubmit}>
           <label>
             <input
-              type="text"
+              type="number"
               name="established"
               value={formData.established}
               onChange={handleInputChange}
@@ -86,7 +86,7 @@ function Main() {
           </label>
           <label>
             <input
-              type='text'
+              type='number'
               name="teachers"
               value={formData.teachers}
               onChange={handleInputChange}
@@ -95,7 +95,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="text"
+              type="number"
               name="exteacher"
               value={formData.exteacher}
               onChange={handleInputChange}
@@ -104,7 +104,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="text"
+              type="number"
               name="students"
               value={formData.students}
               onChange={handleInputChange}
@@ -113,7 +113,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="text"
+              type="number"
               name="winners"
               value={formData.winners}
               onChange={handleInputChange}

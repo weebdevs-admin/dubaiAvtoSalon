@@ -321,7 +321,7 @@
                 </li>
                 <li>
                     <p>Проданные автомобили</p>
-                    <h2 class="discharge5">0</h2>
+                    <div style="display: flex; justify-content: space-around; align-items: center;"><h2 class="discharge5">0</h2> <h2 style="margin-left: 5px; margin-bottom: 15px;"> +</h2></div>
                 </li>
             </ul>
         </div>
@@ -675,12 +675,14 @@
                         duration: 2000,    // Animatsiya davri (milisaniyada)
                     };
 
+                    // Har bir ma'lumot uchun alohida odometr
                     const odometer1 = new Odometer({ el: document.querySelector('.discharge'), ...options });
                     const odometer2 = new Odometer({ el: document.querySelector('.discharge2'), ...options });
                     const odometer3 = new Odometer({ el: document.querySelector('.discharge3'), ...options });
                     const odometer4 = new Odometer({ el: document.querySelector('.discharge4'), ...options });
                     const odometer5 = new Odometer({ el: document.querySelector('.discharge5'), ...options });
 
+                    // Ma'lumotlarni odometrlarga qo'yish
                     odometer1.update(base[0].established);
                     odometer2.update(base[0].teachers);
                     odometer3.update(base[0].exteacher);
@@ -693,7 +695,6 @@
             .catch(error => {
                 console.error('Xatolik:', error);
             });
-
 
 
 
