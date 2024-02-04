@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 
@@ -28,6 +30,24 @@
 
 
 </head>
+<style>
+    .product-h6 {
+        margin-left: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    @media (max-width:767px) {
+        .product-h6 {
+            margin-left: -10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .product-h6 h3{
+            font-size: 20px;
+        }
+    }
+</style>
 
 <body>
     <!-- preloader Start -->
@@ -156,22 +176,34 @@
 
 
 
-    <h4 class="container" style="color: rgb(4   0, 35, 51); text-align: center; margin-top: 30px;">Партнерские организации
-    </h4>
-    <div id="partners-container" class="container"
-        style=" width: 100%; gap: 10px; overflow: auto; display: flex; padding: 20px; ">
+   
 
+    <div >
+        <div class="container swiper">
+
+            <div class="slide-container">
+                <div class="card-wrapper2 swiper-wrapper">
+
+                </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
 
 
 
-
-
-
     <!-- <h2  style="margin: 30px; color: #797979;">В наличии</h2> -->
+   <div class="container">
+    <div class=" 
+    product-h6" c style="display: flex; align-items: center; justify-content: space-between;">
+        <h3 class="container ">Автомобили в наличии
+        </h3>
+        <h3><a href="cars.html" style="color: black;"><i class="fa-solid fa-arrow-right"></i></a></h3>
+    </div>
+   </div>
     <div class="container product-review">
-        <h4 class="container" style="margin-left: 20px; margin-top: 30px;  margin-bottom: 30px;">Автомобили в наличии
-        </h4>
 
     </div>
 
@@ -219,9 +251,17 @@
         </div>
 
     </div>
-
+    <div class="container">
+        <div class=" 
+        product-h6" c style="display: flex; align-items: center; justify-content: space-between;">
+            <h3 class="container ">Автомобили под заказ
+            </h3>
+            <h3><a href="order.html" style="color: black;"><i class="fa-solid fa-arrow-right"></i></a></h3>
+        </div>
+       </div>
+   
     <div class="container product-review-order">
-        <h4 class="container" style="margin-left: 20px; margin-top: 30px; margin-bottom: 30px;">Автомобили под заказ</h4>
+
     </div>
 
     <div class="section3">
@@ -442,6 +482,58 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
+
+         // Fetch data from the API
+         fetch('https://dubaiavto.uz/partners')
+            .then(response => response.json())
+            .then(newsData => {
+                // Call a function to update the slider with the fetched data
+                updateSlider2(newsData);
+            })
+            .catch(error => console.error('Error fetching news data:', error));
+
+        // Function to update the slider with news data
+        function updateSlider2(newsData) {
+            const cardWrapper = document.querySelector('.card-wrapper2');
+
+            // Loop through the news data and dynamically generate slider cards
+            newsData.forEach(news => {
+                const card = document.createElement('a');
+                card.href = 'http://localhost:4100/news.html'
+                card.classList.add('card', 'swiper-slide');
+                card.style.height = '200px';
+                card.style.margin = '0';
+                card.style.padding = '0';
+
+                const imageBox = document.createElement('div');
+                imageBox.classList.add('image-box');
+
+                if (news.img) {
+                    const img = document.createElement('img');
+                    img.src = `https://dubaiavto.uz/uploads/${news.img}`;
+                    img.alt = 'News Image';
+                    imageBox.appendChild(img);
+                } 
+
+               
+
+                card.appendChild(imageBox);
+
+                cardWrapper.appendChild(card);
+            });
+
+            // Initialize or update the swiper slider
+            initializeSwiper();
+        }
+
+
+
+
+
+
+
+
+
         // Fetch data from the API
         fetch('https://dubaiavto.uz/news')
             .then(response => response.json())
@@ -517,6 +609,11 @@
             new Swiper('.swiper', {
                 slidesPerView: 1,
                 spaceBetween: 10,
+                parallax: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -536,6 +633,11 @@
             centerSlide: "true",
             fade: "true",
             grabCursor: "true",
+            parallax: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -822,7 +924,7 @@
                 imageInfo.classList.add('image-info');
                 imageInfo.style.display = 'flex';
                 imageInfo.style.justifyContent = 'space-around';
-
+                imageInfo.style.alignItems ='center'
                 const span = document.createElement('span');
                 const h4Title = document.createElement('h5');
                 h4Title.innerText = product.title;
@@ -834,10 +936,12 @@
                 const anchor = document.createElement('a');
                 anchor.href = `https://dubaiavto.uz/cardetail.html?id=${product._id}`;
                 anchor.style.marginTop = '35px';
-                anchor.style.fontSize = '20px';
                 anchor.innerText = 'Подробнее';
-                anchor.style.marginTop = '35px';
                 anchor.style.fontSize = '15px';
+                anchor.style.backgroundColor = 'white'
+                anchor.style.padding = '5px 10px'
+                anchor.style.borderRadius = '5px'
+                anchor.style.color = 'black'
 
                 // Append elements to the container
                 span.appendChild(h4Title);

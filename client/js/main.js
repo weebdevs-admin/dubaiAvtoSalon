@@ -482,6 +482,11 @@ fetch('https://dubaiavto.uz/slider')
         const mySwiper = new Swiper('.mySwiper', {
             slidesPerView: 1,
             spaceBetween: 10,
+            parallax: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+              },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
