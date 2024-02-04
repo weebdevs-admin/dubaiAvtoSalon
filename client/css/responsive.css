@@ -436,13 +436,9 @@
         height: 241px;
     }
 
-    .onlinelearning1 img {
-        width: 72%;
-        padding: 100px 0 0 0;
-        float: right;
-    }
+    
 
-    .navbar-brand img {
+    .navbar-brand iframe {
         width: 100%;
         position: relative;
         left: -6px;
@@ -792,12 +788,7 @@
         width: 80%;
     }
 
-    .onlinelearning1 img {
-        width: 100%;
-        padding: 44px 0 0 0;
-        float: right;
-        position: relative;
-    }
+  
 
     .side_form {
         background-color: white;
@@ -1494,11 +1485,7 @@
         padding: 0 0 7px 0;
     }
 
-    .onlinelearning1 img {
-        width: 100%;
-        padding: 44px 0 0 0;
-        float: right;
-    }
+    
 
     .website_access a {
         background-color: #ffb739;

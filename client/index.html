@@ -288,10 +288,11 @@
 
                 </div>
 
-                <div class="col-sm-7">
+                <div class="col-sm-7" style="margin-top: 50px;">
                     <div class="onlinelearning1">
-                        <img style="width: 450px;" src="images/abaut-car.png" alt="">
-                        <div class="onlinelearning2"></div>
+                        <div id="iframe-container">
+
+                        </div>
 
                     </div>
 
@@ -328,9 +329,7 @@
 
 
 
-    <div id="iframe-container" style="display: flex; justify-content: center;" class="container">
-
-    </div>
+    
 
 
 
@@ -735,9 +734,8 @@
                     const iframeHtml = data.map(iframe => `
             <iframe
               key="${iframe._id}"
-              style="margin-top: 30px; margin-bottom: 30px;"
               width="100%"
-              height="100%"
+              height="80%"
               src="${iframe.src}"
               title="YouTube video player"
               frameborder="0"
