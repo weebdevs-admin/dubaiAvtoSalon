@@ -636,7 +636,7 @@
                 document.getElementById('carTitle').innerText = car.title;
                 document.getElementById('carYear').innerText = `год выпуска: ${car.year}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
-                document.getElementById('carPrice').innerText = `Подробнее ${car.price}$`;
+                document.getElementById('carPrice').innerText = `$ ${car.price}`;
                 if (car.category === 'stock') {
                     document.querySelector('.order-btn').innerText = 'Оставить заявку';
                 } else {

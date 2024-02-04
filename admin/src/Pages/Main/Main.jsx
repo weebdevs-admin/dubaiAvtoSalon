@@ -10,9 +10,11 @@ import axios from 'axios';
 function Main() {
   const { navbar, setNavbar } = useContext(Context);
   const [formData, setFormData] = useState({
-    Title: '...',
-    Desc: '...',
-    Button: '...',
+    established: '...',
+    teachers: '...',
+    exteacher: '...',
+    students: '...',
+    winners: '...',
   });
 
   // API-dan ma'lumotlarni olish uchun useEffect qo'shing
@@ -75,7 +77,7 @@ function Main() {
         <form className="main-form" onSubmit={handleSubmit}>
           <label>
             <input
-              type="number"
+              type="text"
               name="established"
               value={formData.established}
               onChange={handleInputChange}
@@ -84,7 +86,7 @@ function Main() {
           </label>
           <label>
             <input
-              type='number'
+              type='text'
               name="teachers"
               value={formData.teachers}
               onChange={handleInputChange}
@@ -93,7 +95,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="number"
+              type="text"
               name="exteacher"
               value={formData.exteacher}
               onChange={handleInputChange}
@@ -102,7 +104,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="number"
+              type="text"
               name="students"
               value={formData.students}
               onChange={handleInputChange}
@@ -111,7 +113,7 @@ function Main() {
           </label>
           <label>
             <input
-              type="number"
+              type="text"
               name="winners"
               value={formData.winners}
               onChange={handleInputChange}

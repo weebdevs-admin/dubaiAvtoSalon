@@ -679,7 +679,7 @@ input#fname {
 }
 
 .onlinelearning {
-    padding: 100px 0 0 0px;
+    padding: 50px 0 0 0px;
 }
 
 .onlinelearning h6 {
@@ -1148,9 +1148,7 @@ li.movingimg1 {
     text-decoration: none;
 }
 
-.section3 {
-    padding: 0 0 70px 0;
-}
+
 
 .webdesign {
 
@@ -2794,8 +2792,16 @@ input[type="submit"]:hover {
     background-size: cover;
 
 }
+.section3{
+    height: 500px;
+}
+
 
 @media screen and (max-width: 768px) {
+    .section3{
+        height: 1000px !important;
+    }
+    
     .onlinelearning1 iframe {
         width: 100%;
         height: 300px;

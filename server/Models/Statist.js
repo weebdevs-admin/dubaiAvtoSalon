@@ -3,19 +3,19 @@ const Schema = mongoose.Schema;
 
 let Statist = new Schema({
   established: {
-    type: Number,
+    type: String,
   },
   teachers: {
-    type: Number,
+    type: String,
   },
   exteacher: {
-    type: Number,
+    type: String,
   },
   students: {
-    type: Number,
+    type: String,
   },
   winners: {
-    type: Number,
+    type: String,
   }
 
 });

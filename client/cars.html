@@ -291,7 +291,20 @@
 
     <script>
 
+    async function fetchCars(category) {
+        showLoader(); // Show loader before fetching data
 
+        try {
+            // Use the category parameter in the URL
+            const response = await fetch(`https://dubaiavto.uz/product?category=${category}`);
+            const data = await response.json();
+            hideLoader(); // Hide loader after data is fetched
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            hideLoader(); // Hide loader in case of an error
+        }
+    }
         async function fetchCars() {
             try {
                 const response = await fetch('https://dubaiavto.uz/product');
@@ -301,93 +314,7 @@
             }
         }
 
-        async function renderCars() {
-            const data = await fetchCars();
-            const carContainer = document.getElementById('carContainer');
-            carContainer.innerHTML = ''; // Clear previous content
-
-            // Loop through the data and dynamically generate HTML
-            data.forEach(car => {
-                const listItem = document.createElement('li');
-                listItem.classList.add = 'card-list-add'
-                listItem.style.backgroundColor = '#F2F5F8';
-                listItem.style.boxShadow = '0 0 5px #797979';
-                listItem.style.listStyleType = 'none';
-                listItem.style.padding = '5px';
-                listItem.style.borderRadius = '5px';
-                listItem.style.marginTop = '15px';
-                listItem.style.cursor = 'pointer';
-
-                const image = document.createElement('img');
-                image.src = `https://dubaiavto.uz/uploads/${car.img}`;
-                image.alt = car.title;
-                image.style.height = '230px';
-                image.style.width = '100%';
-
-                const titleContainer = document.createElement('span');
-                titleContainer.style.display = 'flex';
-                titleContainer.style.justifyContent = 'space-between';
-                titleContainer.style.alignItems = 'center';
-                titleContainer.style.margin = '15px 0px 0 15px';
-
-                const title = document.createElement('h5');
-                title.style.color = 'black';
-                title.innerText = car.title;
-                title.style.width = '60%'
-
-                const price = document.createElement('h6');
-                price.style.backgroundColor = '#797979';
-                price.style.color = 'white';
-                price.style.padding = '10px';
-                price.style.borderTopLeftRadius = '20px';
-                price.style.borderBottomLeftRadius = '20px';
-                price.innerText = `$ ${car.price}`;
-
-                titleContainer.appendChild(title);
-                titleContainer.appendChild(price);
-
-                const detailsContainer = document.createElement('span');
-                detailsContainer.style.display = 'flex';
-                detailsContainer.style.justifyContent = 'space-between';
-                detailsContainer.style.alignItems = 'center';
-                detailsContainer.style.margin = '15px 0px 0 0px';
-                const year = document.createElement('p');
-                year.innerHTML = `<i class="fa-regular fa-calendar"></i> ${car.year}`;
-                year.style.width = '33.3%'
-                year.style.textAlign = 'center'
-                year.style.fontSize = '15px'
-                year.style.padding = '5px'
-                year.style.boxShadow = '0 0 2px #797979'
-                const mileage = document.createElement('p');
-                mileage.innerHTML = `<i class="fa-solid fa-road"></i> ${car.km}`;
-                mileage.style.width = '33.3%'
-                mileage.style.textAlign = 'center'
-                mileage.style.boxShadow = '0 0 2px #797979'
-                mileage.style.fontSize = '15px'
-                mileage.style.padding = '5px'
-                const fuelType = document.createElement('p');
-                fuelType.innerHTML = `<i class="fa-solid fa-gas-pump"></i> ${car.fuel}`;
-                fuelType.style.width = '33.3%'
-                fuelType.style.textAlign = 'center'
-                fuelType.style.boxShadow = '0 0 2px #797979'
-                fuelType.style.fontSize = '15px'
-                fuelType.style.padding = '5px'
-                detailsContainer.appendChild(year);
-                detailsContainer.appendChild(mileage);
-                detailsContainer.appendChild(fuelType);
-
-                listItem.appendChild(image);
-                listItem.appendChild(titleContainer);
-                listItem.appendChild(detailsContainer);
-
-                listItem.addEventListener('click', () => {
-                    window.location.href = `cardetail.html?id=${car._id}`;
-                });
-
-                carContainer.appendChild(listItem);
-            });
-
-        }
+       
 
         function searchCars(event) {
             const searchTerm = event.target.value.toLowerCase();
@@ -406,7 +333,6 @@
         }
 
         // Initial render
-        renderCars();
         async function fetchCars(category) {
             try {
                 // Use the category parameter in the URL
@@ -529,19 +455,13 @@
         renderCarsByCategory('stock');
 
         const stockFilter = document.getElementById('stockFilter');
-        const orderFilter = document.getElementById('orderFilter');
 
         // Event listeners for filter links
         stockFilter.addEventListener('click', () => {
             renderCarsByCategory('stock')
             stockFilter.style.borderBottom = '2px solid black'
-            orderFilter.style.borderBottom = '0px solid black'
         });
-        orderFilter.addEventListener('click', () => {
-            renderCarsByCategory('order')
-            stockFilter.style.borderBottom = '0px solid black'
-            orderFilter.style.borderBottom = '2px solid black'
-        });
+        
 
     </script>
     <script src="js/jquery-3.6.0.min.js"></script>
