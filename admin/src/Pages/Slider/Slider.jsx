@@ -29,7 +29,7 @@ function Slider() {
       const formData = new FormData();
       formData.append('file', gzippedFile, file.name); // Use the original filename
   
-      await axios.post('http://147.78.66.76:4100/upload', formData, {
+      await axios.post('https://dubaiavto.uz/upload', formData, {
         headers,
       });
   
