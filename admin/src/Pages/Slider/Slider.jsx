@@ -33,7 +33,7 @@ function Slider() {
         headers,
       });
   
-      const response = await axios.post('http://147.78.66.76:4100/slider/create', { img: file.name }, {
+      const response = await axios.post('https://dubaiavto.uz/slider/create', { img: file.name }, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -81,7 +81,7 @@ function Slider() {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://147.78.66.76:4100/slider');
+      const response = await axios.get('https://dubaiavto.uz/slider');
       setImages(response.data);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -91,7 +91,7 @@ function Slider() {
   const handleDelete = async (image) => {
     try {
       // Make a DELETE request to delete the image from the server
-      await axios.delete(`http://147.78.66.76:4100/slider/delete/${image._id}`);
+      await axios.delete(`https://dubaiavto.uz/slider/delete/${image._id}`);
 
       // Display success message
       toast.success(' успешно удалено');
@@ -120,7 +120,7 @@ function Slider() {
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
-              <img src={`http://147.78.66.76:4100/uploads/${e.img}`} alt={e} />
+              <img src={`https://dubaiavto.uz/uploads/${e.img}`} alt={e} />
               <button className='del-btn' onClick={() => handleDelete(e)}>удалить</button>
             </div>
           ))}
