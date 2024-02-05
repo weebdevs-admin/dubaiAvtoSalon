@@ -70,8 +70,7 @@
         .detail-ul {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-
+            align-items: center;
 
         }
 
@@ -82,6 +81,7 @@
         }
 
         @media only screen and (min-width: 767px) and (max-width: 1200px) {
+
 
             .image-container {
                 flex-wrap: wrap;
@@ -102,8 +102,22 @@
             margin-top: 5px;
             margin-left: 15px;
         }
+        .rec-title2{
+            display: none;
+        }
 
         @media (max-width:767px) {
+            .details-container {
+                padding: 5px;
+                width: 100%;
+
+            }
+            .rec-title2{
+                display: block;
+                margin: 20px;
+                margin-left: -100px;
+            }
+
             .details-containe {
                 padding: 10px;
                 width: 100%;
@@ -118,14 +132,13 @@
             }
 
             .rec-title {
-                margin-top: 20px;
-                margin-left: 0;
-                text-align: center;
-                font-size: 25px;
+                display: none;
             }
 
             .title-ul {
                 display: flex;
+                flex-direction: column;
+                align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
             }
@@ -136,10 +149,8 @@
 
             .detail-ul {
                 display: flex;
-                justify-content: center;
-                flex-direction: column;
+                justify-content: space-between;
                 align-items: center;
-                flex-wrap: wrap;
             }
 
             .image-container {
@@ -159,11 +170,15 @@
 
             .recomended-cars {
                 width: 100vw;
-                margin: -7px;
-                height: 500px;
-                overflow: auto;
+                margin: 7px;
+                margin-bottom: 20px;
+                height: auto;
+                overflow-x: auto;
+                /* Enable horizontal scroll */
+                /* white-space: nowrap; */
+                /* Prevent wrapping to the next line */
             }
-
+           
             .image-container {
                 width: 100%;
                 height: auto;
@@ -193,20 +208,33 @@
         }
 
         /* CSS for modal */
-
+        .modal-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(20, 17, 17, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
 
         .modal-content {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             width: 700px;
-            height: 400px;
-            z-index: 999;
+            height: 440px;
+            z-index: 999999;
             transform: translate(-50%, -50%);
+            background-image: url('./images/modal-bg.jpg');
             padding: 20px;
-            background-color: #fff;
             border-radius: 5px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
         }
 
         #orderForm {
@@ -219,21 +247,25 @@
 
         #orderForm input {
             height: 40px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #797979;
         }
 
         #orderForm button {
             height: 40px;
-            background-color: rgb(21, 122, 21);
+            background-color: #797979;
             color: white;
             outline: none;
             border: none;
+            border-radius: 3px;
         }
 
         .close {
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 20px;
+            font-size: 25px;
             cursor: pointer;
         }
 
@@ -242,7 +274,7 @@
         .detail-slider-ul {
             display: flex;
             width: 100%;
-            justify-content: space-around;
+            justify-content: space-between;
             gap: 2px;
             height: 100px;
             margin-top: 140px;
@@ -272,12 +304,39 @@
             color: #fff;
         }
 
+        .display-none {
+            display: none;
+        }
+
+        .rec-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
         @media (max-width: 767px) {
+            .rec-container {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+            }
+            
+            .rec-container li{
+                margin: 10px;
+            }
+            .rec-container img {
+                width: 300px !important;
+            }
+
+
+            #carTitle {
+                margin-top: -30px;
+            }
 
             .swiper-button-next,
             .swiper-button-prev {
                 position: absolute;
-                top: 10%;
+                top: 100px;
                 width: calc(var(--swiper-navigation-size)/ 44 * 27);
                 height: var(--swiper-navigation-size);
                 margin-top: calc(0px - (var(--swiper-navigation-size)/ 2));
@@ -297,7 +356,7 @@
             .detail-slider-ul {
                 display: flex;
                 width: 100%;
-                justify-content: space-around;
+                justify-content: space-between;
                 height: 100px;
                 margin-top: 140px;
                 margin-bottom: -130px;
@@ -308,9 +367,8 @@
                 height: 65px;
                 background-color: #dddcdc;
             }
-            
+
         }
-       
     </style>
 </head>
 
@@ -338,17 +396,44 @@
         </div>
     </div>
     <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()" style="font-size: 30px;">&times;</span>
-        <h2 style="text-align: center;">Оставить заявку
-        </h2>
-        <form id="orderForm">
-            <input type="text" id="name" name="name" placeholder="Имя" required>
+    <div class="modal-bg">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" style="font-size: 30px;">&times;</span>
+            <h3 style="text-align: center;">Оставить заявку
+            </h3>
+            <form id="orderForm">
+                <input type="text" id="name" name="name" placeholder="Имя" required>
 
-            <input type="number" id="phone" name="phone" placeholder="Телефон" required>
+                <input type="number" id="phone" name="phone" placeholder="Телефон" required>
 
-            <button type="button" onclick="submitOrder()">Отправить заказ</button>
-        </form>
+                <button type="button" onclick="submitOrder()">Отправить заказ</button>
+            </form>
+            <div class="copy">
+                <ul style="display: flex; flex-wrap: nowrap; justify-content: center;  width: 100%;">
+
+                    <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
+                                class="fa fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co" style="  background: #f09433; 
+                            background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+                            background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+                            "><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a>
+                    </li>
+                    <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co "
+                            style="background-color: red;"><i class="fa fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+            <div
+                style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
+                <h5 style="text-align: center; color: #383838;"><i class="fa-solid fa-phone-volume"></i> <a
+                        style="color: #383838;" href="tel:998990300333">+99899 0300333</a></h5>
+                <h5 style="text-align: center; color: #383838;"> <i class="fa-solid fa-phone-volume"></i> <a
+                        style="color: #383838;" href="tel:998983674484">+99898 3674484</a></h5>
+            </div>
+        </div>
     </div>
     <!-- Header Start -->
     <header class="main-header">
@@ -358,7 +443,7 @@
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
                             <a href="index.html">
-                                 <img src="images/logo.png" alt="" title="" class="logo-image">
+                                <img src="images/logo.png" alt="" title="" class="logo-image">
                             </a>
                         </div>
                     </div>
@@ -366,7 +451,7 @@
 
                         <!--Mobile Navigation Toggler For Mobile-->
                         <div class="mobile-nav-toggler ">
-                           <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
+                            <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
                         </div>
 
                         <!-- Main Menu -->
@@ -439,11 +524,11 @@
 
                         <div class="swiper-wrapper ">
                             <!-- Add your img elements here -->
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage2">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage3">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage4">
-                            <img class="swiper-slide" src="" alt="Car Image" id="carImage5">
+                            <img class="swiper-slide display-none carImage" src="" alt="Car Image">
+                            <img class="swiper-slide display-none carImage2" src="" alt="Car Image">
+                            <img class="swiper-slide display-none carImage3" src="" alt="Car Image">
+                            <img class="swiper-slide display-none carImage4" src="" alt="Car Image">
+                            <img class="swiper-slide display-none carImage5" src="" alt="Car Image">
                         </div>
                         <div class=" swiper-button-next"></div>
                         <div class=" swiper-button-prev"></div>
@@ -453,30 +538,46 @@
                     <div class="details-container">
 
                         <div class="detail-slider-ul">
-                            <img class="detail-images-slider slider1" src="" alt="">
-                            <img class="detail-images-slider slider2" src="" alt="">
-                            <img class="detail-images-slider slider3" src="" alt="">
-                            <img class="detail-images-slider slider4" src="" alt="">
-                            <img class="detail-images-slider slider5" src="" alt="">
+                            <img class="detail-images-slider slider1 display-none" src="" alt="">
+                            <img class="detail-images-slider slider2 display-none" src="" alt="">
+                            <img class="detail-images-slider slider3 display-none" src="" alt="">
+                            <img class="detail-images-slider slider4 display-none" src="" alt="">
+                            <img class="detail-images-slider slider5 display-none" src="" alt="">
                         </div>
                         <div class="title-ul">
                             <h4 id="carTitle"></h4>
-                            <h4 style="color: rgb(5, 158, 5);" id="carPrice"></h4>
                         </div>
                         <div class="detail-ul">
-                            <h5 id="carYear"></h5>
+                            <h5 style="color: #2c2c2c; margin-top: 10px;"><i
+                                    class="fa-solid fa-hand-holding-dollar"></i><span id="carPrice"></span></h5>
                             <button
-                                style="border: none; background-color: rgb(52, 158, 52); color: white; width: 200px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3; outline: none;"
+                                style="border: none; background-color: #797979; color: white; width: 150px; cursor: pointer; height: 40px; border-radius: 5px; z-index: 3; outline: none;"
                                 onclick="openModal()" class="order-btn"></button>
                         </div>
 
-
+                        <span
+                            style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0px 0px;">
+                            <p
+                                style="width: 33.3%; text-align: center; font-size: 15px; padding: 5px; box-shadow: rgb(121, 121, 121) 0px 0px 2px;">
+                                <i class="fa-regular fa-calendar"></i> Год выпуска: <span id="carYear"></span>
+                            </p>
+                            <p
+                                style="width: 33.3%; text-align: center; box-shadow: rgb(121, 121, 121) 0px 0px 2px; font-size: 15px; padding: 5px;">
+                                <i class="fa-solid fa-road"></i> Пробег: <span id="carKm"></span>
+                            </p>
+                            <p
+                                style="width: 33.3%; text-align: center; box-shadow: rgb(121, 121, 121) 0px 0px 2px; font-size: 15px; padding: 5px;">
+                                <i class="fa-solid fa-gas-pump"></i> Топлива: <span id="carFuel"></span>
+                            </p>
+                        </span>
                         <p style="margin-top: 15px;" id="desc"></p>
                         <div style="font-size: 25px;  margin-bottom: 20px;">
-                            <a style="color: #383838;" href="#"><i class="fa-solid fa-phone"></i></a>
-                            <a style="color: #383838;" href="@"><i class="fa-solid fa-envelope"></i></a>
-                            <a style="color: #383838;" href="@"><i class="fa-brands fa-telegram"></i></a>
-                            <a style="color: #383838;" href="@"><i class="fa-brands fa-instagram"></i></a>
+                            <a style="color: #383838;" href="tel:998990300333"><i class="fa-solid fa-phone"></i></a>
+
+                            <a style="color: #383838;" href="https://t.me/Dubaiuzbcars"><i
+                                    class="fa-brands fa-telegram"></i></a>
+                            <a style="color: #383838;" href="https://www.instagram.com/dubaiavto_uzb/"><i
+                                    class="fa-brands fa-instagram"></i></a>
                         </div>
                         <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
 
@@ -484,10 +585,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="recomended-cars car-list">
+                <h5 class="rec-title2 ">Другие автомобили</h5>
+                <div class="recomended-cars ">
                     <h5 class="rec-title">Другие автомобили</h5>
-                    <div class="container" id="carContainer"
-                        style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    <div class="rec-container" id="carContainer">
                         <!-- Cars will be dynamically added here -->
 
                     </div>
@@ -602,17 +703,26 @@
     </footer>
 
     <script>
-        function sliderModal() {
-            console.log('ok');
-        }
+
         // JavaScript to open and close modal
         function openModal() {
-            document.querySelector('.modal-content').style.display = 'block';
+            var modalContent = document.querySelector('.modal-content');
+            var modalbody = document.querySelector('.modal-bg')
+
+            // Add blur class to body
+            modalContent.style.display = 'block';
+            modalbody.style.display = 'block'
         }
 
         function closeModal() {
-            document.querySelector('.modal-content').style.display = 'none';
+            var modalContent = document.querySelector('.modal-content');
+            var modalbody = document.querySelector('.modal-bg')
+
+            // Remove blur class from body
+            modalbody.style.display = 'none'
+            modalContent.style.display = 'none';
         }
+
         // Fetch data from the API
         const urlParams = new URLSearchParams(window.location.search);
         const carId = urlParams.get('id');
@@ -621,22 +731,58 @@
             .then(response => response.json())
             .then(car => {
                 // Update elements with car details
-                document.getElementById('carImage').src = `https://dubaiavto.uz/uploads/${car.img}`;
-                document.getElementById('carImage2').src = `https://dubaiavto.uz/uploads/${car.img2 ? car.img2 : car.img}`;
-                document.getElementById('carImage3').src = `https://dubaiavto.uz/uploads/${car.img3 ? car.img3 : car.img}`;
-                document.getElementById('carImage4').src = `https://dubaiavto.uz/uploads/${car.img4 ? car.img4 : car.img}`;
-                document.getElementById('carImage5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
 
-                document.querySelector('.slider1').src = `https://dubaiavto.uz/uploads/${car.img}`;
-                document.querySelector('.slider2').src = `https://dubaiavto.uz/uploads/${car.img2 ? car.img2 : car.img}`;
-                document.querySelector('.slider3').src = `https://dubaiavto.uz/uploads/${car.img3 ? car.img3 : car.img}`;
-                document.querySelector('.slider4').src = `https://dubaiavto.uz/uploads/${car.img4 ? car.img4 : car.img}`;
-                document.querySelector('.slider5').src = `https://dubaiavto.uz/uploads/${car.img5 ? car.img5 : car.img}`;
+
+
+
+                if (car.img) {
+                    document.querySelector('.carImage').style.display = 'block '
+                    document.querySelector('.carImage').src = `https://dubaiavto.uz/uploads/${car.img}`;
+                } if (car.img2) {
+                    document.querySelector('.carImage2').style.display = 'block '
+                    document.querySelector('.carImage2').src = `https://dubaiavto.uz/uploads/${car.img2}`;
+                } if (car.img3) {
+                    document.querySelector('.carImage3').style.display = 'block '
+                    document.querySelector('.carImage3').src = `https://dubaiavto.uz/uploads/${car.img3}`;
+                } if (car.img4) {
+                    document.querySelector('.carImage4').style.display = 'block '
+                    document.querySelector('.carImage4').src = `https://dubaiavto.uz/uploads/${car.img4}`;
+                } if (car.img5) {
+                    document.querySelector('.carImage5').style.display = 'block '
+                    document.querySelector('.carImage5').src = `https://dubaiavto.uz/uploads/${car.img5}`;
+                }
+
+
+
+                if (car.img) {
+                    document.querySelector('.slider1').style.display = 'block '
+                    document.querySelector('.slider1').src = `https://dubaiavto.uz/uploads/${car.img}`;
+                } if (car.img2) {
+                    document.querySelector('.slider2').style.display = 'block '
+                    document.querySelector('.slider2').src = `https://dubaiavto.uz/uploads/${car.img2}`;
+                } if (car.img3) {
+                    document.querySelector('.slider3').style.display = 'block '
+                    document.querySelector('.slider3').src = `https://dubaiavto.uz/uploads/${car.img3}`;
+                } if (car.img4) {
+                    document.querySelector('.slider4').style.display = 'block '
+                    document.querySelector('.slider4').src = `https://dubaiavto.uz/uploads/${car.img4}`;
+                } if (car.img5) {
+                    document.querySelector('.slider5').style.display = 'block '
+                    document.querySelector('.slider5').src = `https://dubaiavto.uz/uploads/${car.img5}`;
+                }
+
+
+
+
+
+
 
                 document.getElementById('carTitle').innerText = car.title;
-                document.getElementById('carYear').innerText = `год выпуска: ${car.year}`;
+                document.getElementById('carYear').innerText = `${car.year}`;
+                document.getElementById('carKm').innerText = `${car.km}`;
+                document.getElementById('carFuel').innerText = `${car.fuel}`;
                 document.getElementById('desc').innerText = ` ${car.desc}`;
-                document.getElementById('carPrice').innerText = `$ ${car.price}`;
+                document.getElementById('carPrice').innerText = ` ${car.price}`;
                 if (car.category === 'stock') {
                     document.querySelector('.order-btn').innerText = 'Оставить заявку';
                 } else {
@@ -732,7 +878,7 @@
 
                     carContainer.appendChild(listItem);
                 });
-            
+
             })
             .catch(error => console.error('Error fetching data:', error));
 
