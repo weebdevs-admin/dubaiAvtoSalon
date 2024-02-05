@@ -24,11 +24,111 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <style>
+        .modal-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(20, 17, 17, 0.4);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
 
+        .modal-content {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 700px;
+            height: 440px;
+            z-index: 999999;
+            transform: translate(-50%, -50%);
+            background-image: url('./images/modal-bg.jpg');
+            padding: 20px;
+            border-radius: 5px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+        }
+
+        #orderForm {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        #orderForm input {
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #797979;
+        }
+
+        #orderForm button {
+            height: 40px;
+            background-color: #797979;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div class="modal-bg">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" style="font-size: 30px;">&times;</span>
+            <h3 style="text-align: center;">Оставить заявку
+            </h3>
+            <form id="orderForm">
+                <input type="text" id="names" name="name" placeholder="Имя" required>
+
+                <input type="number" id="phones" name="phone" placeholder="Телефон" required>
+
+                <button type="button" onclick="submitOrder()">Отправить заказ</button>
+            </form>
+            <div class="copy">
+                <ul style="display: flex; flex-wrap: nowrap; justify-content: center;  width: 100%;">
+
+                    <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
+                                class="fa fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/dubaiavto_uzb/" class="pinterest-change-co" style="  background: #f09433; 
+                            background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+                            background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+                            "><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i class="fa fa-telegram"></i></a>
+                    </li>
+                    <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co "
+                            style="background-color: red;"><i class="fa fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+            <div
+                style="display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
+                <h5 style="text-align: center; color: #383838;"><i class="fa-solid fa-phone-volume"></i> <a
+                        style="color: #383838;" href="tel:998990300333">+99899 0300333</a></h5>
+                <h5 style="text-align: center; color: #383838;"> <i class="fa-solid fa-phone-volume"></i> <a
+                        style="color: #383838;" href="tel:998983674484">+99898 3674484</a></h5>
+            </div>
+        </div>
+    </div>
     <!-- preloader Start -->
     <div class="preloader">
         <div id="loader-wrapper">
@@ -61,7 +161,7 @@
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
                             <a href="index.html">
-                                 <img src="images/logo.png" alt="" title="" class="logo-image">
+                                <img src="images/logo.png" alt="" title="" class="logo-image">
                             </a>
                         </div>
                     </div>
@@ -69,7 +169,7 @@
 
                         <!--Mobile Navigation Toggler For Mobile-->
                         <div class="mobile-nav-toggler ">
-                           <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
+                            <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
                         </div>
 
                         <!-- Main Menu -->
@@ -255,16 +355,16 @@
 
                         <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
                                     class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.instagram.com/dubaiavto_uzb/"   style="  background: #f09433; 
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" style="  background: #f09433; 
                                         background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
                                         background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
                                         background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
                                         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-                                        "class="pinterest-change-co"><i
-                                    class="fa fa-instagram"></i></a></li>
+                                        " class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i
                                     class="fa fa-telegram"></i></a></li>
-                        <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co"><i
+                                    class="fa fa-youtube"></i></a></li>
 
                     </ul>
 
@@ -291,20 +391,83 @@
 
     <script>
 
-    async function fetchCars(category) {
-        showLoader(); // Show loader before fetching data
+        function openModal() {
+            var modalContent = document.querySelector('.modal-content');
+            var modalbody = document.querySelector('.modal-bg')
 
-        try {
-            // Use the category parameter in the URL
-            const response = await fetch(`https://dubaiavto.uz/product?category=${category}`);
-            const data = await response.json();
-            hideLoader(); // Hide loader after data is fetched
-            return data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            hideLoader(); // Hide loader in case of an error
+            // Add blur class to body
+            modalContent.style.display = 'block';
+            modalbody.style.display = 'block'
         }
-    }
+        
+        openModal()
+
+        function closeModal() {
+            var modalContent = document.querySelector('.modal-content');
+            var modalbody = document.querySelector('.modal-bg')
+
+            // Remove blur class from body
+            modalbody.style.display = 'none'
+            modalContent.style.display = 'none';
+        }
+        function submitOrder() {
+            const name = document.getElementById('names').value;
+            const phone = document.getElementById('phones').value;
+
+            // Validate name and phone
+            if (!name || !phone) {
+                alert('Пожалуйста, введите свое имя и номер телефона.');
+                return;
+            }
+
+            // Assuming carId is already defined
+            // const title = document.querySelector('.title-product');
+
+            // Create a data object with the order details
+
+            const orderData = {
+                product: 'Автомобили под заказ',
+                productLink: 'https://dubaiavto.uz',
+                firtname: name,
+                phone: phone
+            };
+
+            // Send a POST request to the server
+            fetch('https://dubaiavto.uz/payment/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle success, e.g., show a success message
+                    alert('Заказ успешно отправлен!');
+                    closeModal();
+                })
+                .catch(error => {
+                    // Handle error, e.g., show an error message
+                    console.error('Error submitting order:', error);
+                    alert('Ошибка отправки заказа. Пожалуйста, попробуйте еще раз.');
+                });
+        }
+
+
+        async function fetchCars(category) {
+            showLoader(); // Show loader before fetching data
+
+            try {
+                // Use the category parameter in the URL
+                const response = await fetch(`https://dubaiavto.uz/product?category=${category}`);
+                const data = await response.json();
+                hideLoader(); // Hide loader after data is fetched
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                hideLoader(); // Hide loader in case of an error
+            }
+        }
         async function fetchCars() {
             try {
                 const response = await fetch('https://dubaiavto.uz/product');
@@ -314,7 +477,7 @@
             }
         }
 
-       
+
 
         function searchCars(event) {
             const searchTerm = event.target.value.toLowerCase();
@@ -367,7 +530,7 @@
             listItem.style.borderRadius = '5px';
             listItem.style.marginTop = '15px';
             listItem.style.cursor = 'pointer';
-            
+
             const image = document.createElement('img');
             image.src = `https://dubaiavto.uz/uploads/${car.img}`;
             image.alt = car.title;
@@ -461,7 +624,7 @@
             renderCarsByCategory('order')
             stockFilter.style.borderBottom = '2px solid black'
         });
-        
+
 
     </script>
     <script src="js/jquery-3.6.0.min.js"></script>

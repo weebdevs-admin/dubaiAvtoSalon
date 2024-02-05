@@ -70,13 +70,62 @@
     flex-wrap: wrap;
   }
  
-  
-
+ 
   .previews-img{
     display: flex;
+    justify-content: center;
+    gap: 3px;
+    width: 100%;
     img{
-      width: 100%;
-      height: 50px;
+      width: 100px;
+      height: 100px;
     }
   }
-  
+  @media(max-width:767px){
+    .previews-img{
+      display: flex;
+      justify-content: center;
+      gap: 3px;
+      width: 100%;
+      img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+    /* Style for the file input */
+
+
+/* Style for the label */
+input[type="file"]  {
+  background-color: #9c9b9b; /* Set the background color */
+  color: #fff; /* Set the text color */
+  padding: 10px 15px; /* Add padding for better appearance */
+  cursor: pointer; /* Set cursor to pointer for better interaction */
+  border-radius: 5px;
+}
+
+/* Style for the file input when focused */
+input[type="file"]:focus  {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+  .category-btn{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    gap: 20px;
+    button{
+      width: 200px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+
+  .delete-btn{
+    width: 100px;
+    height: 30px;
+    background-color: red;
+    color: white;
+  }

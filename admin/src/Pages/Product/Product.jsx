@@ -31,7 +31,16 @@ function Product() {
         price: '',
         category: '',
     });
+    const [selectedCategory, setSelectedCategory] = useState(''); // New state for selected category
+    const handleCategoryChange = (category) => {
+        setSelectedCategory(category);
+    };
 
+    const filteredImages = images
+        ? selectedCategory
+            ? images.filter((newsItem) => newsItem.category === selectedCategory)
+            : images
+        : [];
     const [editingItemId, setEditingItemId] = useState(null);
 
     useEffect(() => {
@@ -58,6 +67,10 @@ function Product() {
         }
     };
     const [imageCard1, setImageCard1] = useState(null)
+    const [imageCard2, setImageCard2] = useState(null)
+    const [imageCard3, setImageCard3] = useState(null)
+    const [imageCard4, setImageCard4] = useState(null)
+    const [imageCard5, setImageCard5] = useState(null)
     const handleEdit = (newsItem) => {
         setEditingItemId(newsItem._id);
         setFormData({
@@ -131,6 +144,22 @@ function Product() {
             ...formData,
             img2: event.target.files[0] ? event.target.files[0].name : '...',
         });
+        const file = event.target.files[0];
+
+        // Check if a file is selected
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Set the selected file content as the image source
+                setImageCard2({
+                    ...imageCard2,
+                    img: event.target.result,
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleFileChange3 = (event) => {
@@ -139,6 +168,22 @@ function Product() {
             ...formData,
             img3: event.target.files[0] ? event.target.files[0].name : '...',
         });
+        const file = event.target.files[0];
+
+        // Check if a file is selected
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Set the selected file content as the image source
+                setImageCard3({
+                    ...imageCard3,
+                    img: event.target.result,
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleFileChange4 = (event) => {
@@ -147,6 +192,22 @@ function Product() {
             ...formData,
             img4: event.target.files[0] ? event.target.files[0].name : '...',
         });
+        const file = event.target.files[0];
+
+        // Check if a file is selected
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Set the selected file content as the image source
+                setImageCard4({
+                    ...imageCard4,
+                    img: event.target.result,
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleFileChange5 = (event) => {
@@ -155,6 +216,22 @@ function Product() {
             ...formData,
             img5: event.target.files[0] ? event.target.files[0].name : '...',
         });
+        const file = event.target.files[0];
+
+        // Check if a file is selected
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Set the selected file content as the image source
+                setImageCard5({
+                    ...imageCard5,
+                    img: event.target.result,
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleUpload = async () => {
@@ -246,12 +323,12 @@ function Product() {
                         <input type="file" onChange={handleFileChange5} />
                     </div>
                     <div className='previews-img'>
-                        {/* <img src={imageCard1 && imageCard1.img} alt="" /> */}
-                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
-                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
-                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
-                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
-                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                    <img src={imageCard1 && imageCard1.img} alt="" />
+                    <img src={imageCard2 && imageCard2.img} alt="" />
+                    <img src={imageCard3 && imageCard3.img} alt="" />
+                    <img src={imageCard4 && imageCard4.img} alt="" />
+                        <img src={imageCard5 && imageCard5.img} alt="" />
+                        
                     </div>
                     <label>
                         <select name="category" onChange={handleInputChange} value={formData.category || ''}>
@@ -260,7 +337,6 @@ function Product() {
                             <option value="order">Под заказ</option>
                         </select>
                     </label>
-                    <img src={imageCard1} alt="" />
                     <label>
                         <input
                             type='text'
@@ -319,11 +395,14 @@ function Product() {
                         Обновлять
                     </button>
                 </form>
+                <div className='category-btn'>
+                    <button onClick={() => handleCategoryChange('stock')}>В наличии</button>
+                    <button onClick={() => handleCategoryChange('order')}>Под заказ</button>
+                </div>
                 <div className="news-container">
-                    {images &&
-                        images.map((newsItem) => (
-                            <div key={newsItem._id} className="news-card">
-                                {newsItem.img && <img src={`https://dubaiavto.uz/uploads/${newsItem.img}`} alt={newsItem.title} />}
+                    {filteredImages.map((newsItem) => (
+                        <div key={newsItem._id} className="news-card">
+                             {newsItem.img && <img src={`https://dubaiavto.uz/uploads/${newsItem.img}`} alt={newsItem.title} />}
                                 {newsItem.iframe && <iframe width="100%" height="auto" src={newsItem.iframe} title={newsItem.title}></iframe>}
                                 <div className="news-content">
                                     <h3>{newsItem.title}</h3>
@@ -336,9 +415,10 @@ function Product() {
                                         удалить
                                     </button>
                                 </div>
-                            </div>
-                        ))}
+                        </div>
+                    ))}
                 </div>
+               
             </div>
         </>
     );

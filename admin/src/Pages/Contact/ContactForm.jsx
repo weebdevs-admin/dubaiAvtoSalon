@@ -26,6 +26,21 @@ function ContactForm() {
     fetchData();
   }, []);
 
+  const handleDelete = async (paymentId) => {
+    try {
+      // Send a DELETE request to the server
+      await axios.delete(`https://dubaiavto.uz/payment/delete/${paymentId}`);
+
+      // Update the state to remove the deleted payment
+      setPaymentData((prevData) => prevData.filter((payment) => payment._id !== paymentId));
+
+      toast.success('Заявка успешно удалена');
+    } catch (error) {
+      console.error('Xatolik yuzaga keldi', error);
+      toast.error('Xatolik yuzaga keldi. Пожалуйста, попробуйте еще раз.');
+    }
+  };
+
   return (
     <>
       <ToastContainer />
@@ -37,10 +52,10 @@ function ContactForm() {
           {paymentData.map((payment) => (
             <li key={payment._id}>
               <h4>Имя: {payment.firtname}</h4>
-              <p>Наименование товара: {payment.product}</p>
+              <b>{payment.product}</b>
               <p>Номер телефона: {payment.phone}</p>
-              <p>Ссылка на продукт: <a href={payment.productLink} target="_blank" rel="noopener noreferrer">информация о продукте</a></p>
-              {/* Include other payment details as needed */}
+              <p>Ссылка: <a href={payment.productLink} target="_blank" rel="noopener noreferrer">информация </a></p>
+              <button className='delete-btn' onClick={() => handleDelete(payment._id)}>Удалить</button>
             </li>
           ))}
         </ul>
