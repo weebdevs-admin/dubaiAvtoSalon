@@ -57,7 +57,7 @@ function Product() {
             toast.error('Ошибка удаления изображения.');
         }
     };
-
+    const [imageCard1, setImageCard1] = useState(null)
     const handleEdit = (newsItem) => {
         setEditingItemId(newsItem._id);
         setFormData({
@@ -76,7 +76,6 @@ function Product() {
             category: newsItem.category
         });
     };
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
@@ -105,7 +104,25 @@ function Product() {
         setFormData({
             ...formData,
             img: event.target.files[0] ? event.target.files[0].name : '...',
+
         });
+        const file = event.target.files[0];
+
+        // Check if a file is selected
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Set the selected file content as the image source
+                setImageCard1({
+                    ...imageCard1,
+                    img: event.target.result,
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
+
     };
 
     const handleFileChange2 = (event) => {
@@ -144,34 +161,34 @@ function Product() {
         if (!selectedFile) {
             return;
         }
-    
+
         try {
             const formDataArray = [selectedFile, selectedFile2, selectedFile3, selectedFile4, selectedFile5];
-            
+
             // Gzip orqali yuklash uchun headers ni sozlash
             const headers = {
                 'Content-Encoding': 'gzip',
                 'Content-Type': 'image/jpeg', // Rasmlarning formatiga qarab o'zgartiring
             };
-    
+
             // Har bir form data uchun alohida so'rov jo'natish
             for (let i = 0; i < formDataArray.length; i++) {
                 const formData = new FormData();
                 formData.append('file', formDataArray[i]);
-    
+
                 // Gzip orqali so'rovni yuborish
                 await axios.post('https://dubaiavto.uz/upload', formData, {
                     headers,
                 });
             }
-    
+
             toast.success('Изображения успешно загружены');
         } catch (error) {
             console.error('Ошибка при загрузке изображенияs:', error);
             toast.error('Произошла ошибка при загрузке изображений');
         }
     };
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -212,7 +229,7 @@ function Product() {
             toast.warning('Информация, не измененная в полях.');
         }
     };
-
+    
     return (
         <>
             <ToastContainer />
@@ -228,6 +245,14 @@ function Product() {
                         <input type="file" onChange={handleFileChange4} />
                         <input type="file" onChange={handleFileChange5} />
                     </div>
+                    <div className='previews-img'>
+                        {/* <img src={imageCard1 && imageCard1.img} alt="" /> */}
+                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                        <img src="https://www.topgear.com/sites/default/files/2022/07/13.jpg" alt="" />
+                    </div>
                     <label>
                         <select name="category" onChange={handleInputChange} value={formData.category || ''}>
                             <option>Выбирать</option>
@@ -235,6 +260,7 @@ function Product() {
                             <option value="order">Под заказ</option>
                         </select>
                     </label>
+                    <img src={imageCard1} alt="" />
                     <label>
                         <input
                             type='text'
@@ -280,6 +306,7 @@ function Product() {
                             placeholder="Цена"
                         />
                     </label>
+
                     <label>
                         <textarea
                             name="desc"
@@ -289,7 +316,7 @@ function Product() {
                         />
                     </label>
                     <button type="submit" onClick={handleUpload}>
-                    Обновлять
+                        Обновлять
                     </button>
                 </form>
                 <div className="news-container">
@@ -303,10 +330,10 @@ function Product() {
                                 </div>
                                 <div className="news-actions">
                                     <button className='edit-btn' onClick={() => handleEdit(newsItem)}>
-                                    Редактирование
+                                        Редактирование
                                     </button>
                                     <button className='delete-btn' onClick={() => handleDelete(newsItem)}>
-                                    удалить
+                                        удалить
                                     </button>
                                 </div>
                             </div>

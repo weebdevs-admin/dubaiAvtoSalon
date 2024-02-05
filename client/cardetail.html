@@ -323,6 +323,7 @@
             
             .rec-container li{
                 margin: 10px;
+                width: 100% !important;
             }
             .rec-container img {
                 width: 300px !important;
@@ -402,9 +403,9 @@
             <h3 style="text-align: center;">Оставить заявку
             </h3>
             <form id="orderForm">
-                <input type="text" id="name" name="name" placeholder="Имя" required>
+                <input type="text" id="names" name="name" placeholder="Имя" required>
 
-                <input type="number" id="phone" name="phone" placeholder="Телефон" required>
+                <input type="number" id="phones" name="phone" placeholder="Телефон" required>
 
                 <button type="button" onclick="submitOrder()">Отправить заказ</button>
             </form>
@@ -545,7 +546,7 @@
                             <img class="detail-images-slider slider5 display-none" src="" alt="">
                         </div>
                         <div class="title-ul">
-                            <h4 id="carTitle"></h4>
+                            <h4 id="carTitle" class="title-product"></h4>
                         </div>
                         <div class="detail-ul">
                             <h5 style="color: #2c2c2c; margin-top: 10px;"><i
@@ -886,8 +887,8 @@
 
         // Function to submit order
         function submitOrder() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            const name = document.getElementById('names').value;
+            const phone = document.getElementById('phones').value;
 
             // Validate name and phone
             if (!name || !phone) {
@@ -896,12 +897,14 @@
             }
 
             // Assuming carId is already defined
-            const title = document.querySelector('.title-product');
-            const carId = title.textContent;
+            // const title = document.querySelector('.title-product');
 
             // Create a data object with the order details
+            const title = document.querySelector('.title-product');
+
+            const carTitles = title.textContent;
             const orderData = {
-                product: carId,
+                product: carTitles,
                 productLink: window.location.href,
                 firtname: name,
                 phone: phone
@@ -927,6 +930,7 @@
                     alert('Ошибка отправки заказа. Пожалуйста, попробуйте еще раз.');
                 });
         }
+        
         function initializeSwiper() {
             new Swiper('.swiper-container', {
                 slidesPerView: 1,

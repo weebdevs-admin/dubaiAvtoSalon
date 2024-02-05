@@ -90,7 +90,7 @@ function Photos() {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
-        <h2>Установка фотопластинок</h2>
+        <h2>Установка фото</h2>
         <div className='main-form'>
           <label>
             <input type="file" onChange={handleFileChange} />

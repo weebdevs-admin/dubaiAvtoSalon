@@ -18,9 +18,9 @@ const Sidebar = () => {
                 <Link to='/product' ><li className="sidebar-item"><i className="fa-solid fa-car"></i> Добавить автомобиль</li></Link>
                 <Link to='/iframe'><li className="sidebar-item"><i className="fa-solid fa-link"></i> Ссылка на You Tube</li></Link>
                 <Link to='/slider'><li className="sidebar-item"><i className="fa-solid fa-image"></i> Слайдер</li></Link>
-                <Link to='/photos'><li className="sidebar-item"><i className="fa-solid fa-image"></i> Фото тарелки</li></Link>
+                <Link to='/photos'><li className="sidebar-item"><i className="fa-solid fa-image"></i> Галлерия</li></Link>
                 <Link to='/abaut'><li className="sidebar-item"><i className="fa-solid fa-address-card"></i> О нас</li></Link>
-                <Link to='/partners'><li className="sidebar-item"><i className="fa-solid fa-users"></i> Партнеры</li></Link>
+                <Link to='/partners'><li className="sidebar-item"><i className="fa-solid fa-users"></i> Бренды</li></Link>
                 <Link to='/news'><li className="sidebar-item"><i className="fa-solid fa-book"></i> Новости</li></Link>
                 <Link to='/contact'><li className="sidebar-item"><i className="fa-solid fa-address-book"></i> Заявки</li></Link>
                 <Link to='/team'><li className="sidebar-item"><i className="fa-solid fa-users"></i> Наша Команда</li></Link>
