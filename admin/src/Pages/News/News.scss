@@ -129,3 +129,29 @@ input[type="file"]:focus  {
     background-color: red;
     color: white;
   }
+.default-d{
+  display: flex;
+  justify-content: end;
+}
+  .default-btn{
+    padding: 10px 15px;
+    background-color: rgb(16, 141, 16);
+    color: white;
+    border: none;
+    border-radius: 3px;
+   
+  }
+  @media (max-width:767px){
+    .default-d{
+      display: flex;
+      justify-content: center;
+    }
+    .default-btn{
+      padding: 10px 15px;
+      background-color: rgb(16, 141, 16);
+      color: white;
+      border: none;
+      border-radius: 3px;
+      
+    }
+  }

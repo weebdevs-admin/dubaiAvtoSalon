@@ -147,6 +147,9 @@ const handleInputChange = (e) => {
       {navbar ? <Sidebar /> : null}
       <Navbar />
       <div className='main'>
+        <div className="default-d">
+        <a href='/defaultnews' className='default-btn'>Новости по умолчанию</a>
+        </div>
         <h2>Новости</h2>
         <form onSubmit={handleSubmit} className='main-form'>
           <label>
