@@ -15,7 +15,9 @@ body {
 
 filter .swiper-slide img {
     width: 100%;
+    
 }
+
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */
 .loader {
@@ -25,16 +27,22 @@ filter .swiper-slide img {
     border-radius: 50%;
     background: #000;
     -webkit-mask:
-      repeating-conic-gradient(#0000 0deg,#000 1deg 70deg,#0000 71deg 90deg),
-      radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+        repeating-conic-gradient(#0000 0deg, #000 1deg 70deg, #0000 71deg 90deg),
+        radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
     -webkit-mask-composite: destination-in;
-            mask-composite: intersect;
+    mask-composite: intersect;
     animation: l5 1s infinite;
-  }
-  @keyframes l5 {to{transform: rotate(.5turn)}}
+}
+
+@keyframes l5 {
+    to {
+        transform: rotate(.5turn)
+    }
+}
+
 #loader-wrapper {
     position: absolute;
-    
+
     left: 0;
     top: 0;
     right: 0;
@@ -43,7 +51,8 @@ filter .swiper-slide img {
     z-index: 15;
     overflow: hidden;
 }
-.loader-cont{
+
+.loader-cont {
     display: flex;
     width: 100%;
     height: 100%;
@@ -53,7 +62,7 @@ filter .swiper-slide img {
 }
 
 
-#loader-wrapper img{
+#loader-wrapper img {
     width: 100px;
 }
 
@@ -372,8 +381,8 @@ input#fname {
 .swiper-slide {
     background-size: cover;
     background-position: center;
-    height: 900px;
-    object-fit: cover;
+    height: 750px;
+    
 }
 
 .platform {
@@ -447,7 +456,7 @@ input#fname {
     width: 90%;
     padding: 44px 0 0 0;
     float: right;
-    
+
 }
 
 .button {
@@ -1615,21 +1624,21 @@ select#language {
 }
 
 .pinterest-change-co {
-    padding: 5px ;
+    padding: 5px;
     background-color: #bf0505;
     border-radius: 6px;
     color: white;
 }
 
 .twitter-change-co {
-    padding: 5px ;
+    padding: 5px;
     background-color: deepskyblue;
     border-radius: 6px;
     color: white;
 }
 
 .linkedin-change-co {
-    padding: 5px ;
+    padding: 5px;
     background-color: steelblue;
     border-radius: 6px;
     color: white;
@@ -2060,6 +2069,7 @@ input[type="submit"]:hover {
     margin: 10px auto;
 }
 
+
 @media (max-width: 678px) {
     .card-list-add {
         width: 100%;
@@ -2073,16 +2083,20 @@ input[type="submit"]:hover {
 
     .main-slide {
         height: 250px !important;
+        
     }
 
     .swiper-slide {
         background-size: cover;
         background-position: center;
         height: 250px;
+        
+        
     }
 
     .main-slide img {
         height: 250px !important;
+        
     }
 }
 
@@ -2452,8 +2466,8 @@ input[type="submit"]:hover {
     width: 100%;
     padding: 10px;
     background-color: rgba(20, 17, 17, 0.4);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     color: white;
     z-index: 2;
     /* Ensure the info is above the pseudo-element */
@@ -2548,22 +2562,24 @@ input[type="submit"]:hover {
     background-size: cover;
 
 }
-.section3{
+
+.section3 {
     height: 500px;
 }
 
 
 @media screen and (max-width: 768px) {
-    .section3{
+    .section3 {
         height: 1000px !important;
     }
-    
+
     .onlinelearning1 iframe {
         width: 100%;
         height: 300px;
         padding: 44px 0 0 0;
         float: right;
     }
+
     .car-banner {
         width: 100%;
         height: 100px;
