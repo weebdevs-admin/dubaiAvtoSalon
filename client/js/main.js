@@ -470,13 +470,24 @@ fetch('https://dubaiavto.uz/slider')
         const swiperContainer = document.querySelector('#swipper');
 
         // API-dan olingan ma'lumotlarni ishlab chiqamiz
-        data.forEach(sliderItem => {
+        let imgs = ['../images/rasm.jpg','../images/rasm.jpg','../images/image2.jpg','../images/image3.jpg','../images/image4.jpg','../images/image5.jpg']
+        imgs.forEach((e)=>{
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide', 'cover-background');
-            swiperSlide.style.backgroundImage = `url('../images/rasm.jpg')`;
+            swiperSlide.style.backgroundImage = `url('${e}')`;
+            
             // swiperSlide.style.backgroundImage = `url(${sliderItem.img})`;
             swiperContainer.appendChild(swiperSlide);
-        });
+        })
+        // data.forEach(sliderItem => {
+        //     const swiperSlide = document.createElement('div');
+        //     swiperSlide.classList.add('swiper-slide', 'cover-background');
+        //     imgs.map((e)=>{
+        //         swiperSlide.style.backgroundImage = `url('${e}')`;
+        //     })
+        //     // swiperSlide.style.backgroundImage = `url(${sliderItem.img})`;
+        //     swiperContainer.appendChild(swiperSlide);
+        // });
 
         // Slider yaratish
         const mySwiper = new Swiper('.mySwiper', {
