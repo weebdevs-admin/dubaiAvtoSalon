@@ -129,6 +129,7 @@ const PartnersRoute = require('./Routes/Partners.route');
 const IframesRoute = require('./Routes/Iframes.route');
 const ProductRoute = require('./Routes/Product.route');
 const PaymentRoute = require('./Routes/Payment.route');
+const DefaultNewsRoute = require('./Routes/DefaultNews.route');
 
 app.use('/statist', StatistRoute)
 app.use('/team', TeamRoute)
@@ -142,6 +143,7 @@ app.use('/partners', PartnersRoute)
 app.use('/iframes', IframesRoute)
 app.use('/product', ProductRoute)
 app.use('/payment', PaymentRoute)
+app.use('/defaultnews', DefaultNewsRoute)
 
 
 

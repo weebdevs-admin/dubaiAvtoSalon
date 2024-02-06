@@ -24,6 +24,7 @@ const Sidebar = () => {
                 <Link to='/photos'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-image"></i> Галлерия</li></Link>
                 <Link to='/abaut'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-address-card"></i> О нас</li></Link>
                 <Link to='/partners'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-users"></i> Бренды</li></Link>
+                <Link to='/defaultnews'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-book"></i> Новости по умолчанию</li></Link>
                 <Link to='/news'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-book"></i> Новости</li></Link>
                 <Link to='/contact'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-address-book"></i> Заявки</li></Link>
                 <Link to='/team'><li onClick={closeSidebar} className="sidebar-item"><i className="fa-solid fa-users"></i> Наша Команда</li></Link>

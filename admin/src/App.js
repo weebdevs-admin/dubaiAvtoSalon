@@ -16,6 +16,7 @@ import Partners from './Pages/Partners/Partners'
 import { Provider } from './Context/Context';
 import { useEffect } from 'react';
 import {useLocation,useNavigate} from 'react-router-dom'
+import DefaultNews from './Pages/DefaultNews/DefaultNews';
 
 function App() {
   const token = window.localStorage.getItem('OpenDashboard')
@@ -46,6 +47,7 @@ function App() {
         <Route path='/partners' element={<Partners />} />
         <Route path='/iframe' element={<Iframe />} />
         <Route path='/product' element={<Product />} />
+        <Route path='/defaultnews' element={<DefaultNews />} />
         <Route path='/*' element={<Error />} />
       </Routes>
     </Provider>
