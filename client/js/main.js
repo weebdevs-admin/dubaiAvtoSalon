@@ -473,7 +473,7 @@ fetch('https://dubaiavto.uz/slider')
         data.forEach(sliderItem => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide', 'cover-background');
-            swiperSlide.style.backgroundImage = `url(https://dubaiavto.uz/uploads/${sliderItem.img})`;
+            swiperSlide.style.backgroundImage = `url(${sliderItem.img})`;
 
             swiperContainer.appendChild(swiperSlide);
         });

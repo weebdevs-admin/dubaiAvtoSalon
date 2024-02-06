@@ -4,6 +4,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Context } from '../../Context/Context';
 import 'react-toastify/dist/ReactToastify.css';
+import Resizer from 'react-image-file-resizer';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 
@@ -12,66 +13,65 @@ function Slider() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [images, setImages] = useState(null);
 
-  const uploadFileWithGzip = async (file) => {
-    if (!file) {
-      toast.error('Пожалуйста, выберите картинку!');
-      return;
-    }
-  
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        3000, // Adjust the width as needed
+        1000, // Adjust the height as needed
+        'JPEG',
+        80,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        'base64',
+        // 1 * 1024 * 1024, // 1MB limit
+        // 1 * 1024 * 1024 // 1MB limit
+      );
+    });
+
+  const handleFileChange = async (event) => {
     try {
-      const headers = {
-        'Content-Encoding': 'gzip',
-        'Content-Type': file.type,
-      };
-  
-      const gzippedFile = await gzipFile(file);
-  
-      const formData = new FormData();
-      formData.append('file', gzippedFile, file.name); // Use the original filename
-  
-      await axios.post('https://dubaiavto.uz/upload', formData, {
-        headers,
-      });
-  
-      const response = await axios.post('https://dubaiavto.uz/slider/create', { img: file.name }, {
+      const file = event.target.files[0];
+
+      // Check if the selected file is an image
+      if (!file.type.startsWith('image/')) {
+        toast.error('Выбранный файл не является изображением.');
+        return;
+      }
+
+      const resizedImage = await resizeFile(file);
+      setSelectedFile(resizedImage);
+    } catch (err) {
+      console.log(err);
+      toast.error('Ошибка при обработке изображения.');
+    }
+  };
+
+  const handleUpload = async () => {
+    try {
+      // Check if a file is selected
+      if (!selectedFile) {
+        toast.error('Пожалуйста, выберите изображение.');
+        return;
+      }
+
+      // Upload the base64 image to the server
+      await axios.post('https://dubaiavto.uz/slider/create', { img: selectedFile }, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
-      if (response.data) {
-        toast.success('Слайдер установлен.');
-      } else {
-        toast.error('Произошла ошибка!');
-      }
-  
+
+      toast.success('Слайдер установлен.');
+
       // Fetch the updated list of images
       fetchImages();
     } catch (error) {
-      console.error('Error uploading gzipped image:', error);
-      toast.error('Ошибка при загрузке изображения в формате gzip.');
+      console.error('Error uploading image:', error);
+      toast.error('Ошибка при загрузке изображения.');
     }
-  };
-  
-  const gzipFile = async (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const arrayBuffer = event.target.result;
-        const blob = new Blob([arrayBuffer], { type: file.type }); // Use the file's actual content type
-        resolve(blob);
-      };
-      reader.onerror = reject;
-      reader.readAsArrayBuffer(file);
-    });
-  };
-
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleUpload = () => {
-    uploadFileWithGzip(selectedFile);
   };
 
   useEffect(() => {
@@ -120,7 +120,7 @@ function Slider() {
         <div className="image-container">
           {images && images.map((e) => (
             <div key={e.index} className="image-card">
-              <img src={`https://dubaiavto.uz/uploads/${e.img}`} alt={e} />
+              <img src={`${e.img}`} alt={e} />
               <button className='del-btn' onClick={() => handleDelete(e)}>удалить</button>
             </div>
           ))}
