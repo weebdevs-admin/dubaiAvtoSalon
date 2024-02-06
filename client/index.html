@@ -43,7 +43,8 @@
             margin-top: 30px;
             margin-bottom: 20px;
         }
-        .product-h6 h3{
+
+        .product-h6 h3 {
             font-size: 20px;
         }
     }
@@ -53,23 +54,11 @@
     <!-- preloader Start -->
     <div class="preloader">
         <div id="loader-wrapper">
-            <div class="loader">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="subline"></div>
-                <div class="subline"></div>
-                <div class="subline"></div>
-                <div class="subline"></div>
-                <div class="subline"></div>
-                <div class="loader-circle-1">
-                    <div class="loader-circle-2"></div>
+            <div class="loader-cont">
+                <img src="./images/logo.png" alt="">
+                <div class="loader">
+
                 </div>
-                <div class="needle"></div>
-                <div class="loading">Loading</div>
             </div>
         </div>
     </div>
@@ -176,9 +165,9 @@
 
 
 
-   
 
-    <div >
+
+    <div>
         <div class="container swiper">
 
             <div class="slide-container">
@@ -195,14 +184,14 @@
 
 
     <!-- <h2  style="margin: 30px; color: #797979;">В наличии</h2> -->
-   <div class="container">
-    <div class=" 
+    <div class="container">
+        <div class=" 
     product-h6" c style="display: flex; align-items: center; justify-content: space-between;">
-        <h3 class="container ">Автомобили в наличии
-        </h3>
-        <h3><a href="cars.html" style="color: black;"><i class="fa-solid fa-arrow-right"></i></a></h3>
+            <h3 class="container ">Автомобили в наличии
+            </h3>
+            <h3><a href="cars.html" style="color: black;"><i class="fa-solid fa-arrow-right"></i></a></h3>
+        </div>
     </div>
-   </div>
     <div class="container product-review">
 
     </div>
@@ -239,7 +228,7 @@
 
                     </div>
 
-                </div>  
+                </div>
 
 
 
@@ -321,7 +310,10 @@
                 </li>
                 <li>
                     <p>Проданные автомобили</p>
-                    <div style="display: flex; justify-content: space-around; align-items: center;"><h2 class="discharge5">0</h2> <h2 style="margin-left: 5px; margin-bottom: 15px;"> +</h2></div>
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <h2 class="discharge5">0</h2>
+                        <h2 style="margin-left: 5px; margin-bottom: 15px;"> +</h2>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -329,7 +321,7 @@
 
 
 
-    
+
 
 
 
@@ -482,8 +474,8 @@
 
     <script>
 
-         // Fetch data from the API
-         fetch('https://dubaiavto.uz/partners')
+        // Fetch data from the API
+        fetch('https://dubaiavto.uz/partners')
             .then(response => response.json())
             .then(newsData => {
                 // Call a function to update the slider with the fetched data
@@ -512,9 +504,9 @@
                     img.src = `https://dubaiavto.uz/uploads/${news.img}`;
                     img.alt = 'News Image';
                     imageBox.appendChild(img);
-                } 
+                }
 
-               
+
 
                 card.appendChild(imageBox);
 
@@ -923,7 +915,7 @@
                 imageInfo.classList.add('image-info');
                 imageInfo.style.display = 'flex';
                 imageInfo.style.justifyContent = 'space-around';
-                imageInfo.style.alignItems ='center'
+                imageInfo.style.alignItems = 'center'
                 const span = document.createElement('span');
                 const h4Title = document.createElement('h5');
                 h4Title.innerText = product.title;
