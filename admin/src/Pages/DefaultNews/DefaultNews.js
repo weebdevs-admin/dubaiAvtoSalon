@@ -16,7 +16,7 @@ function DefaultNews() {
     desc: '...',
   });
   useEffect(() => {
-    axios.get('http://localhost:4100/defaultnews')
+    axios.get('https://dubaiavto.uz/defaultnews')
       .then((response) => {
         if (response.data.length > 0) {
           const initialData = response.data[0]; // Avvalgi ma'lumotlardan birini tanlab olish
@@ -37,7 +37,7 @@ function DefaultNews() {
     if ( formData.title !== '...' || formData.desc !== '...') {
       try {
         const response = await axios.put(
-          'http://localhost:4100/defaultnews/update/65c23a8d1cdfea98d0653bb4',
+          'https://dubaiavto.uz/defaultnews/update/65c1fd3f2c5c2b6fce05614f',
           formData
         );
 
