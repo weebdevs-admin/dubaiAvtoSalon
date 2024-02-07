@@ -372,7 +372,7 @@ input#fname {
     /* background-color: #f8f9fa!important; */
 }
 .minsection{
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
