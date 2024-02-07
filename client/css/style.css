@@ -380,8 +380,8 @@ input#fname {
 
 .swiper-slide {
     background-size: cover;
-    background-position: center;
-    height: 750px;
+    background-position: bottom;
+    height: 700px;
     
 }
 
@@ -2088,7 +2088,7 @@ input[type="submit"]:hover {
 
     .swiper-slide {
         background-size: cover;
-        background-position: center;
+        background-position: bottom;
         height: 250px;
         
         
@@ -2609,3 +2609,4 @@ input[type="submit"]:hover {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+

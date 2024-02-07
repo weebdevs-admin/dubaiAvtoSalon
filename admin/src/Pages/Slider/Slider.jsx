@@ -17,8 +17,8 @@ function Slider() {
     new Promise((resolve) => {
       Resizer.imageFileResizer(
         file,
-        3000, // Adjust the width as needed
-        1000, // Adjust the height as needed
+        4000, // Adjust the width as needed
+        2000, // Adjust the height as needed
         'JPEG',
         80,
         0,
