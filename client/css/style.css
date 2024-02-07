@@ -2564,6 +2564,7 @@ input[type="submit"]:hover {
     background-image: url('../images/banner-bg.jpg');
     filter: brightness(50%);
     background-size: cover;
+    background-position: bottom;
 
 }
 

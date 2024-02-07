@@ -11,6 +11,8 @@
     "axios": "^1.6.0",
     "compress-images": "^2.0.5",
     "disable-devtool": "^0.3.6",
+    "heic-convert": "^2.1.0",
+    "heic2any": "^0.0.4",
     "image-conversion": "^2.1.1",
     "image-file-resize": "^1.0.5",
     "image-file-resizer": "^0.0.0",
