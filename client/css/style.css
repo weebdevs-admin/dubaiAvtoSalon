@@ -371,6 +371,10 @@ input#fname {
     background: #FFF !important;
     /* background-color: #f8f9fa!important; */
 }
+.minsection{
+    width: 1400px;
+    margin: 0 auto;
+}
 
 .swiper-slide {
     padding: 8em 0;
@@ -380,8 +384,8 @@ input#fname {
 
 .swiper-slide {
     background-size: cover;
-    background-position: bottom;
-    height: 700px;
+    background-position: center;
+    height: 650px;
     
 }
 

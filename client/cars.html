@@ -49,7 +49,7 @@
                     <div class="col-md-4 pull-left logo-box">
                         <div class="logo">
                             <a href="index.html">
-                                 <img src="images/logo.png" alt="" title="" class="logo-image">
+                                <img src="images/logo.png" alt="" title="" class="logo-image">
                             </a>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
 
                         <!--Mobile Navigation Toggler For Mobile-->
                         <div class="mobile-nav-toggler ">
-                           <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
+                            <span style="font-size: 30px; margin-top: 20px; color: black;" class="fa fa-bars "></span>
                         </div>
 
                         <!-- Main Menu -->
@@ -243,16 +243,16 @@
 
                         <li><a href="https://www.facebook.com/avtosalondubaiuzb/" class="facebook-change-co"><i
                                     class="fa fa-facebook-f"></i></a></li>
-                        <li><a href="https://www.instagram.com/dubaiavto_uzb/"   style="  background: #f09433; 
+                        <li><a href="https://www.instagram.com/dubaiavto_uzb/" style="  background: #f09433; 
                                         background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
                                         background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
                                         background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
                                         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-                                        "class="pinterest-change-co"><i
-                                    class="fa fa-instagram"></i></a></li>
+                                        " class="pinterest-change-co"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="https://t.me/Dubaiuzbcars" class="twitter-change-co"><i
                                     class="fa fa-telegram"></i></a></li>
-                        <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://www.youtube.com/@dubaiavto_uzb" class="pinterest-change-co"><i
+                                    class="fa fa-youtube"></i></a></li>
 
                     </ul>
 
@@ -279,20 +279,20 @@
 
     <script>
 
-    async function fetchCars(category) {
-        showLoader(); // Show loader before fetching data
+        async function fetchCars(category) {
+            showLoader(); // Show loader before fetching data
 
-        try {
-            // Use the category parameter in the URL
-            const response = await fetch(`https://dubaiavto.uz/product?category=${category}`);
-            const data = await response.json();
-            hideLoader(); // Hide loader after data is fetched
-            return data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            hideLoader(); // Hide loader in case of an error
+            try {
+                // Use the category parameter in the URL
+                const response = await fetch(`https://dubaiavto.uz/product?category=${category}`);
+                const data = await response.json();
+                hideLoader(); // Hide loader after data is fetched
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                hideLoader(); // Hide loader in case of an error
+            }
         }
-    }
         async function fetchCars() {
             try {
                 const response = await fetch('https://dubaiavto.uz/product');
@@ -302,7 +302,7 @@
             }
         }
 
-       
+
 
         function searchCars(event) {
             const searchTerm = event.target.value.toLowerCase();
@@ -355,11 +355,11 @@
             listItem.style.borderRadius = '5px';
             listItem.style.marginTop = '15px';
             listItem.style.cursor = 'pointer';
-            
+
             const image = document.createElement('img');
             image.src = `https://dubaiavto.uz/uploads/${car.img}`;
             image.alt = car.title;
-            image.style.height = '230px';
+            image.style.height = '260px';
             image.style.width = '100%';
 
             const titleContainer = document.createElement('span');
@@ -425,6 +425,7 @@
         }
 
         // Function to render cars based on category
+        // Function to render cars based on category
         async function renderCarsByCategory(category) {
             const carContainer = document.getElementById('carContainer');
             carContainer.innerHTML = ''; // Clear previous content
@@ -432,8 +433,11 @@
             // Fetch data based on the category
             const data = await fetchCars(category);
 
-            // Loop through the data and create cards
-            data.forEach(car => {
+            // Reverse the order of the array
+            const reversedData = data.reverse();
+
+            // Loop through the reversed data and create cards
+            reversedData.forEach(car => {
                 const card = createCarCard(car);
                 carContainer.appendChild(card);
             });
@@ -449,7 +453,7 @@
             renderCarsByCategory('stock')
             stockFilter.style.borderBottom = '2px solid black'
         });
-        
+
 
     </script>
     <script src="js/jquery-3.6.0.min.js"></script>

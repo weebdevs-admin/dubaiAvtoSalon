@@ -148,7 +148,7 @@
 
 
 
-    <Section class="minsection main-slide-bg">
+    <Section class=" minsection main-slide-bg">
         <div class="swiper mySwiper">
             <div id="swipper" class="swiper-wrapper main-slide">
             </div>
@@ -478,7 +478,7 @@
             .then(response => response.json())
             .then(newsData => {
                 // Call a function to update the slider with the fetched data
-                updateSlider2(newsData);
+                updateSlider2(newsData.reverse());
             })
             .catch(error => console.error('Error fetching news data:', error));
 
@@ -529,7 +529,7 @@
             .then(response => response.json())
             .then(newsData => {
                 // Call a function to update the slider with the fetched data
-                updateSlider(newsData);
+                updateSlider(newsData.reverse());
             })
             .catch(error => console.error('Error fetching news data:', error));
 
@@ -809,7 +809,7 @@
                 const stockProducts = data.filter(product => product.category === 'stock');
 
                 // Display stock products
-                displayProducts(stockProducts);
+                displayProducts(stockProducts.reverse());
             })
             .catch(error => console.error('Error fetching data:', error));
 
@@ -886,7 +886,7 @@
                 const stockProducts = data.filter(product => product.category === 'order');
 
                 // Display stock products
-                displayProducts2(stockProducts);
+                displayProducts2(stockProducts.reverse());
             })
             .catch(error => console.error('Error fetching data:', error));
 
