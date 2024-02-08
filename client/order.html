@@ -100,7 +100,7 @@
 
                 <input type="number" id="phones" name="phone" placeholder="Телефон" required>
 
-                <button type="button" onclick="submitOrder()">Отправить заказ</button>
+                <button type="button" onclick="submitOrder2()">Отправить заказ</button>
             </form>
             <div class="copy">
                 <ul style="display: flex; flex-wrap: nowrap; justify-content: center;  width: 100%;">
@@ -221,7 +221,7 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- Header End -->
-    <div class=" car-banner">
+    <div class="container car-banner">
     </div>
     <div class="" style="padding: 30px;">
         <div class="container">
@@ -398,7 +398,7 @@
             modalbody.style.display = 'none'
             modalContent.style.display = 'none';
         }
-        function submitOrder() {
+        function submitOrder2() {
             const name = document.getElementById('names').value;
             const phone = document.getElementById('phones').value;
 
