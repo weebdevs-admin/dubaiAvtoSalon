@@ -121,7 +121,7 @@
         </div><!-- End Mobile Menu -->
     </header>
     <!-- Header End -->
-    <div class="container car-banner">
+    <div class=" container car-banner">
     </div>
     <div class="" style="padding: 30px;">
         <div class="container">
@@ -151,7 +151,7 @@
     </div>
 
     <div class="car-list">
-        <div class="container " id="carContainer"
+        <div class="container " id="carContainer2"
             style="display: flex; justify-content: space-around; flex-wrap: wrap; ">
             <!-- Cars will be dynamically added here -->
         </div>
@@ -306,7 +306,7 @@
 
         function searchCars(event) {
             const searchTerm = event.target.value.toLowerCase();
-            const carTitles = document.querySelectorAll('#carContainer h5'); // Change 'h2' to 'h5'
+            const carTitles = document.querySelectorAll('#carContainer2 h5'); // Change 'h2' to 'h5'
 
             carTitles.forEach(titleElement => {
                 const carTitle = titleElement.innerText.toLowerCase();
@@ -427,8 +427,8 @@
         // Function to render cars based on category
         // Function to render cars based on category
         async function renderCarsByCategory(category) {
-            const carContainer = document.getElementById('carContainer');
-            carContainer.innerHTML = ''; // Clear previous content
+            const carContainer2 = document.getElementById('carContainer2');
+            carContainer2.innerHTML = ''; // Clear previous content
 
             // Fetch data based on the category
             const data = await fetchCars(category);
@@ -439,7 +439,7 @@
             // Loop through the reversed data and create cards
             reversedData.forEach(car => {
                 const card = createCarCard(car);
-                carContainer.appendChild(card);
+                carContainer2.appendChild(card);
             });
         }
 
