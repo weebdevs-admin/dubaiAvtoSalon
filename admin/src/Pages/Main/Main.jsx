@@ -43,7 +43,7 @@ function Main() {
     if (formData.established !== '...' || formData.teachers !== '...' || formData.students !== '...') {
       try {
         const response = await axios.put(
-          'https://dubaiavto.uz/statist/update/65ba6e77d217461de90230db',
+          'https://dubaiavto.uz/statist/update/65c65ec7999b7a691c4cfe80',
           formData
         );
 

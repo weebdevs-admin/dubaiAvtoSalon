@@ -36,7 +36,7 @@ function Iframe() {
     if (formData.src !== '...') {
       try {
         const response = await axios.put(
-          'https://dubaiavto.uz/iframes/update/65bd24183eafaa4d8122a390',
+          'https://dubaiavto.uz/iframes/update/65c66020999b7a691c4cfeaa',
           formData
         );
 

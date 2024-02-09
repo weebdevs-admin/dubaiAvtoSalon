@@ -37,7 +37,7 @@ function DefaultNews() {
     if ( formData.title !== '...' || formData.desc !== '...') {
       try {
         const response = await axios.put(
-          'https://dubaiavto.uz/defaultnews/update/65c1fd3f2c5c2b6fce05614f',
+          'https://dubaiavto.uz/defaultnews/update/65c663d1999b7a691c4cff1c',
           formData
         );
 
