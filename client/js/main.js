@@ -625,8 +625,9 @@ fetch('https://dubaiavto.uz/team')
                 const teamType = document.createElement('h6');
                 teamType.style.textAlign = 'center'
                 teamType.style.padding = '5px'
+                teamType.style.height = '55px'
                 teamType.style.borderBottom = '1px solid #797979'
-                teamTitle.style.height = '50px'
+                teamTitle.style.height = '90px'
                 if(teamItem.type === 'manager'){
                     teamType.style.color = '#797979'
                 }else{
